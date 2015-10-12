@@ -5,6 +5,7 @@ import android.app.Application;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
+import com.lxy.test.whv.util.utils.LogUtils;
 
 /**
  * Created by wuming on 2015/10/11.
@@ -25,5 +26,7 @@ public class App extends Application {
         // what this for?
         AVUser.alwaysUseSubUserClass(LeanchatUser.class);
         AVOSCloud.initialize(this, appId, appKey);
+
+        LogUtils.debugEnabled = true;
     }
 }

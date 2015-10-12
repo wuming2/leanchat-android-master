@@ -11,6 +11,7 @@ import com.avos.avoscloud.SignUpCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.util.utils.Utils;
 
 public class EntryRegisterActivity extends EntryBaseActivity {
@@ -19,7 +20,6 @@ public class EntryRegisterActivity extends EntryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_register_activity);
         findView();
@@ -28,7 +28,6 @@ public class EntryRegisterActivity extends EntryBaseActivity {
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
                 register();
             }
         });
@@ -66,7 +65,7 @@ public class EntryRegisterActivity extends EntryBaseActivity {
                     Utils.toast(App.ctx.getString(R.string.registerFailed) + e.getMessage());
                 } else {
                     Utils.toast(R.string.registerSucceed);
-                    //MainActivity.goMainActivityFromActivity(EntryRegisterActivity.this);
+                    MainActivity.goMainActivityFromActivity(EntryRegisterActivity.this);
                 }
             }
         });

@@ -11,6 +11,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.LogInCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.util.utils.Utils;
 
 import butterknife.ButterKnife;
@@ -28,7 +29,6 @@ public class EntryLoginActivity extends EntryBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_login_activity);
         ButterKnife.inject(this);
@@ -65,8 +65,7 @@ public class EntryLoginActivity extends EntryBaseActivity {
             public void done(LeanchatUser avUser, AVException e) {
                 dialog.dismiss();
                 if (filterException(e)) {
-                    //TODO
-                    //MainActivity.goMainActivityFromActivity(EntryLoginActivity.this);
+                    MainActivity.goMainActivityFromActivity(EntryLoginActivity.this);
                 }
             }
         }, LeanchatUser.class);

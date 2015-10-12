@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.lxy.test.whv.R;
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
+import com.lxy.test.whv.R;
+import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.util.utils.LogUtils;
 
 
 public class EntrySplashActivity extends BaseActivity {
@@ -21,8 +23,7 @@ public class EntrySplashActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case GO_MAIN_MSG:
-                    //TODO
-                    //MainActivity.goMainActivityFromActivity(EntrySplashActivity.this);
+                    MainActivity.goMainActivityFromActivity(EntrySplashActivity.this);
                     finish();
                     break;
                 case GO_LOGIN_MSG:
@@ -38,6 +39,7 @@ public class EntrySplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_splash_layout);
+        LogUtils.d("oncreate");
         if (AVUser.getCurrentUser() != null) {
             AVUser.getCurrentUser(LeanchatUser.class).updateUserInfo();
             handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);

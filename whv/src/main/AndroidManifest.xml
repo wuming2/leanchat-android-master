@@ -51,6 +51,19 @@
             android:name=".ui.entry.EntryRegisterActivity"
             android:theme="@style/ChatMainTheme" />
 
+        <activity
+            android:name=".ui.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.avos.leanchart.MAIN_ACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="qdgGT2wl1aOFbeZfQwruDDY8" />
+
     </application>
 
 
