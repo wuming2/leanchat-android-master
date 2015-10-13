@@ -97,5 +97,9 @@
     <string name="chat_xlistview_footer_hint_ready">松开载入更多</string>
     <string name="push_add_request">您有新的好友申请</string>
     <string name="message_when_agree_request">我们已经是好友了，来聊天吧</string>
+    <string name="title_activity_visa_tracking">VisaTrackingActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

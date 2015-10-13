@@ -24,6 +24,7 @@ import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.visahelper.VisaTrackingActivity;
 import com.lxy.test.whv.util.utils.LogUtils;
 import com.lxy.test.whv.util.utils.Utils;
 
@@ -113,6 +114,10 @@ public class MainActivity extends BaseActivity {
         hideFragments(manager, transaction);
         setNormalBackgrounds();
         if (id == R.id.btn_message) {
+
+            //TODO test
+            Intent i = new Intent(this,VisaTrackingActivity.class);
+            this.startActivity(i);
 //            if (conversationRecentFragment == null) {
 //                conversationRecentFragment = new ConversationRecentFragment();
 //                transaction.add(R.id.fragment_container, conversationRecentFragment, FRAGMENT_TAG_CONVERSATION);
