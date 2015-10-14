@@ -12,7 +12,7 @@ import com.avos.avoscloud.LogInCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.ui.MainActivity;
-import com.lxy.test.whv.util.utils.Utils;
+import com.lxy.test.whv.util.Utils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

@@ -12,7 +12,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.ui.MainActivity;
-import com.lxy.test.whv.util.utils.Utils;
+import com.lxy.test.whv.util.Utils;
 
 public class EntryRegisterActivity extends EntryBaseActivity {
     View registerButton;

@@ -13,7 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.util.utils.LogUtils;
+import com.lxy.test.whv.util.LogUtils;
 
 /**
  * Created by wuming on 2015/10/11.

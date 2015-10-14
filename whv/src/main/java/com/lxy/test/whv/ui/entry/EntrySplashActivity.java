@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.RefreshCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
-import com.lxy.test.whv.util.utils.LogUtils;
+import com.lxy.test.whv.util.LogUtils;
 
 
 public class EntrySplashActivity extends BaseActivity {
@@ -39,10 +41,27 @@ public class EntrySplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_splash_layout);
-        LogUtils.d("oncreate");
-        if (AVUser.getCurrentUser() != null) {
-            AVUser.getCurrentUser(LeanchatUser.class).updateUserInfo();
-            handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
+        LeanchatUser user = LeanchatUser.getCurrentUser();
+        if (LeanchatUser.getCurrentUser() != null) {
+            //user.put("test","hahah");
+            // 更新数据库中updatedAt参数
+            user.updateUserInfo();
+            LogUtils.d("refreshInBackground");
+            //TODO 额需要refresh一下才能获取到其他数据 要不要修改leanclound demo项目中相关代码? 后续删除下无用代码
+            // 如果不更新，put保存数据&avatar等数据均获取不到！
+            user.refreshInBackground(new RefreshCallback<AVObject>() {
+                @Override
+                public void done(AVObject avObject, AVException e) {
+                    if (e != null) {
+                        LogUtils.e("error = " + e.getLocalizedMessage());
+                        handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);
+                    } else {
+                        String test = (String) ((LeanchatUser) avObject).getString("test");
+                        LogUtils.d("url = " + ((LeanchatUser) avObject).getAvatarUrl() + " test = " + test);
+                        handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
+                    }
+                }
+            });
         } else {
             handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);
         }

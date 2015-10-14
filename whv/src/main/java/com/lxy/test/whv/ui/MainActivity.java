@@ -24,9 +24,9 @@ import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
-import com.lxy.test.whv.ui.visahelper.VisaTrackingActivity;
-import com.lxy.test.whv.util.utils.LogUtils;
-import com.lxy.test.whv.util.utils.Utils;
+import com.lxy.test.whv.ui.profile.ProfileFragment;
+import com.lxy.test.whv.util.LogUtils;
+import com.lxy.test.whv.util.Utils;
 
 import de.greenrobot.event.EventBus;
 
@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity {
     Button conversationBtn, contactBtn, discoverBtn, mySpaceBtn;
     View fragmentContainer;
     Button[] tabs;
+    ProfileFragment profileFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,9 +116,6 @@ public class MainActivity extends BaseActivity {
         setNormalBackgrounds();
         if (id == R.id.btn_message) {
 
-            //TODO test
-            Intent i = new Intent(this,VisaTrackingActivity.class);
-            this.startActivity(i);
 //            if (conversationRecentFragment == null) {
 //                conversationRecentFragment = new ConversationRecentFragment();
 //                transaction.add(R.id.fragment_container, conversationRecentFragment, FRAGMENT_TAG_CONVERSATION);
@@ -136,11 +134,12 @@ public class MainActivity extends BaseActivity {
 //            }
 //            transaction.show(discoverFragment);
         } else if (id == R.id.btn_my_space) {
-//            if (profileFragment == null) {
-//                profileFragment = new ProfileFragment();
-//                transaction.add(R.id.fragment_container, profileFragment, FRAGMENT_TAG_PROFILE);
-//            }
-//            transaction.show(profileFragment);
+            if (profileFragment == null) {
+                profileFragment = new ProfileFragment();
+                transaction.add(R.id.fragment_container, profileFragment, FRAGMENT_TAG_PROFILE);
+            }
+            transaction.show(profileFragment);
+            // profileFragment.refresh();
         }
         int pos;
         for (pos = 0; pos < FRAGMENT_N; pos++) {

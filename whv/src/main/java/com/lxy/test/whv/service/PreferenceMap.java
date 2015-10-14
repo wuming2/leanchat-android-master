@@ -9,7 +9,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.util.utils.LogUtils;
+import com.lxy.test.whv.util.LogUtils;
 
 /**
  * Created by lzw on 14-6-19.

@@ -1,11 +1,16 @@
 package com.lxy.test.whv;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
-import com.lxy.test.whv.util.utils.LogUtils;
+import com.baidu.mapapi.SDKInitializer;
+import com.lxy.test.whv.util.LogUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 /**
  * Created by wuming on 2015/10/11.
@@ -28,5 +33,26 @@ public class App extends Application {
         AVOSCloud.initialize(this, appId, appKey);
 
         LogUtils.debugEnabled = true;
+
+        initImageLoader(ctx);
+        initBaiduMap();
+    }
+
+    /**
+     * 初始化ImageLoader
+     */
+    public static void initImageLoader(Context context) {
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                context)
+                .threadPoolSize(3).threadPriority(Thread.NORM_PRIORITY - 2)
+                        //.memoryCache(new WeakMemoryCache())
+                .denyCacheImageMultipleSizesInMemory()
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                .build();
+        ImageLoader.getInstance().init(config);
+    }
+
+    private void initBaiduMap() {
+        SDKInitializer.initialize(this);
     }
 }
