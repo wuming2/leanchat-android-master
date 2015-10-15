@@ -4,9 +4,12 @@ import android.app.Application;
 import android.content.Context;
 
 import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.baidu.mapapi.SDKInitializer;
+import com.lxy.test.whv.entity.avobject.AddRequest;
+import com.lxy.test.whv.service.PushManager;
 import com.lxy.test.whv.util.LogUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -31,6 +34,10 @@ public class App extends Application {
         // what this for?
         AVUser.alwaysUseSubUserClass(LeanchatUser.class);
         AVOSCloud.initialize(this, appId, appKey);
+
+        AVObject.registerSubclass(AddRequest.class);
+
+        PushManager.getInstance().init(ctx);
 
         LogUtils.debugEnabled = true;
 

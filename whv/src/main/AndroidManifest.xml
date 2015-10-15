@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lxy.test.whv" >
+    package="com.lxy.test.whv">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -34,10 +34,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
         <activity
             android:name=".ui.entry.EntrySplashActivity"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +50,7 @@
             android:theme="@style/ChatMainTheme" />
         <activity
             android:name=".ui.MainActivity"
-            android:launchMode="singleTask" >
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="com.avos.leanchart.MAIN_ACTIVITY" />
 
@@ -58,18 +58,54 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="qdgGT2wl1aOFbeZfQwruDDY8" />
-
         <activity
             android:name=".ui.visahelper.VisaTrackingActivity"
             android:label="@string/title_activity_visa_tracking"
-            android:parentActivityName=".ui.base_activity.BaseActivity" >
+            android:parentActivityName=".ui.base_activity.BaseActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.lxy.test.whv.ui.base_activity.BaseActivity" />
         </activity>
+
+        <activity
+            android:name="com.lxy.test.whv.ui.contact.ContactPersonInfoActivity"
+            android:theme="@style/ChatMainTheme"></activity>
+
+        <!-- 消息推送推送服务 -->
+        <service android:name="com.avos.avoscloud.PushService" />
+
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <!-- 不开机启动 尽量减少干扰用户，没那么重要-。-
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                -->
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".service.NotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.avoscloud.chat.intent.client_notification" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".service.LeanchatReceiver">
+            <intent-filter>
+                <action android:name="com.avoscloud.chat.INVITATION_ACTION" />
+            </intent-filter>
+        </receiver>
+
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="qdgGT2wl1aOFbeZfQwruDDY8" />
+
     </application>
 
 </manifest>
