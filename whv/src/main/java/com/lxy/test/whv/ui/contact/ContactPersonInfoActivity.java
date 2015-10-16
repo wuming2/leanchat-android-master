@@ -88,6 +88,7 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
         } else {
             initActionBar(R.string.contact_detailInfo);
             avatarArrowView.setVisibility(View.INVISIBLE);
+            //TODO isFriend取不到朋友信息
             List<String> cacheFriends = CacheService.getFriendIds();
             boolean isFriend = cacheFriends.contains(user.getObjectId());
             if (isFriend) {

@@ -24,6 +24,7 @@ import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.contact.ContactFragment;
 import com.lxy.test.whv.ui.contact.DiscoverFragment;
 import com.lxy.test.whv.ui.profile.ProfileFragment;
 import com.lxy.test.whv.util.LogUtils;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity {
     Button conversationBtn, contactBtn, discoverBtn, mySpaceBtn;
     View fragmentContainer;
     Button[] tabs;
+    ContactFragment contactFragment;
     ProfileFragment profileFragment;
     DiscoverFragment discoverFragment;
 
@@ -118,17 +120,19 @@ public class MainActivity extends BaseActivity {
         setNormalBackgrounds();
         if (id == R.id.btn_message) {
 
+            if (contactFragment == null) {
+                contactFragment = new ContactFragment();
+                transaction.add(R.id.fragment_container, contactFragment, FRAGMENT_TAG_CONTACT);
+            }
+            transaction.show(contactFragment);
+
 //            if (conversationRecentFragment == null) {
 //                conversationRecentFragment = new ConversationRecentFragment();
 //                transaction.add(R.id.fragment_container, conversationRecentFragment, FRAGMENT_TAG_CONVERSATION);
 //            }
 //            transaction.show(conversationRecentFragment);
         } else if (id == R.id.btn_contact) {
-//            if (contactFragment == null) {
-//                contactFragment = new ContactFragment();
-//                transaction.add(R.id.fragment_container, contactFragment, FRAGMENT_TAG_CONTACT);
-//            }
-//            transaction.show(contactFragment);
+//
         } else if (id == R.id.btn_discover) {
             if (discoverFragment == null) {
                 discoverFragment = new DiscoverFragment();

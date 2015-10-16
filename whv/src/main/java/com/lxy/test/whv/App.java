@@ -6,11 +6,14 @@ import android.content.Context;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
+import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.baidu.mapapi.SDKInitializer;
 import com.lxy.test.whv.entity.avobject.AddRequest;
+import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.PushManager;
 import com.lxy.test.whv.util.LogUtils;
+import com.lxy.test.whv.util.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
@@ -27,6 +30,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         ctx = this;
+        Utils.fixAsyncTaskBug();
 
         String appId = "jBlSrnCLCJPo2CPIHDw1Pwph";//"x3o016bxnkpyee7e9pa5pre6efx2dadyerdlcez0wbzhw25g";
         String appKey = "rAl0HdKORza58S0yl1vf1BRC";//"057x24cfdzhffnl3dzk14jh9xo2rq6w1hy1fdzt5tv46ym78";
@@ -43,6 +47,18 @@ public class App extends Application {
 
         initImageLoader(ctx);
         initBaiduMap();
+
+        initChatManager();
+    }
+
+    private void initChatManager() {
+        final ChatManager chatManager = ChatManager.getInstance();
+        chatManager.init(this);
+        if (LeanchatUser.getCurrentUser() != null) {
+            chatManager.setupManagerWithUserId(LeanchatUser.getCurrentUser().getObjectId());
+        }
+        chatManager.setConversationEventHandler(ConversationManager.getEventHandler());
+        ChatManager.setDebugEnabled(App.debug);
     }
 
     /**
