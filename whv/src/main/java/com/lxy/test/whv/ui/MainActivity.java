@@ -132,7 +132,7 @@ public class MainActivity extends BaseActivity {
 //            }
 //            transaction.show(conversationRecentFragment);
         } else if (id == R.id.btn_contact) {
-//
+            //TODO
         } else if (id == R.id.btn_discover) {
             if (discoverFragment == null) {
                 discoverFragment = new DiscoverFragment();

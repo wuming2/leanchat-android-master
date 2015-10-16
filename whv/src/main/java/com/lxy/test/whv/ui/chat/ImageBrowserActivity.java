@@ -1,4 +1,4 @@
-package com.avoscloud.chat.ui.chat;
+package com.lxy.test.whv.ui.chat;
 
 import android.app.Activity;
 import android.content.Context;

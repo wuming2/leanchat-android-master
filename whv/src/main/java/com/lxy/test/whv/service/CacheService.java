@@ -16,7 +16,7 @@ import java.util.Set;
 /**
  * Created by lzw on 14/12/19.
  * TODO 此类需要与 AVUserCacheUtils 合并
- * TODO 这个类是干嘛的啊....
+ * 在内存中缓存用户信息&好友信息等
  */
 public class CacheService {
     private static volatile List<String> friendIds = new ArrayList<String>();

@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.utils.Constants;
+import com.lxy.test.whv.ui.chat.ChatRoomActivity;
 import com.lxy.test.whv.ui.entry.EntrySplashActivity;
 
 /**
@@ -52,14 +53,15 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
      */
     private void gotoChatActivity(Context context, Intent intent) {
         //TODO
-//    Intent startActivityIntent = new Intent(context, ChatRoomActivity.class);
-//    startActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//    if (intent.hasExtra(Constants.MEMBER_ID)) {
-//      startActivityIntent.putExtra(Constants.MEMBER_ID, intent.getStringExtra(Constants.MEMBER_ID));
-//    } else {
-//      startActivityIntent.putExtra(Constants.CONVERSATION_ID, intent.getStringExtra(Constants.CONVERSATION_ID));
-//    }
-//    context.startActivity(startActivityIntent);
+        Intent startActivityIntent = new Intent(context, ChatRoomActivity.class);
+        startActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (intent.hasExtra(Constants.MEMBER_ID)) {
+            startActivityIntent.putExtra(Constants.MEMBER_ID, intent.getStringExtra(Constants.MEMBER_ID));
+        } else {
+            startActivityIntent.putExtra(Constants.CONVERSATION_ID, intent.getStringExtra(Constants.CONVERSATION_ID));
+        }
+        context.startActivity(startActivityIntent);
+
     }
 
     private void gotoNewFriendActivity(Context context, Intent intent) {

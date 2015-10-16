@@ -14,11 +14,13 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
+import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.AddRequestManager;
 import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.chat.ChatRoomActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -111,11 +113,10 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            //TODO
             case R.id.chatBtn:// 发起聊天
-//        Intent intent = new Intent(ContactPersonInfoActivity.this, ChatRoomActivity.class);
-//        intent.putExtra(Constants.MEMBER_ID, userId);
-//        startActivity(intent);
+                Intent intent = new Intent(ContactPersonInfoActivity.this, ChatRoomActivity.class);
+                intent.putExtra(Constants.MEMBER_ID, userId);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.addFriendBtn:// 添加好友
