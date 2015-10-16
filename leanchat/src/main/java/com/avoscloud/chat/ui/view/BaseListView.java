@@ -4,11 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
+
 import com.avoscloud.chat.R;
+import com.avoscloud.chat.ui.view.xlist.XListView;
 import com.avoscloud.chat.util.Logger;
 import com.avoscloud.chat.util.SimpleNetTask;
 import com.avoscloud.chat.util.Utils;
-import com.avoscloud.chat.ui.view.xlist.XListView;
 
 import java.util.ArrayList;
 import java.util.List;

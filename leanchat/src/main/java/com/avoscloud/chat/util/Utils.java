@@ -16,6 +16,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.base.App;
 

@@ -12,6 +12,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.ExifInterface;
 import android.media.ThumbnailUtils;
+
 import com.avoscloud.leanchatlib.utils.LogUtils;
 
 import java.io.File;

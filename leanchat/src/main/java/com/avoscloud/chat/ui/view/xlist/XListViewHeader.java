@@ -10,6 +10,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+
 import com.avoscloud.chat.R;
 
 public class XListViewHeader extends LinearLayout {

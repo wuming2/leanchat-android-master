@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.RotateAnimation;
 import android.widget.*;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.leanchatlib.utils.LogUtils;
 

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.ui.view.HeaderLayout;
 

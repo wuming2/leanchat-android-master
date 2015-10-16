@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMConversation;
@@ -23,14 +21,12 @@ import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback;
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.base.App;
-import com.avoscloud.chat.service.CacheService;
 import com.avoscloud.chat.service.ConversationManager;
 import com.avoscloud.chat.ui.base_activity.UpdateContentActivity;
 import com.avoscloud.chat.ui.contact.ContactPersonInfoActivity;
-import com.avoscloud.chat.ui.view.ExpandGridView;
-import com.avoscloud.chat.util.SimpleNetTask;
-import com.avoscloud.chat.util.Utils;
 import com.avoscloud.chat.ui.view.BaseListAdapter;
+import com.avoscloud.chat.ui.view.ExpandGridView;
+import com.avoscloud.chat.util.Utils;
 import com.avoscloud.leanchatlib.activity.AVBaseActivity;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.controller.ConversationHelper;
@@ -47,6 +43,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by lzw on 14-10-11.

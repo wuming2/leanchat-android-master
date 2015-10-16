@@ -9,10 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
@@ -20,9 +16,9 @@ import com.avoscloud.chat.R;
 import com.avoscloud.chat.base.App;
 import com.avoscloud.chat.service.AddRequestManager;
 import com.avoscloud.chat.service.CacheService;
-import com.avoscloud.chat.ui.view.BaseListView;
 import com.avoscloud.chat.ui.base_activity.BaseActivity;
 import com.avoscloud.chat.ui.view.BaseListAdapter;
+import com.avoscloud.chat.ui.view.BaseListView;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.view.ViewHolder;
@@ -30,6 +26,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * 查找好友页面

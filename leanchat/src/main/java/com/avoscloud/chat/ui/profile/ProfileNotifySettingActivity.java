@@ -1,6 +1,7 @@
 package com.avoscloud.chat.ui.profile;
 
 import android.os.Bundle;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.ui.base_activity.BaseActivity;
 

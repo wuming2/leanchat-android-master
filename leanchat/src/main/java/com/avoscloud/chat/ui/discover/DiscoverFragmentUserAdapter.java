@@ -5,12 +5,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.avos.avoscloud.AVGeoPoint;
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.base.App;
 import com.avoscloud.chat.service.PreferenceMap;
-import com.avoscloud.chat.util.Utils;
 import com.avoscloud.chat.ui.view.BaseListAdapter;
+import com.avoscloud.chat.util.Utils;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.nostra13.universalimageloader.core.ImageLoader;

@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.entity.SortUser;
 import com.avoscloud.chat.ui.view.BaseListAdapter;
-import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 

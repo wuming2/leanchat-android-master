@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.avos.avoscloud.AVUser;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.ui.MainActivity;
 import com.avoscloud.chat.ui.base_activity.BaseActivity;
@@ -34,11 +34,10 @@ public class EntrySplashActivity extends BaseActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
     setContentView(R.layout.entry_splash_layout);
-    if (AVUser.getCurrentUser() != null) {
-      AVUser.getCurrentUser(LeanchatUser.class).updateUserInfo();
+    if (LeanchatUser.getCurrentUser() != null) {
+      LeanchatUser.getCurrentUser(LeanchatUser.class).updateUserInfo();
       handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
     } else {
       handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);

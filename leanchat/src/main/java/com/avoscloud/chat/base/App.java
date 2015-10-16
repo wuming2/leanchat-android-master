@@ -3,6 +3,7 @@ package com.avoscloud.chat.base;
 import android.app.Application;
 import android.content.Context;
 import android.os.StrictMode;
+
 import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;

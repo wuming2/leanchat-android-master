@@ -16,7 +16,6 @@ import com.avoscloud.leanchatlib.controller.MessageHelper;
 import com.avoscloud.leanchatlib.model.ConversationType;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.model.Room;
-import com.avoscloud.leanchatlib.utils.AVIMConversationCacheUtils;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.avoscloud.leanchatlib.viewholder.AVCommonViewHolder;
 import com.nostra13.universalimageloader.core.ImageLoader;

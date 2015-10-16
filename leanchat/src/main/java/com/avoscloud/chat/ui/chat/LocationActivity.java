@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.ui.base_activity.BaseActivity;
 import com.avoscloud.chat.util.Logger;

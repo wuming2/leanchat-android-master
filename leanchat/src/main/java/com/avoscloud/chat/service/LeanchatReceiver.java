@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.service.event.InvitationEvent;
-
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.LogUtils;
 import com.avoscloud.leanchatlib.utils.NotificationUtils;

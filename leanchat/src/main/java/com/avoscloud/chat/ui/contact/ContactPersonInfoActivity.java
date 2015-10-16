@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
+
 import com.avos.avoscloud.AVUser;
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.service.AddRequestManager;
 import com.avoscloud.chat.service.CacheService;
-import com.avoscloud.chat.ui.chat.ChatRoomActivity;
 import com.avoscloud.chat.ui.base_activity.BaseActivity;
+import com.avoscloud.chat.ui.chat.ChatRoomActivity;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
@@ -108,7 +109,6 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
 
   @Override
   public void onClick(View v) {
-    // TODO Auto-generated method stub
     switch (v.getId()) {
       case R.id.chatBtn:// 发起聊天
         Intent intent = new Intent(ContactPersonInfoActivity.this, ChatRoomActivity.class);

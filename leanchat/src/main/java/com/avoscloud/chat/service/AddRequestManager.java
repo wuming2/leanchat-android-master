@@ -1,6 +1,7 @@
 package com.avoscloud.chat.service;
 
 import android.content.Context;
+
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;

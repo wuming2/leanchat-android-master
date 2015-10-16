@@ -6,19 +6,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVGeoPoint;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.chat.R;
-import com.avoscloud.chat.base.App;
-import com.avoscloud.chat.service.PreferenceMap;
 import com.avoscloud.chat.ui.MainActivity;
-import com.avoscloud.chat.util.Logger;
 import com.avoscloud.chat.util.Utils;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
-import com.avoscloud.leanchatlib.utils.LogUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

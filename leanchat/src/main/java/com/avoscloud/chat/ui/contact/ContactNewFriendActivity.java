@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.chat.R;
@@ -30,10 +29,12 @@ import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import de.greenrobot.event.EventBus;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
 
 /**
  * 新的好友

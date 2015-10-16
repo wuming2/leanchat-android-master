@@ -3,6 +3,7 @@ package com.avoscloud.chat.service;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.LruCache;
+
 import com.avoscloud.chat.util.PhotoUtils;
 import com.avoscloud.leanchatlib.utils.LogUtils;
 

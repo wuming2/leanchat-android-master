@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
 import com.avoscloud.chat.R;
 import com.avoscloud.chat.util.PixelUtils;
 
