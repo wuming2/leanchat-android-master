@@ -11,6 +11,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.LogInCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.util.Utils;
 
@@ -65,6 +66,7 @@ public class EntryLoginActivity extends EntryBaseActivity {
             public void done(LeanchatUser avUser, AVException e) {
                 dialog.dismiss();
                 if (filterException(e)) {
+                    CacheService.catchFriends();
                     MainActivity.goMainActivityFromActivity(EntryLoginActivity.this);
                 }
             }

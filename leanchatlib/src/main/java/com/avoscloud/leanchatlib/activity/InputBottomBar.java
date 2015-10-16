@@ -38,6 +38,9 @@ import de.greenrobot.event.EventBus;
  * Created by wli on 15/7/24.
  * 专门负责输入的底部操作栏，与 activity 解耦
  * 当点击相关按钮时发送 InputBottomBarEvent，需要的 View 可以自己去订阅相关消息
+ * <p/>
+ * changed by lxy
+ * 暂时屏蔽图片、位置发送 屏蔽语音发送
  */
 public class InputBottomBar extends LinearLayout {
 
@@ -63,8 +66,9 @@ public class InputBottomBar extends LinearLayout {
 
   /**
    * 切换到语音输入的 Button
+   * TODO 暂时屏蔽语音功能
    */
-  private View voiceBtn;
+//    private View voiceBtn;
 
   /**
    * 切换到文本输入的 Button
@@ -124,14 +128,15 @@ public class InputBottomBar extends LinearLayout {
   private void initView(Context context) {
     View.inflate(context, R.layout.chat_input_bottom_bar_layout, this);
     actionBtn = findViewById(R.id.input_bar_btn_action);
+    actionBtn.setVisibility(View.GONE);
     emotionBtn = findViewById(R.id.input_bar_btn_motion);
     contentEditText = (EmotionEditText) findViewById(R.id.input_bar_et_emotion);
     sendTextBtn = findViewById(R.id.input_bar_btn_send_text);
-    voiceBtn = findViewById(R.id.input_bar_btn_voice);
+//        voiceBtn = findViewById(R.id.input_bar_btn_voice);
     keyboardBtn = findViewById(R.id.input_bar_btn_keyboard);
     moreLayout = findViewById(R.id.input_bar_layout_more);
     emotionLayout = findViewById(R.id.input_bar_layout_emotion);
-    emotionPager = (ViewPager)findViewById(R.id.input_bar_viewpager_emotin);
+    emotionPager = (ViewPager) findViewById(R.id.input_bar_viewpager_emotin);
     recordBtn = (RecordButton) findViewById(R.id.input_bar_btn_record);
 
     actionLayout = findViewById(R.id.input_bar_layout_action);
@@ -147,7 +152,7 @@ public class InputBottomBar extends LinearLayout {
       @Override
       public void onClick(View v) {
         boolean showActionView =
-          (GONE == moreLayout.getVisibility() || GONE == actionLayout.getVisibility());
+                (GONE == moreLayout.getVisibility() || GONE == actionLayout.getVisibility());
         moreLayout.setVisibility(showActionView ? VISIBLE : GONE);
         actionLayout.setVisibility(showActionView ? VISIBLE : GONE);
         emotionLayout.setVisibility(View.GONE);
@@ -159,7 +164,7 @@ public class InputBottomBar extends LinearLayout {
       @Override
       public void onClick(View v) {
         boolean showEmotionView =
-          (GONE == moreLayout.getVisibility() || GONE == emotionLayout.getVisibility());
+                (GONE == moreLayout.getVisibility() || GONE == emotionLayout.getVisibility());
         moreLayout.setVisibility(showEmotionView ? VISIBLE : GONE);
         emotionLayout.setVisibility(showEmotionView ? VISIBLE : GONE);
         actionLayout.setVisibility(View.GONE);
@@ -182,12 +187,12 @@ public class InputBottomBar extends LinearLayout {
       }
     });
 
-    voiceBtn.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        showAudioLayout();
-      }
-    });
+//        voiceBtn.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showAudioLayout();
+//            }
+//        });
 
     sendTextBtn.setOnClickListener(new OnClickListener() {
       @Override
@@ -207,7 +212,7 @@ public class InputBottomBar extends LinearLayout {
         }, MIN_INTERVAL_SEND_MESSAGE);
 
         EventBus.getDefault().post(
-          new InputBottomBarTextEvent(InputBottomBarEvent.INPUTBOTTOMBAR_SEND_TEXT_ACTION, content, getTag()));
+                new InputBottomBarTextEvent(InputBottomBarEvent.INPUTBOTTOMBAR_SEND_TEXT_ACTION, content, getTag()));
       }
     });
 
@@ -282,11 +287,12 @@ public class InputBottomBar extends LinearLayout {
       @Override
       public void onFinishedRecord(final String audioPath, int secs) {
         EventBus.getDefault().post(
-          new InputBottomBarRecordEvent(InputBottomBarEvent.INPUTBOTTOMBAR_SEND_AUDIO_ACTION, audioPath, secs, ""));
+                new InputBottomBarRecordEvent(InputBottomBarEvent.INPUTBOTTOMBAR_SEND_AUDIO_ACTION, audioPath, secs, ""));
       }
 
       @Override
-      public void onStartRecord() {}
+      public void onStartRecord() {
+      }
     });
   }
 
@@ -296,8 +302,9 @@ public class InputBottomBar extends LinearLayout {
   private void showTextLayout() {
     contentEditText.setVisibility(View.VISIBLE);
     recordBtn.setVisibility(View.GONE);
-    voiceBtn.setVisibility(contentEditText.getText().length() > 0 ? GONE : VISIBLE);
-    sendTextBtn.setVisibility(contentEditText.getText().length() > 0 ? VISIBLE : GONE);
+//        voiceBtn.setVisibility(contentEditText.getText().length() > 0 ? GONE : VISIBLE);
+//        sendTextBtn.setVisibility(contentEditText.getText().length() > 0 ? VISIBLE : GONE);
+    sendTextBtn.setVisibility(VISIBLE);
     keyboardBtn.setVisibility(View.GONE);
     moreLayout.setVisibility(View.GONE);
     contentEditText.requestFocus();
@@ -310,7 +317,7 @@ public class InputBottomBar extends LinearLayout {
   private void showAudioLayout() {
     contentEditText.setVisibility(View.GONE);
     recordBtn.setVisibility(View.VISIBLE);
-    voiceBtn.setVisibility(GONE);
+//        voiceBtn.setVisibility(GONE);
     keyboardBtn.setVisibility(VISIBLE);
     moreLayout.setVisibility(View.GONE);
     SoftInputUtils.hideSoftInput(getContext(), contentEditText);
@@ -322,18 +329,20 @@ public class InputBottomBar extends LinearLayout {
   private void setEditTextChangeListener() {
     contentEditText.addTextChangedListener(new TextWatcher() {
       @Override
-      public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+      public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+      }
 
       @Override
       public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         boolean showSend = charSequence.length() > 0;
-        keyboardBtn.setVisibility(!showSend ? View.VISIBLE : GONE);
-        sendTextBtn.setVisibility(showSend ? View.VISIBLE : GONE);
-        voiceBtn.setVisibility(View.GONE);
+//                keyboardBtn.setVisibility(!showSend ? View.VISIBLE : GONE);
+        sendTextBtn.setVisibility(VISIBLE);
+//                voiceBtn.setVisibility(View.GONE);
       }
 
       @Override
-      public void afterTextChanged(Editable editable) {}
+      public void afterTextChanged(Editable editable) {
+      }
     });
   }
 }

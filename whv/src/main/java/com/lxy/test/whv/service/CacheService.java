@@ -3,9 +3,11 @@ package com.lxy.test.whv.service;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.AVUserCacheUtils;
 import com.avoscloud.leanchatlib.utils.Constants;
+import com.lxy.test.whv.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,5 +68,30 @@ public class CacheService {
         q.setLimit(1000);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         return q.find();
+    }
+
+    public static void catchFriends() {
+        //CACHE_ELSE_NETWORK
+        LeanchatUser.getCurrentUser(LeanchatUser.class).findFriendsWithCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK, new FindCallback<LeanchatUser>() {
+            @Override
+            public void done(List<LeanchatUser> avUsers, AVException e) {
+                if (e != null) {
+                    e.printStackTrace();
+                } else {
+                    LogUtils.d("FindCallback done size = " + avUsers.size());
+                    List<String> userIds = new ArrayList<String>();
+                    for (AVUser user : avUsers) {
+                        LogUtils.d("objid = " + user.getObjectId());
+                        userIds.add(user.getObjectId());
+                    }
+                    CacheService.setFriendIds(userIds);
+                    try {
+                        CacheService.cacheUsers(userIds);
+                    } catch (AVException e2) {
+                        e2.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }
