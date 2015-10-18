@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by lzw on 14/12/19.
@@ -39,6 +40,10 @@ public class CacheService {
 
     public static List<String> getFriendIds() {
         return friendIds;
+    }
+
+    public static void removeFriend(LeanchatUser user) {
+        friendIds.remove(user.getObjectId());
     }
 
     public static void setFriendIds(List<String> friendList) {
@@ -70,9 +75,9 @@ public class CacheService {
         return q.find();
     }
 
-    public static void catchFriends() {
-        //CACHE_ELSE_NETWORK
-        LeanchatUser.getCurrentUser(LeanchatUser.class).findFriendsWithCachePolicy(AVQuery.CachePolicy.CACHE_ELSE_NETWORK, new FindCallback<LeanchatUser>() {
+    public static void cacheFriends() {
+        //TODO cache 优化  CACHE_ELSE_NETWORK
+        LeanchatUser.getCurrentUser(LeanchatUser.class).findFriendsWithCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE, new FindCallback<LeanchatUser>() {
             @Override
             public void done(List<LeanchatUser> avUsers, AVException e) {
                 if (e != null) {

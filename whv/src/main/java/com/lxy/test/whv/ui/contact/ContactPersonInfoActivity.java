@@ -12,18 +12,24 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.AddRequestManager;
 import com.lxy.test.whv.service.CacheService;
+import com.lxy.test.whv.service.event.ContactRefreshEvent;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.chat.ChatRoomActivity;
+import com.lxy.test.whv.util.LogUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * 用户详情页，从对话详情页面和发现页面跳转过来
@@ -33,7 +39,7 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
     TextView usernameView, genderView;
     ImageView avatarView, avatarArrowView;
     LinearLayout allLayout;
-    Button chatBtn, addFriendBtn;
+    Button chatBtn, addFriendBtn, deleteBtn;
     RelativeLayout avatarLayout, genderLayout;
 
     String userId = "";
@@ -75,6 +81,7 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
 
         genderView = (TextView) findViewById(R.id.sexView);
         chatBtn = (Button) findViewById(R.id.chatBtn);
+        deleteBtn = (Button) findViewById(R.id.deleteBtn);
         addFriendBtn = (Button) findViewById(R.id.addFriendBtn);
     }
 
@@ -86,6 +93,7 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
             genderLayout.setOnClickListener(this);
             avatarArrowView.setVisibility(View.VISIBLE);
             chatBtn.setVisibility(View.GONE);
+            deleteBtn.setVisibility(View.GONE);
             addFriendBtn.setVisibility(View.GONE);
         } else {
             initActionBar(R.string.contact_detailInfo);
@@ -95,9 +103,12 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
             boolean isFriend = cacheFriends.contains(user.getObjectId());
             if (isFriend) {
                 chatBtn.setVisibility(View.VISIBLE);
+                deleteBtn.setVisibility(View.VISIBLE);
                 chatBtn.setOnClickListener(this);
+                deleteBtn.setOnClickListener(this);
             } else {
                 chatBtn.setVisibility(View.GONE);
+                deleteBtn.setVisibility(View.GONE);
                 addFriendBtn.setVisibility(View.VISIBLE);
                 addFriendBtn.setOnClickListener(this);
             }
@@ -110,6 +121,23 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
         usernameView.setText(user.getUsername());
     }
 
+    private void refresh() {
+        //TODO 更新朋友列表
+        List<String> cacheFriends = CacheService.getFriendIds();
+        boolean isFriend = cacheFriends.contains(user.getObjectId());
+        if (isFriend) {
+            chatBtn.setVisibility(View.VISIBLE);
+            deleteBtn.setVisibility(View.VISIBLE);
+            chatBtn.setOnClickListener(this);
+            deleteBtn.setOnClickListener(this);
+        } else {
+            chatBtn.setVisibility(View.GONE);
+            deleteBtn.setVisibility(View.GONE);
+            addFriendBtn.setVisibility(View.VISIBLE);
+            addFriendBtn.setOnClickListener(this);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -119,9 +147,33 @@ public class ContactPersonInfoActivity extends BaseActivity implements OnClickLi
                 startActivity(intent);
                 finish();
                 break;
+            case R.id.deleteBtn:// 发起聊天
+                //TODO 删除好友
+                deleteFriend();
+                break;
             case R.id.addFriendBtn:// 添加好友
                 AddRequestManager.getInstance().createAddRequestInBackground(this, user);
                 break;
         }
+    }
+
+    private void deleteFriend() {
+        // TODO 单向删除，怎样双向删除呢?
+        AVUser.getCurrentUser(LeanchatUser.class).removeFriend(user.getObjectId(), new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+
+                if (filterException(e)) {
+
+                    CacheService.removeFriend(user);
+                    refresh();
+                    ContactRefreshEvent event = new ContactRefreshEvent();
+                    EventBus.getDefault().post(event);
+                } else {
+                    toast("sorry,delete friends error. Try later.");
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

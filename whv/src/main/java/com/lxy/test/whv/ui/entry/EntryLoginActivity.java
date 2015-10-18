@@ -66,7 +66,7 @@ public class EntryLoginActivity extends EntryBaseActivity {
             public void done(LeanchatUser avUser, AVException e) {
                 dialog.dismiss();
                 if (filterException(e)) {
-                    CacheService.catchFriends();
+                    CacheService.cacheFriends();
                     MainActivity.goMainActivityFromActivity(EntryLoginActivity.this);
                 }
             }

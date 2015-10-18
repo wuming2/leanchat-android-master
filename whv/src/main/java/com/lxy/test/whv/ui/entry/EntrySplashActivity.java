@@ -60,7 +60,7 @@ public class EntrySplashActivity extends BaseActivity {
                         String test = (String) ((LeanchatUser) avObject).getString("test");
                         LogUtils.d("url = " + ((LeanchatUser) avObject).getAvatarUrl() + " test = " + test);
                         //TODO 使用回调 或EventBus
-                        CacheService.catchFriends();
+                        CacheService.cacheFriends();
                         handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
                     }
                 }

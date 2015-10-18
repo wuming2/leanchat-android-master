@@ -6,24 +6,6 @@
 
     <include layout="@layout/common_header_layout" />
 
-    <include layout="@layout/chat_client_state_view" />
-
-    <include
-        android:id="@+id/head_layout"
-        layout="@layout/contact_fragment_header_layout" />
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/fragment_conversation_srl_pullrefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/fragment_chat_inputbottombar">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/fragment_conversation_srl_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
-
     <RelativeLayout
         android:id="@+id/layout_list"
         android:layout_width="match_parent"
@@ -35,6 +17,13 @@
             android:layout_alignParentTop="true"
             android:layout_gravity="top"
             android:orientation="horizontal">
+
+            <com.lxy.test.whv.ui.view.BaseListView
+                android:id="@+id/list_friends"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:scrollbars="none" />
 
             <TextView
                 android:id="@+id/dialog"
@@ -50,6 +39,12 @@
                 android:visibility="invisible" />
         </RelativeLayout>
 
+        <com.lxy.test.whv.ui.view.EnLetterView
+            android:id="@+id/right_letter"
+            android:layout_width="25dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/contact_num_sort_bg" />
     </RelativeLayout>
 
 </LinearLayout>

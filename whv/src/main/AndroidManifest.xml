@@ -104,6 +104,7 @@
             </intent-filter>
         </receiver>
 
+        <!-- TODO 这个广播要重命名吧？！-->
         <receiver android:name=".service.NotificationBroadcastReceiver">
             <intent-filter>
                 <action android:name="com.avoscloud.chat.intent.client_notification" />
@@ -112,7 +113,7 @@
 
         <receiver android:name=".service.LeanchatReceiver">
             <intent-filter>
-                <action android:name="com.avoscloud.chat.INVITATION_ACTION" />
+                <action android:name="com.lxy.whv.INVITATION_ACTION" />
             </intent-filter>
         </receiver>
 

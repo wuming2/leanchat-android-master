@@ -19,6 +19,7 @@ import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.entity.avobject.AddRequest;
 import com.lxy.test.whv.service.AddRequestManager;
+import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.ContactRefreshEvent;
@@ -66,6 +67,7 @@ public class ContactNewFriendActivity extends BaseActivity implements
             @Override
             public void onAgreeAddRequest(final AddRequest addRequest) {
                 final ProgressDialog dialog = showSpinnerDialog();
+                //TODO 刷新朋友列表
                 AddRequestManager.getInstance().agreeAddRequest(addRequest, new SaveCallback() {
                     @Override
                     public void done(AVException e) {
@@ -75,6 +77,7 @@ public class ContactNewFriendActivity extends BaseActivity implements
                                 ConversationManager.getInstance().sendWelcomeMessage(addRequest.getFromUser().getObjectId());
                             }
                             refresh();
+                            CacheService.cacheFriends();
                             ContactRefreshEvent event = new ContactRefreshEvent();
                             EventBus.getDefault().post(event);
                         }

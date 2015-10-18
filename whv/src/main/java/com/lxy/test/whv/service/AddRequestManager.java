@@ -104,7 +104,7 @@ public class AddRequestManager {
     }
 
     public void agreeAddRequest(final AddRequest addRequest, final SaveCallback saveCallback) {
-        addFriend(addRequest.getFromUser().getObjectId(), new SaveCallback() {
+        LeanchatUser.getCurrentUser().addFriend(addRequest.getFromUser().getObjectId(), new SaveCallback() {
             @Override
             public void done(AVException e) {
                 if (e != null) {
@@ -117,18 +117,6 @@ public class AddRequestManager {
                 } else {
                     addRequest.setStatus(AddRequest.STATUS_DONE);
                     addRequest.saveInBackground(saveCallback);
-                }
-            }
-        });
-    }
-
-    public static void addFriend(String friendId, final SaveCallback saveCallback) {
-        LeanchatUser user = LeanchatUser.getCurrentUser();
-        user.followInBackground(friendId, new FollowCallback() {
-            @Override
-            public void done(AVObject object, AVException e) {
-                if (saveCallback != null) {
-                    saveCallback.done(e);
                 }
             }
         });

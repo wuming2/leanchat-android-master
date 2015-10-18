@@ -38,7 +38,7 @@ public class LeanchatReceiver extends BroadcastReceiver {
 
                             Intent notificationIntent = new Intent(context, NotificationBroadcastReceiver.class);
                             notificationIntent.putExtra(Constants.NOTOFICATION_TAG, Constants.NOTIFICATION_SYSTEM);
-                            NotificationUtils.showNotification(context, "LeanChat", alertStr, notificationIntent);
+                            NotificationUtils.showNotification(context, "WHV", alertStr, notificationIntent);
                         }
                     } catch (JSONException e) {
                         LogUtils.logException(e);
