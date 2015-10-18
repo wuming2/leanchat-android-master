@@ -91,6 +91,10 @@
             android:launchMode="singleTask"
             android:theme="@style/ChatMainTheme" />
 
+        <activity
+            android:name=".ui.discover.NearbyActivity"
+            android:label="" />
+
         <!-- 消息推送推送服务 -->
         <service android:name="com.avos.avoscloud.PushService" />
 

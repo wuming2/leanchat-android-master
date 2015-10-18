@@ -6,9 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,23 +22,14 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.CountCallback;
 import com.avos.avoscloud.FindCallback;
 import com.avos.avoscloud.SaveCallback;
-import com.avos.avoscloud.im.v2.AVIMConversation;
-import com.avos.avoscloud.im.v2.AVIMException;
-import com.avos.avoscloud.im.v2.AVIMMessage;
-import com.avos.avoscloud.im.v2.callback.AVIMSingleMessageQueryCallback;
 import com.avoscloud.leanchatlib.controller.ChatManager;
-import com.avoscloud.leanchatlib.controller.ConversationHelper;
-import com.avoscloud.leanchatlib.model.ConversationType;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
-import com.avoscloud.leanchatlib.model.Room;
-import com.avoscloud.leanchatlib.utils.AVUserCacheUtils;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.entity.SortUser;
 import com.lxy.test.whv.service.AddRequestManager;
 import com.lxy.test.whv.service.CacheService;
-import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.event.ContactRefreshEvent;
 import com.lxy.test.whv.service.event.InvitationEvent;
 import com.lxy.test.whv.ui.base_activity.BaseFragment;
@@ -93,7 +81,6 @@ public class ContactFragment extends BaseFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
         characterParser = CharacterParser.getInstance();
         pinyinComparator = new PinyinComparator();
@@ -348,4 +335,5 @@ public class ContactFragment extends BaseFragment {
         AddRequestManager.getInstance().unreadRequestsIncrement();
         updateNewRequestBadge();
     }
+
 }

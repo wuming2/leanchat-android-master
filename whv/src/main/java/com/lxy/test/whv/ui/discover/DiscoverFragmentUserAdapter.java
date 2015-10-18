@@ -1,4 +1,4 @@
-package com.lxy.test.whv.ui.contact;
+package com.lxy.test.whv.ui.discover;
 
 import android.content.Context;
 import android.view.View;

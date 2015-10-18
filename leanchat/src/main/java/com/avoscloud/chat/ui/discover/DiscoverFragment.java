@@ -94,40 +94,5 @@ public class DiscoverFragment extends BaseFragment {
     preferenceMap.setNearbyOrder(orderType);
   }
 
-  public List<LeanchatUser> findNearbyPeople(int orderType, int skip, int limit) throws AVException {
-    PreferenceMap preferenceMap = PreferenceMap.getCurUserPrefDao(App.ctx);
-    AVGeoPoint geoPoint = preferenceMap.getLocation();
-    if (geoPoint == null) {
-      Logger.i("geo point is null");
-      return new ArrayList<>();
-    }
-    AVQuery<LeanchatUser> q = LeanchatUser.getQuery(LeanchatUser.class);
-    AVUser user = AVUser.getCurrentUser();
-    q.whereNotEqualTo(Constants.OBJECT_ID, user.getObjectId());
-    if (orderType == Constants.ORDER_DISTANCE) {
-      q.whereNear(LeanchatUser.LOCATION, geoPoint);
-    } else {
-      q.orderByDescending(Constants.UPDATED_AT);
-    }
-    q.skip(skip);
-    q.limit(limit);
-    q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
-    List<LeanchatUser> users = q.find();
-    CacheService.registerUsers(users);
-    return users;
-  }
-
-  public class SortDialogListener implements DialogInterface.OnClickListener {
-    int orderType;
-
-    public SortDialogListener(int orderType) {
-      this.orderType = orderType;
-    }
-
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-      DiscoverFragment.this.orderType = orderType;
-      listView.onRefresh();
-    }
-  }
+ z
 }

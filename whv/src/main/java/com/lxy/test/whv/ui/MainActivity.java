@@ -25,7 +25,8 @@ import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactFragment;
-import com.lxy.test.whv.ui.contact.DiscoverFragment;
+import com.lxy.test.whv.ui.discover.DiscoverFragment;
+import com.lxy.test.whv.ui.conversation.ConversationRecentFragment;
 import com.lxy.test.whv.ui.profile.ProfileFragment;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.Utils;
@@ -37,23 +38,24 @@ import de.greenrobot.event.EventBus;
  */
 public class MainActivity extends BaseActivity {
     public static final int FRAGMENT_N = 4;
-    public static final int[] tabsNormalBackIds = new int[]{R.drawable.tabbar_chat,
-            R.drawable.tabbar_contacts, R.drawable.tabbar_discover, R.drawable.tabbar_me};
-    public static final int[] tabsActiveBackIds = new int[]{R.drawable.tabbar_chat_active,
-            R.drawable.tabbar_contacts_active, R.drawable.tabbar_discover_active,
+    public static final int[] tabsNormalBackIds = new int[]{R.drawable.tabbar_chat, R.drawable.tabbar_contacts,
+            R.drawable.tabbar_discover, R.drawable.tabbar_me};
+    public static final int[] tabsActiveBackIds = new int[]{R.drawable.tabbar_chat_active, R.drawable.tabbar_contacts_active,
+            R.drawable.tabbar_discover_active,
             R.drawable.tabbar_me_active};
     private static final String FRAGMENT_TAG_CONVERSATION = "conversation";
     private static final String FRAGMENT_TAG_CONTACT = "contact";
     private static final String FRAGMENT_TAG_DISCOVER = "discover";
     private static final String FRAGMENT_TAG_PROFILE = "profile";
-    private static final String[] fragmentTags = new String[]{FRAGMENT_TAG_CONVERSATION, FRAGMENT_TAG_CONTACT,
-            FRAGMENT_TAG_DISCOVER, FRAGMENT_TAG_PROFILE};
+    private static final String[] fragmentTags = new String[]{FRAGMENT_TAG_DISCOVER, FRAGMENT_TAG_CONTACT, FRAGMENT_TAG_CONVERSATION,
+            FRAGMENT_TAG_PROFILE};
 
     public LocationClient locClient;
     public MyLocationListener locationListener;
     Button conversationBtn, contactBtn, discoverBtn, mySpaceBtn;
     View fragmentContainer;
     Button[] tabs;
+    ConversationRecentFragment conversationRecentFragment;
     ContactFragment contactFragment;
     ProfileFragment profileFragment;
     DiscoverFragment discoverFragment;
@@ -64,7 +66,8 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.main_activity);
         findView();
         init();
-        conversationBtn.performClick();
+        // 显示发现界面
+        discoverBtn.performClick();
         initBaiduLocClient();
     }
 
@@ -120,19 +123,17 @@ public class MainActivity extends BaseActivity {
         setNormalBackgrounds();
         if (id == R.id.btn_message) {
 
+            if (conversationRecentFragment == null) {
+                conversationRecentFragment = new ConversationRecentFragment();
+                transaction.add(R.id.fragment_container, conversationRecentFragment, FRAGMENT_TAG_CONVERSATION);
+            }
+            transaction.show(conversationRecentFragment);
+        } else if (id == R.id.btn_contact) {
             if (contactFragment == null) {
                 contactFragment = new ContactFragment();
                 transaction.add(R.id.fragment_container, contactFragment, FRAGMENT_TAG_CONTACT);
             }
             transaction.show(contactFragment);
-
-//            if (conversationRecentFragment == null) {
-//                conversationRecentFragment = new ConversationRecentFragment();
-//                transaction.add(R.id.fragment_container, conversationRecentFragment, FRAGMENT_TAG_CONVERSATION);
-//            }
-//            transaction.show(conversationRecentFragment);
-        } else if (id == R.id.btn_contact) {
-            //TODO
         } else if (id == R.id.btn_discover) {
             if (discoverFragment == null) {
                 discoverFragment = new DiscoverFragment();

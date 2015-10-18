@@ -8,15 +8,62 @@
 
     <include layout="@layout/common_header_layout" />
 
-    <com.lxy.test.whv.ui.view.BaseListView
-        android:id="@+id/list_near"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@drawable/base_horizontal_line"
-        android:dividerHeight="1dp"
-        android:fadingEdgeLength="0dp"
-        android:fastScrollEnabled="true"
-        android:paddingBottom="10dp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_top_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <View style="@style/DividerLine.Horizontal" />
+
+                <TextView
+                    android:id="@+id/discover_nearby"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:background="@drawable/btn_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:paddingRight="@dimen/common_horizontal_margin"
+                    android:text="@string/discover_nearby" />
+
+                <View style="@style/DividerLine.Horizontal" />
+
+                <TextView
+                    android:id="@+id/profile_visa_tracking_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:background="@drawable/btn_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:paddingRight="@dimen/common_horizontal_margin"
+                    android:text="签证处理进度查询" />
+
+                <View style="@style/DividerLine.Horizontal" />
+
+                <TextView
+                    android:id="@+id/profile_checkupdate_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:background="@drawable/btn_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:paddingRight="@dimen/common_horizontal_margin"
+                    android:text="@string/profile_fragment_checkUpdate" />
+
+                <View style="@style/DividerLine.Horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
