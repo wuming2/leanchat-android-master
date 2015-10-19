@@ -86,6 +86,8 @@ public class LeanchatUser extends AVUser {
         user.signUpInBackground(callback);
     }
 
+    //TODO 这里单向添加好友，通过平台端应用设置 ->应用选项    启用用户自动互相关注（事件流系统） 设置为双向关注
+    //可以修改应用流程改为单向 关注  只有自己的关注者可以看到自己的信息  先设置为双向关注
     public void addFriend(String friendId, final SaveCallback saveCallback) {
         followInBackground(friendId, new FollowCallback() {
             @Override
