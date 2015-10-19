@@ -16,8 +16,6 @@ import com.avos.avoscloud.SignUpCallback;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import de.greenrobot.event.EventBus;
-
 /**
  * Created by wli on 15/9/30.
  * 自定义的 AVUser
@@ -37,6 +35,7 @@ public class LeanchatUser extends AVUser {
             return null;
         }
     }
+
 
     public void saveAvatar(String path, final SaveCallback saveCallback) {
         final AVFile file;
@@ -87,8 +86,8 @@ public class LeanchatUser extends AVUser {
         user.signUpInBackground(callback);
     }
 
-    public void removeFriend(String friendId, final SaveCallback saveCallback) {
-        unfollowInBackground(friendId, new FollowCallback() {
+    public void addFriend(String friendId, final SaveCallback saveCallback) {
+        followInBackground(friendId, new FollowCallback() {
             @Override
             public void done(AVObject object, AVException e) {
                 if (saveCallback != null) {
@@ -98,10 +97,8 @@ public class LeanchatUser extends AVUser {
         });
     }
 
-    //TODO 这里单向添加好友，通过平台端应用设置 ->应用选项    启用用户自动互相关注（事件流系统） 设置为双向关注
-    //可以修改应用流程改为单向 关注  只有自己的关注者可以看到自己的信息  先设置为双向关注
-    public void addFriend(String friendId, final SaveCallback saveCallback) {
-        followInBackground(friendId, new FollowCallback() {
+    public void removeFriend(String friendId, final SaveCallback saveCallback) {
+        unfollowInBackground(friendId, new FollowCallback() {
             @Override
             public void done(AVObject object, AVException e) {
                 if (saveCallback != null) {
@@ -116,7 +113,6 @@ public class LeanchatUser extends AVUser {
         AVQuery<LeanchatUser> q = null;
         try {
             q = followeeQuery(LeanchatUser.class);
-//            this.friendshipQuery(LeanchatUser.class);
         } catch (Exception e) {
         }
         q.setCachePolicy(cachePolicy);
