@@ -39,26 +39,26 @@
                 <View style="@style/DividerLine.Horizontal" />
 
                 <TextView
-                    android:id="@+id/profile_visa_tracking_test"
+                    android:id="@+id/discover_together"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/setting_item_height"
                     android:background="@drawable/btn_selector"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/common_horizontal_margin"
                     android:paddingRight="@dimen/common_horizontal_margin"
-                    android:text="签证处理进度查询" />
+                    android:text="@string/discover_together" />
 
                 <View style="@style/DividerLine.Horizontal" />
 
                 <TextView
-                    android:id="@+id/profile_checkupdate_view"
+                    android:id="@+id/discover_meetup"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/setting_item_height"
                     android:background="@drawable/btn_selector"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/common_horizontal_margin"
                     android:paddingRight="@dimen/common_horizontal_margin"
-                    android:text="@string/profile_fragment_checkUpdate" />
+                    android:text="@string/discover_meetup" />
 
                 <View style="@style/DividerLine.Horizontal" />
             </LinearLayout>
