@@ -25,7 +25,7 @@
     <string name="profile_title">我</string>
     <string name="discover_title">发现</string>
 
-    <string name="bootstrap_title">WHV</string>
+    <string name="bootstrap_title">完善资料</string>
 
     <string name="login_username_hint">请输入用户名</string>
     <string name="ensurePasswordHint">请在此输入密码</string>
@@ -117,5 +117,7 @@
     <string name="bootstrap_state_returned">澳洲归来</string>
     <string name="bootstrap_state_pr">移民啦哈哈哈</string>
     <string name="bootstrap_state_submit">确认</string>
+    <string name="bootstrap_state_tip_select">先选择申请状态唉~</string>
+    <string name="bootstrap_prefile_tip">WHV申请状态</string>
 
 </resources>

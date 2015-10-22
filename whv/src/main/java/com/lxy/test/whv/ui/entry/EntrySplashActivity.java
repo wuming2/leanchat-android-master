@@ -45,58 +45,15 @@ public class EntrySplashActivity extends BaseActivity {
         setContentView(R.layout.entry_splash_layout);
         LeanchatUser user = LeanchatUser.getCurrentUser();
 
-        //TODO
-        boolean bootstraped = false;
-        if (!bootstraped) {
-            goBootstrapActivity();
-            return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
         if (LeanchatUser.getCurrentUser() != null) {
+
+            //TODO sharedperferance  注册成功后进入
+            boolean bootstraped = false;
+            if (!bootstraped) {
+                goBootstrapActivity();
+                return;
+            }
+
             //user.put("test","hahah");
             // 更新数据库中updatedAt参数
             user.updateUserInfo();
