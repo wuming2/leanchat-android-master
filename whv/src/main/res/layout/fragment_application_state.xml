@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lxy.test.whv.ui.bootstrap.ApplicationStateFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bootstrap_application_state_tip" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup_application_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RadioButton
+            android:id="@+id/radiobutton_want_to_know"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/bootstrap_state_want_to_know" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_preparing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_preparing" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_submiting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_submiting" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_granted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_granted" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_abroad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_abroad" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_returned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_returned" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_pr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootstrap_state_pr" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_application_state_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bootstrap_state_submit" />
+
+
+</LinearLayout>

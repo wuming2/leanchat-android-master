@@ -13,6 +13,7 @@ import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.bootstrap.BootstrapActivity;
 import com.lxy.test.whv.util.LogUtils;
 
 
@@ -43,6 +44,58 @@ public class EntrySplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_splash_layout);
         LeanchatUser user = LeanchatUser.getCurrentUser();
+
+        //TODO
+        boolean bootstraped = false;
+        if (!bootstraped) {
+            goBootstrapActivity();
+            return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
         if (LeanchatUser.getCurrentUser() != null) {
             //user.put("test","hahah");
             // 更新数据库中updatedAt参数
@@ -68,5 +121,11 @@ public class EntrySplashActivity extends BaseActivity {
         } else {
             handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);
         }
+    }
+
+    private void goBootstrapActivity() {
+        Intent intent = new Intent(ctx, BootstrapActivity.class);
+        ctx.startActivity(intent);
+        finish();
     }
 }

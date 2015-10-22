@@ -25,6 +25,8 @@
     <string name="profile_title">我</string>
     <string name="discover_title">发现</string>
 
+    <string name="bootstrap_title">WHV</string>
+
     <string name="login_username_hint">请输入用户名</string>
     <string name="ensurePasswordHint">请在此输入密码</string>
     <string name="login_password_hint">请输入密码</string>
@@ -105,5 +107,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="bootstrap_application_state_tip">WHV申请状态</string>
+    <string name="bootstrap_state_want_to_know">我要先了解一下WHV</string>
+    <string name="bootstrap_state_preparing">准备签字资料中</string>
+    <string name="bootstrap_state_submiting">申请进行中</string>
+    <string name="bootstrap_state_granted">已下签，准备中</string>
+    <string name="bootstrap_state_abroad">人在澳洲</string>
+    <string name="bootstrap_state_returned">澳洲归来</string>
+    <string name="bootstrap_state_pr">移民啦哈哈哈</string>
+    <string name="bootstrap_state_submit">确认</string>
 
 </resources>

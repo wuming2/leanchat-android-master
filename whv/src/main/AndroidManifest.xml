@@ -95,6 +95,10 @@
             android:name=".ui.discover.NearbyActivity"
             android:label="" />
 
+        <activity
+            android:name=".ui.bootstrap.BootstrapActivity"
+            android:label="" />
+
         <!-- 消息推送推送服务 -->
         <service android:name="com.avos.avoscloud.PushService" />
 
