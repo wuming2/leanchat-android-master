@@ -86,6 +86,8 @@ public class BootstrapActivity extends BaseActivity {
 //            }
 //        });
 
+        //TODO 获取当前用户信息撒
+
         showApplicationStateSet();
     }
 
