@@ -118,6 +118,6 @@
     <string name="bootstrap_state_pr">移民啦哈哈哈</string>
     <string name="bootstrap_state_submit">确认</string>
     <string name="bootstrap_state_tip_select">先选择申请状态唉~</string>
-    <string name="bootstrap_prefile_tip">WHV申请状态</string>
+    <string name="bootstrap_prefile_tip">个人信息设置</string>
 
 </resources>

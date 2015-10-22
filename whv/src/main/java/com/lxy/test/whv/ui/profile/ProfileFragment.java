@@ -15,9 +15,13 @@ import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.service.PushManager;
 import com.lxy.test.whv.ui.base_activity.BaseFragment;
 import com.lxy.test.whv.ui.entry.EntryLoginActivity;
 import com.lxy.test.whv.ui.visahelper.VisaTrackingActivity;
@@ -62,8 +66,7 @@ public class ProfileFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         headerLayout.showTitle(R.string.profile_title);
-        //TODO
-//        chatManager = ChatManager.getInstance();
+        chatManager = ChatManager.getInstance();
     }
 
     @Override
@@ -73,7 +76,6 @@ public class ProfileFragment extends BaseFragment {
 
     private void refresh() {
 
-        //TODO 取到avatarUrl为空 ??!!  暂时存在Shareperferance中？
         LeanchatUser curUser = LeanchatUser.getCurrentUser();
         LogUtils.d("refresh getAvatarUrl= " + curUser.getAvatarUrl());
         userNameView.setText(curUser.getUsername());
@@ -98,12 +100,12 @@ public class ProfileFragment extends BaseFragment {
 
     @OnClick(R.id.profile_logout_btn)
     public void onLogoutClick() {
-//        chatManager.closeWithCallback(new AVIMClientCallback() {
-//            @Override
-//            public void done(AVIMClient avimClient, AVIMException e) {
-//            }
-//        });
-//        PushManager.getInstance().unsubscribeCurrentUserChannel();
+        chatManager.closeWithCallback(new AVIMClientCallback() {
+            @Override
+            public void done(AVIMClient avimClient, AVIMException e) {
+            }
+        });
+        PushManager.getInstance().unsubscribeCurrentUserChannel();
         LeanchatUser.logOut();
         getActivity().finish();
         Intent intent = new Intent(ctx, EntryLoginActivity.class);

@@ -97,7 +97,8 @@
 
         <activity
             android:name=".ui.bootstrap.BootstrapActivity"
-            android:label="" />
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light" />
 
         <!-- 消息推送推送服务 -->
         <service android:name="com.avos.avoscloud.PushService" />

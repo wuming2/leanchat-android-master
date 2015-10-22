@@ -10,12 +10,12 @@
         android:id="@+id/nearby_headerlayout"
         layout="@layout/common_header_layout" />
 
-    <RelativeLayout
+    <ScrollView
         android:id="@+id/rl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </RelativeLayout>
+    </ScrollView>
 
 
 </LinearLayout>
