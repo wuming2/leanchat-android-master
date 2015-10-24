@@ -1,5 +1,6 @@
 package com.lxy.test.whv.ui.entry;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.ui.MainActivity;
+import com.lxy.test.whv.ui.bootstrap.BootstrapActivity;
 import com.lxy.test.whv.util.Utils;
 
 public class EntryRegisterActivity extends EntryBaseActivity {
@@ -65,9 +67,16 @@ public class EntryRegisterActivity extends EntryBaseActivity {
                     Utils.toast(App.ctx.getString(R.string.registerFailed) + e.getMessage());
                 } else {
                     Utils.toast(R.string.registerSucceed);
-                    MainActivity.goMainActivityFromActivity(EntryRegisterActivity.this);
+//                    MainActivity.goMainActivityFromActivity(EntryRegisterActivity.this);
+                    goBootstrapActivity();
                 }
             }
         });
+    }
+
+    private void goBootstrapActivity() {
+        Intent intent = new Intent(ctx, BootstrapActivity.class);
+        ctx.startActivity(intent);
+        finish();
     }
 }

@@ -6,15 +6,10 @@
     android:padding="0dp"
     tools:context="com.lxy.test.whv.ui.bootstrap.BootstrapActivity">
 
-    <include
-        android:id="@+id/nearby_headerlayout"
-        layout="@layout/common_header_layout" />
-
     <ScrollView
         android:id="@+id/rl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </ScrollView>
 
 

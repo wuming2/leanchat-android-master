@@ -86,9 +86,12 @@ public class ProfileFragment extends BaseFragment {
 
     @OnClick(R.id.profile_avatar_layout)
     public void onAvatarClick() {
-        Intent intent = new Intent(Intent.ACTION_PICK, null);
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-        startActivityForResult(intent, IMAGE_PICK_REQUEST);
+//        Intent intent = new Intent(Intent.ACTION_PICK, null);
+//        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+//        startActivityForResult(intent, IMAGE_PICK_REQUEST);
+
+        Intent intent = new Intent(this.getActivity(), ProfileEditActivity.class);
+        this.getActivity().startActivity(intent);
     }
 
     @OnClick(R.id.profile_visa_tracking_test)

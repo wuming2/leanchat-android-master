@@ -98,7 +98,13 @@
         <activity
             android:name=".ui.bootstrap.BootstrapActivity"
             android:label=""
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/ChatMainTheme" />
+
+        <!-- TODO   -->
+        <activity
+            android:name=".ui.profile.ProfileEditActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
 
         <!-- 消息推送推送服务 -->
         <service android:name="com.avos.avoscloud.PushService" />

@@ -26,6 +26,7 @@ public class BaseActivity extends FragmentActivity {
                 | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
     }
 
+
     protected ProgressDialog showSpinnerDialog() {
         //activity = modifyDialogContext(activity);
         ProgressDialog dialog = new ProgressDialog(this);
@@ -86,6 +87,21 @@ public class BaseActivity extends FragmentActivity {
         }
     }
 
+    protected void initActionBar(String title, boolean canGoBack) {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            if (title != null) {
+                actionBar.setTitle(title);
+            }
+            actionBar.setDisplayUseLogoEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(canGoBack);
+        }
+    }
+
+    protected void initActionBar(int id, boolean canGoBack) {
+        initActionBar(getString(id), canGoBack);
+    }
+
     protected void initActionBar(int id) {
         initActionBar(getString(id));
     }
@@ -94,8 +110,8 @@ public class BaseActivity extends FragmentActivity {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
-    protected void toast(Exception e){
-        if(e!=null){
+    protected void toast(Exception e) {
+        if (e != null) {
             toast(e.getMessage());
         }
     }

@@ -1,0 +1,255 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.lxy.test.whv.ui.bootstrap.BootstrapActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/bootstrap_prefile_tip" />
+
+        <LinearLayout
+            android:id="@+id/profile_avatar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_item_height"
+            android:background="@drawable/btn_selector"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:paddingRight="@dimen/common_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/profile_avatar_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/chat_default_user_avatar" />
+
+            <TextView
+                android:id="@+id/profile_username_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:drawableRight="@drawable/common_view_right_arrow_pic"
+                android:text="编辑头像" />
+        </LinearLayout>
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onGenderClick"
+            android:orientation="horizontal"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我是" />
+
+            <TextView
+                android:id="@+id/profile_gender_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onApplicationStateClick"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请状态：" />
+
+            <TextView
+                android:id="@+id/profile_application_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:hint=""
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="showBirthdayDatePacker"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生日：" />
+
+            <TextView
+                android:id="@+id/profile_birthdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="5000人总会有人一同庆生吧"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="18dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="家乡：" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Mostly Chinese"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bootstrap_ll_aboutme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="showAboutEditDialog"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="个性签名：" />
+
+            <TextView
+                android:id="@+id/profile_aboutme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="说点什么"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="15dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="15dp"
+            android:text="社交帐号信息" />
+
+        <LinearLayout
+            android:id="@+id/bootstrap_ll_social_wechat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="showSocialEditDialog"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微信：" />
+
+            <TextView
+                android:id="@+id/profile_social_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入微信帐号"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bootstrap_ll_social_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showSocialEditDialog"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Line：" />
+
+            <TextView
+                android:id="@+id/profile_social_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入Line帐号"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bootstrap_ll_social_weibo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showSocialEditDialog"
+            android:padding="18dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微博：" />
+
+            <TextView
+                android:id="@+id/profile_social_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="输入微博帐号"
+                android:paddingLeft="10dp"
+                android:text="" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/profile_social_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="只有添加为朋友对方才会看到你的社交帐号"
+            android:padding="15dp"
+            android:text="" />
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <Button
+            android:id="@+id/button_prefile_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/profile_save" />
+
+    </LinearLayout>
+</ScrollView>

@@ -65,6 +65,7 @@ public class CacheService {
     }
 
     public static List<LeanchatUser> findUsers(List<String> userIds) throws AVException {
+        //FIXME  NetworkOnMainThreadException
         if (userIds.size() <= 0) {
             return Collections.EMPTY_LIST;
         }

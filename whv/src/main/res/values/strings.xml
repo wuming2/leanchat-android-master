@@ -120,4 +120,9 @@
     <string name="bootstrap_state_tip_select">先选择申请状态唉~</string>
     <string name="bootstrap_prefile_tip">个人信息设置</string>
 
+    <string name="profile_save">保存</string>
+
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
+
 </resources>

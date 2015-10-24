@@ -1,4 +1,4 @@
-package com.lxy.test.whv.ui.bootstrap;
+package com.lxy.test.whv.ui.profile;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +27,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.bootstrap.DatePickerDialog;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.PathUtils;
 import com.lxy.test.whv.util.PhotoUtils;
@@ -45,18 +45,21 @@ import butterknife.InjectView;
 /**
  * Created by wuming on 2015/10/22.
  */
-public class BootstrapActivity extends BaseActivity {
+public class ProfileEditActivity extends BaseActivity {
+
+
+    @InjectView(R.id.profile_avatar_view)
+    protected ImageView avatarView;
+
+    @InjectView(R.id.profile_application_state)
+    protected TextView tv_applicationState;
+
 
     private static final int IMAGE_PICK_REQUEST = 1;
     private static final int CROP_REQUEST = 2;
 
-    @InjectView(R.id.rl_container)
-    protected ScrollView containerLayout;
-
     LayoutInflater inflater = null;
-    Button button_set_app_state;
     Button button_prefile_submit;
-    RadioGroup rg_app_state;
 
     private int applyState = -1;
     private int gender = -1; // -1 unset 0 female 1 male
@@ -74,39 +77,33 @@ public class BootstrapActivity extends BaseActivity {
             R.string.bootstrap_state_submiting, R.string.bootstrap_state_granted, R.string.bootstrap_state_abroad,
             R.string.bootstrap_state_returned, R.string.bootstrap_state_pr};
 
+    private final int[] genderTextId = {R.string.gender_female, R.string.gender_male};
+
+
     ProgressDialog dialog;
     LeanchatUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bootstrap_activity);
+        setContentView(R.layout.profile_edit_activity);
         ButterKnife.inject(this);
 
+        initActionBar("个人资料");
         inflater = this.getLayoutInflater();
-        initActionBar("完善资料", false);
 //        headerLayout.showRightImageButton(R.drawable.nearby_order, new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //            }
 //        });
 
-        showUserInfo();
+        getUserInfo();
         //TODO 获取当前用户信息撒
         showPerfileInfoSet();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (dialog != null) {
-            dialog.dismiss();
-            dialog = null;
-        }
-    }
-
     //获取显示当前用户信息
-    private void showUserInfo() {
+    private void getUserInfo() {
         user = LeanchatUser.getCurrentUser();
         applyState = user.getInt("applyState");
         gender = user.getInt("gender");
@@ -115,39 +112,6 @@ public class BootstrapActivity extends BaseActivity {
         lineID = user.getString("lineID");
         aboutMe = user.getString("aboutMe");
         birthdate = user.getString("birthdate");
-    }
-
-    private void showApplicationStateSet() {
-
-        containerLayout.removeAllViews();
-        View appStateView = inflater.inflate(R.layout.bootstrap_application_state, containerLayout);
-//        containerLayout.removeAllViews();
-//        containerLayout.addView(appStateView);
-
-        button_set_app_state = (Button) appStateView.findViewById(R.id.button_application_state_submit);
-        button_set_app_state.setOnClickListener(listener);
-        rg_app_state = (RadioGroup) appStateView.findViewById(R.id.radiogroup_application_state);
-
-        if (applyState >= 0) {
-//            int checkedId = applicationStateTextId[applyState];
-//            rg_app_state.check(checkedId);
-            ((RadioButton) rg_app_state.getChildAt(applyState)).setChecked(true);
-        }
-
-        rg_app_state.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup arg0, int arg1) {
-                //获取变更后的选中项的ID
-                int radioButtonId = arg0.getCheckedRadioButtonId();
-                for (int i = 0; i < applicationStateButtonIndex.length; i++) {
-                    if (radioButtonId == applicationStateButtonIndex[i]) {
-                        applyState = applicationState[i];
-                    }
-                }
-                //根据ID获取RadioButton的实例
-                //更新文本内容，以符合选中项
-            }
-        });
     }
 
     private void updateUserInfo() {
@@ -164,13 +128,12 @@ public class BootstrapActivity extends BaseActivity {
         user.updateUserInfo(new SaveCallback() {
             @Override
             public void done(AVException e) {
-
                 if (e != null) {
                     e.printStackTrace();
                     toast("更新出错，请稍后重试 " + e.getLocalizedMessage());
 
                 } else {
-                    MainActivity.goMainActivityFromActivity(BootstrapActivity.this);
+                    MainActivity.goMainActivityFromActivity(ProfileEditActivity.this);
                     finish();
                 }
             }
@@ -178,25 +141,46 @@ public class BootstrapActivity extends BaseActivity {
     }
 
     private void showPerfileInfoSet() {
-        containerLayout.removeAllViews();
-        View perfileInfoSet = inflater.inflate(R.layout.bootstrap_perfile_set, containerLayout);
 
-        button_prefile_submit = (Button) perfileInfoSet.findViewById(R.id.button_prefile_submit);
+        tv_applicationState.setText(applicationStateTextId[applyState]);
+        button_prefile_submit = (Button) findViewById(R.id.button_prefile_submit);
         button_prefile_submit.setOnClickListener(listener);
 
-        ImageLoader.getInstance().displayImage(user.getAvatarUrl(), (ImageView) perfileInfoSet.findViewById(R.id.profile_avatar_view),
+        ImageLoader.getInstance().displayImage(user.getAvatarUrl(), avatarView,
                 com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
 
-        LinearLayout profile_avatar_layout = (LinearLayout) perfileInfoSet.findViewById(R.id.profile_avatar_layout);
+        LinearLayout profile_avatar_layout = (LinearLayout) findViewById(R.id.profile_avatar_layout);
         profile_avatar_layout.setOnClickListener(listener);
 
-        RadioGroup group = (RadioGroup) this.findViewById(R.id.radioGroup);
+        ((TextView) findViewById(R.id.profile_birthdate)).setText(birthdate);
+        ((TextView) findViewById(R.id.profile_aboutme)).setText(aboutMe);
+        ((TextView) findViewById(R.id.profile_social_wechat)).setText(wechatID);
+        ((TextView) findViewById(R.id.profile_social_weibo)).setText(weiboID);
+        ((TextView) findViewById(R.id.profile_social_line)).setText(lineID);
+        if (gender >= 0) {
+            ((TextView) findViewById(R.id.profile_gender_value)).setText(genderTextId[gender]);
+        }
+    }
+
+    public void onGenderClick(View view) {
+
+        final AlertDialog dialog;
+        View genderSelectView = inflater.inflate(R.layout.profile_gender_select, null);
+
+        RadioGroup group = (RadioGroup) genderSelectView.findViewById(R.id.radioGroup);
         if (gender == 1) {
             ((RadioButton) group.getChildAt(0)).setChecked(true);
         } else if (gender == 0) {
             ((RadioButton) group.getChildAt(1)).setChecked(true);
         }
         // 绑定一个匿名监听器
+
+        String title = "性别";
+        dialog = new AlertDialog.Builder(this).setTitle(title)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setView(genderSelectView)
+                .show();
+
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -209,14 +193,50 @@ public class BootstrapActivity extends BaseActivity {
                 } else {
                     gender = 0;
                 }
+                if (gender >= 0) {
+                    ((TextView) findViewById(R.id.profile_gender_value)).setText(genderTextId[gender]);
+                }
+                dialog.dismiss();
             }
         });
+    }
 
-        ((TextView) findViewById(R.id.profile_birthdate)).setText(birthdate);
-        ((TextView) findViewById(R.id.profile_aboutme)).setText(aboutMe);
-        ((TextView) findViewById(R.id.profile_social_wechat)).setText(wechatID);
-        ((TextView) findViewById(R.id.profile_social_weibo)).setText(weiboID);
-        ((TextView) findViewById(R.id.profile_social_line)).setText(lineID);
+    public void onApplicationStateClick(View view) {
+
+        final AlertDialog dialog;
+        View stateSelectView = inflater.inflate(R.layout.bootstrap_application_state, null);
+        stateSelectView.findViewById(R.id.application_state_title).setVisibility(View.GONE);
+        stateSelectView.findViewById(R.id.button_application_state_submit).setVisibility(View.GONE);
+        RadioGroup rg_app_state = (RadioGroup) stateSelectView.findViewById(R.id.radiogroup_application_state);
+
+        if (applyState >= 0) {
+//            int checkedId = applicationStateTextId[applyState];
+//            rg_app_state.check(checkedId);
+            ((RadioButton) rg_app_state.getChildAt(applyState)).setChecked(true);
+        }
+        String title = "申请状态";
+//        final int viewId = view.getId();
+        dialog = new AlertDialog.Builder(this).setTitle(title)
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .setView(stateSelectView)
+                .show();
+
+        rg_app_state.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup arg0, int arg1) {
+                //获取变更后的选中项的ID
+                int radioButtonId = arg0.getCheckedRadioButtonId();
+                for (int i = 0; i < applicationStateButtonIndex.length; i++) {
+                    if (radioButtonId == applicationStateButtonIndex[i]) {
+                        applyState = applicationState[i];
+                        tv_applicationState.setText(applicationStateTextId[applyState]);
+                        dialog.dismiss();
+                    }
+                }
+                //根据ID获取RadioButton的实例
+                //更新文本内容，以符合选中项
+            }
+        });
     }
 
     //TODO 头像编辑
@@ -230,15 +250,8 @@ public class BootstrapActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.button_application_state_submit:
-                    if (applyState >= 0) {
-                        updateUserInfo();
-                    } else {
-                        toast(R.string.bootstrap_state_tip_select);
-                    }
-                    break;
                 case R.id.button_prefile_submit:
-                    showApplicationStateSet();
+                    updateUserInfo();
                     break;
                 case R.id.profile_avatar_layout:
                     onAvatarClick();
@@ -259,7 +272,7 @@ public class BootstrapActivity extends BaseActivity {
                 startImageCrop(uri, 200, 200, CROP_REQUEST);
             } else if (requestCode == CROP_REQUEST) {
                 final String path = saveCropAvatar(data);
-//                ImageLoader.getInstance().displayImage(path, avatarView, com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
+                ImageLoader.getInstance().displayImage(path, avatarView, com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
                 LeanchatUser user = LeanchatUser.getCurrentUser();
                 //TODO 删除历史图片
                 user.saveAvatar(path, new SaveCallback() {
@@ -270,7 +283,7 @@ public class BootstrapActivity extends BaseActivity {
                             //TODO 刷新
                             //BootstrapActivity.this.refresh();
                         } else {
-                            Toast.makeText(BootstrapActivity.this, "更新失败", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ProfileEditActivity.this, "更新失败", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -378,7 +391,7 @@ public class BootstrapActivity extends BaseActivity {
             mday = c.get(Calendar.DATE);
         }
 
-        new DatePickerDialog(BootstrapActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
+        new DatePickerDialog(ProfileEditActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month,
                                   int day) {

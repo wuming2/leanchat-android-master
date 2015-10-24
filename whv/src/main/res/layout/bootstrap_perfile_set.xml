@@ -8,6 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="12dp"
         android:text="@string/bootstrap_prefile_tip" />
 
     <LinearLayout
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:drawableRight="@drawable/common_view_right_arrow_pic"
-            android:text="username" />
+            android:text="编辑头像" />
     </LinearLayout>
 
     <View style="@style/DividerLine.Horizontal" />
@@ -40,39 +41,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="我是" />
+            android:paddingLeft="0dp"
+            android:text="我是"
+            android:textSize="18sp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="性别"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <RadioButton
                 android:id="@+id/radioMale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button="@drawable/radio_gender_man"
+                android:button="@drawable/profile_gender_male"
                 android:checked="false"
                 android:drawableRight="@drawable/radio_gender_man"
-                android:text="Male"></RadioButton>
+                android:paddingLeft="12dp"
+                android:text="Male">M</RadioButton>
 
             <RadioButton
                 android:id="@+id/radioFemale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:background="@null"
-                android:button="@drawable/radio_gender_woman"
+                android:button="@drawable/profile_gender_female"
                 android:checked="false"
                 android:drawableRight="@drawable/radio_gender_woman"
-                android:text="Female"></RadioButton>
+                android:paddingLeft="12dp"
+                android:text="Female">F
+            </RadioButton>
         </RadioGroup>
 
     </LinearLayout>
@@ -80,12 +88,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp">
+        android:clickable="true"
+        android:onClick="showBirthdayDatePacker"
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="生日：" />
 
         <TextView
@@ -93,7 +102,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="5000人总会有人一同庆生吧"
-            android:paddingTop="10dp"
             android:text="" />
 
 
@@ -102,19 +110,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp">
+        android:padding="18dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="家乡：" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Mostly Chinese"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:text="" />
 
     </LinearLayout>
@@ -124,21 +132,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="shoAboutEditDialog"
-        android:padding="14dp">
+        android:onClick="showAboutEditDialog"
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="个性签名：" />
 
         <TextView
-            android:id="@+id/profile_info"
+            android:id="@+id/profile_aboutme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="说点什么"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:text="" />
 
     </LinearLayout>
@@ -149,7 +156,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="15dp"
         android:text="社交帐号信息" />
 
     <LinearLayout
@@ -158,12 +167,11 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:onClick="showSocialEditDialog"
-        android:padding="14dp">
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="微信：" />
 
         <TextView
@@ -171,7 +179,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="输入微信帐号"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:text="" />
 
     </LinearLayout>
@@ -181,12 +189,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showSocialEditDialog"
-        android:padding="14dp">
+        android:padding="18dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="Line：" />
 
         <TextView
@@ -194,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="输入Line帐号"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:text="" />
 
     </LinearLayout>
@@ -204,13 +211,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="showSocialEditDialog"
-        android:padding="14dp">
+        android:padding="18dp">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:text="微博：" />
 
         <TextView
@@ -218,7 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="输入微博帐号"
-            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
             android:text="" />
 
     </LinearLayout>
@@ -228,6 +234,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="只有添加为朋友对方才会看到你的社交帐号"
+        android:padding="15dp"
         android:text="" />
 
     <View style="@style/DividerLine.Horizontal" />
@@ -237,6 +244,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/bootstrap_state_submit" />
 
 

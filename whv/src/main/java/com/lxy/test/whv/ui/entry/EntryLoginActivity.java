@@ -13,6 +13,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.ui.MainActivity;
+import com.lxy.test.whv.ui.bootstrap.BootstrapActivity;
 import com.lxy.test.whv.util.Utils;
 
 import butterknife.ButterKnife;
@@ -67,9 +68,25 @@ public class EntryLoginActivity extends EntryBaseActivity {
                 dialog.dismiss();
                 if (filterException(e)) {
                     CacheService.cacheFriends();
+
+                    boolean bootstraped = false;
+                    //TODO 编辑中 默认进入
+                    bootstraped = avUser.getInt("applyState") >= 0;
+                    if (!bootstraped) {
+
+                        goBootstrapActivity();
+                        finish();
+                        return;
+                    }
                     MainActivity.goMainActivityFromActivity(EntryLoginActivity.this);
                 }
             }
         }, LeanchatUser.class);
+    }
+
+    private void goBootstrapActivity() {
+        Intent intent = new Intent(ctx, BootstrapActivity.class);
+        ctx.startActivity(intent);
+        finish();
     }
 }

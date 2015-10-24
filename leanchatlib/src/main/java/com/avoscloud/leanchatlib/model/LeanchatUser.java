@@ -71,6 +71,14 @@ public class LeanchatUser extends AVUser {
         }
     }
 
+    public void updateUserInfo(SaveCallback callback) {
+        AVInstallation installation = AVInstallation.getCurrentInstallation();
+        if (installation != null) {
+            put(INSTALLATION, installation);
+            saveInBackground(callback);
+        }
+    }
+
     public AVGeoPoint getGeoPoint() {
         return getAVGeoPoint(LOCATION);
     }

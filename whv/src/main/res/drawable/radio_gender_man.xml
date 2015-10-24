@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_checked="false" android:drawable="@drawable/person_info_mancheck"/>
-    <item android:state_checked="true"  android:drawable="@drawable/person_info_manchecked"/>
-    <item android:state_selected="true"  android:drawable="@drawable/person_info_manchecked"/>
-    <item android:state_pressed="true"  android:drawable="@drawable/person_info_manchecked"/>
+    <item android:drawable="@drawable/btn_radio_to_on_mtrl_000_blue" android:state_checked="false" />
+    <item android:drawable="@drawable/btn_radio_to_on_mtrl_015_blue" android:state_checked="true" />
+    <item android:drawable="@drawable/btn_radio_to_on_mtrl_015_blue" android:state_selected="true" />
+    <item android:drawable="@drawable/btn_radio_to_on_mtrl_015_blue" android:state_pressed="true" />
 
 </selector>

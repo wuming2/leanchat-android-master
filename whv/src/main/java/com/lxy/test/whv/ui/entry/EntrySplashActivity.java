@@ -16,43 +16,24 @@ import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.bootstrap.BootstrapActivity;
 import com.lxy.test.whv.util.LogUtils;
 
+import java.lang.ref.WeakReference;
+
 
 public class EntrySplashActivity extends BaseActivity {
     public static final int SPLASH_DURATION = 2000;
     private static final int GO_MAIN_MSG = 1;
     private static final int GO_LOGIN_MSG = 2;
+    LeanchatUser user;
 
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case GO_MAIN_MSG:
-                    MainActivity.goMainActivityFromActivity(EntrySplashActivity.this);
-                    finish();
-                    break;
-                case GO_LOGIN_MSG:
-                    Intent intent = new Intent(ctx, EntryLoginActivity.class);
-                    ctx.startActivity(intent);
-                    finish();
-                    break;
-            }
-        }
-    };
+    private MyHandler handler = new MyHandler(EntrySplashActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entry_splash_layout);
-        LeanchatUser user = LeanchatUser.getCurrentUser();
+        user = LeanchatUser.getCurrentUser();
 
         if (LeanchatUser.getCurrentUser() != null) {
-
-            //TODO sharedperferance  注册成功后进入
-            boolean bootstraped = false;
-            if (!bootstraped) {
-                goBootstrapActivity();
-                return;
-            }
 
             //user.put("test","hahah");
             // 更新数据库中updatedAt参数
@@ -67,9 +48,6 @@ public class EntrySplashActivity extends BaseActivity {
                         LogUtils.e("error = " + e.getLocalizedMessage());
                         handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);
                     } else {
-                        String test = (String) ((LeanchatUser) avObject).getString("test");
-                        LogUtils.d("url = " + ((LeanchatUser) avObject).getAvatarUrl() + " test = " + test);
-                        //TODO 使用回调 或EventBus
                         CacheService.cacheFriends();
                         handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
                     }
@@ -83,6 +61,45 @@ public class EntrySplashActivity extends BaseActivity {
     private void goBootstrapActivity() {
         Intent intent = new Intent(ctx, BootstrapActivity.class);
         ctx.startActivity(intent);
-        finish();
+    }
+
+    static class MyHandler extends Handler {
+
+        WeakReference<EntrySplashActivity> mActivity;
+
+        MyHandler(EntrySplashActivity activity) {
+            mActivity = new WeakReference<EntrySplashActivity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            EntrySplashActivity theActivity = mActivity.get();
+            if (theActivity == null)
+                return;
+            switch (msg.what) {
+                case GO_MAIN_MSG:
+
+                    boolean bootstraped = false;
+                    //TODO 编辑中 默认进入
+//                    bootstraped = user.getInt("applyState") >= 0;
+                    if (!bootstraped) {
+
+
+                        theActivity.goBootstrapActivity();
+                        theActivity.finish();
+                        return;
+                    }
+
+                    MainActivity.goMainActivityFromActivity(theActivity);
+                    theActivity.finish();
+                    break;
+                case GO_LOGIN_MSG:
+                    Intent intent = new Intent(theActivity, EntryLoginActivity.class);
+                    theActivity.startActivity(intent);
+                    theActivity.finish();
+                    break;
+            }
+        }
     }
 }
