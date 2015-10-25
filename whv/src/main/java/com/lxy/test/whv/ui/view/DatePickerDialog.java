@@ -1,4 +1,4 @@
-package com.lxy.test.whv.ui.bootstrap;
+package com.lxy.test.whv.ui.view;
 
 import android.app.AlertDialog;
 import android.content.Context;

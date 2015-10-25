@@ -24,19 +24,19 @@ import java.util.List;
 /**
  * Created by LXY on 2015/10/15.
  */
-public class DiscoverFragmentUserAdapter extends BaseListAdapter<LeanchatUser> {
+public class NearbyUserAdapter extends BaseListAdapter<LeanchatUser> {
 
     // 计算距离使用
     private static final double EARTH_RADIUS = 6378137;
     PrettyTime prettyTime;
     AVGeoPoint location;
 
-    public DiscoverFragmentUserAdapter(Context ctx) {
+    public NearbyUserAdapter(Context ctx) {
         super(ctx);
         init();
     }
 
-    public DiscoverFragmentUserAdapter(Context ctx, List<LeanchatUser> datas) {
+    public NearbyUserAdapter(Context ctx, List<LeanchatUser> datas) {
         super(ctx, datas);
         init();
     }

@@ -25,10 +25,13 @@ public class CacheService {
     private static volatile List<String> friendIds = new ArrayList<String>();
 
     public static LeanchatUser lookupUser(String userId) {
+        //TODO bug
         return AVUserCacheUtils.getCachedUser(userId);
     }
 
     public static void registerUser(LeanchatUser user) {
+        //TODO 这里cached you 问题，需要更新吧?
+        LogUtils.d("whv registerUser" + user.getString("aboutMe"));
         AVUserCacheUtils.cacheUser(user.getObjectId(), user);
     }
 
@@ -56,16 +59,20 @@ public class CacheService {
     public static void cacheUsers(List<String> ids) throws AVException {
         Set<String> uncachedIds = new HashSet<String>();
         for (String id : ids) {
+            LogUtils.d("cacheUsers id = " + id);
             if (lookupUser(id) == null) {
+                LogUtils.d("cacheUsers id = " + id + " null!!!!");
                 uncachedIds.add(id);
             }
         }
         List<LeanchatUser> foundUsers = findUsers(new ArrayList<String>(uncachedIds));
+        LogUtils.d("foundUsers size = " + foundUsers.size());
         registerUsers(foundUsers);
     }
 
     public static List<LeanchatUser> findUsers(List<String> userIds) throws AVException {
         //FIXME  NetworkOnMainThreadException
+        LogUtils.d("findUsers");
         if (userIds.size() <= 0) {
             return Collections.EMPTY_LIST;
         }
@@ -85,16 +92,27 @@ public class CacheService {
                     e.printStackTrace();
                 } else {
                     LogUtils.d("FindCallback done size = " + avUsers.size());
-                    List<String> userIds = new ArrayList<String>();
+                    final List<String> userIds = new ArrayList<String>();
                     for (AVUser user : avUsers) {
                         LogUtils.d("objid = " + user.getObjectId());
                         userIds.add(user.getObjectId());
                     }
                     CacheService.setFriendIds(userIds);
+
                     try {
-                        CacheService.cacheUsers(userIds);
-                    } catch (AVException e2) {
-                        e2.printStackTrace();
+                        new Thread() {
+                            @Override
+                            public void run() {
+                                super.run();
+                                try {
+                                    CacheService.cacheUsers(userIds);
+                                } catch (AVException e2) {
+                                    e2.printStackTrace();
+                                }
+                            }
+                        }.start();
+                    } catch (Exception e3) {
+                        e3.printStackTrace();
                     }
                 }
             }

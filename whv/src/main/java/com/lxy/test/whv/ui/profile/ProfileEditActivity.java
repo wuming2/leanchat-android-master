@@ -25,9 +25,10 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.constant.Constant;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
-import com.lxy.test.whv.ui.bootstrap.DatePickerDialog;
+import com.lxy.test.whv.ui.view.DatePickerDialog;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.PathUtils;
 import com.lxy.test.whv.util.PhotoUtils;
@@ -54,7 +55,6 @@ public class ProfileEditActivity extends BaseActivity {
     @InjectView(R.id.profile_application_state)
     protected TextView tv_applicationState;
 
-
     private static final int IMAGE_PICK_REQUEST = 1;
     private static final int CROP_REQUEST = 2;
 
@@ -68,17 +68,6 @@ public class ProfileEditActivity extends BaseActivity {
     private String lineID = "";
     private String aboutMe = "";
     private String birthdate = "";
-
-    private final int[] applicationStateButtonIndex = {R.id.radiobutton_want_to_know, R.id.radiobutton_preparing,
-            R.id.radiobutton_submiting, R.id.radiobutton_granted, R.id.radiobutton_abroad,
-            R.id.radiobutton_returned, R.id.radiobutton_pr};
-    private final int[] applicationState = {0, 1, 2, 3, 4, 5, 6};
-    private final int[] applicationStateTextId = {R.string.bootstrap_state_want_to_know, R.string.bootstrap_state_preparing,
-            R.string.bootstrap_state_submiting, R.string.bootstrap_state_granted, R.string.bootstrap_state_abroad,
-            R.string.bootstrap_state_returned, R.string.bootstrap_state_pr};
-
-    private final int[] genderTextId = {R.string.gender_female, R.string.gender_male};
-
 
     ProgressDialog dialog;
     LeanchatUser user;
@@ -142,7 +131,7 @@ public class ProfileEditActivity extends BaseActivity {
 
     private void showPerfileInfoSet() {
 
-        tv_applicationState.setText(applicationStateTextId[applyState]);
+        tv_applicationState.setText(Constant.applicationStateTextId[applyState]);
         button_prefile_submit = (Button) findViewById(R.id.button_prefile_submit);
         button_prefile_submit.setOnClickListener(listener);
 
@@ -158,7 +147,7 @@ public class ProfileEditActivity extends BaseActivity {
         ((TextView) findViewById(R.id.profile_social_weibo)).setText(weiboID);
         ((TextView) findViewById(R.id.profile_social_line)).setText(lineID);
         if (gender >= 0) {
-            ((TextView) findViewById(R.id.profile_gender_value)).setText(genderTextId[gender]);
+            ((TextView) findViewById(R.id.profile_gender_value)).setText(Constant.genderTextId[gender]);
         }
     }
 
@@ -194,7 +183,7 @@ public class ProfileEditActivity extends BaseActivity {
                     gender = 0;
                 }
                 if (gender >= 0) {
-                    ((TextView) findViewById(R.id.profile_gender_value)).setText(genderTextId[gender]);
+                    ((TextView) findViewById(R.id.profile_gender_value)).setText(Constant.genderTextId[gender]);
                 }
                 dialog.dismiss();
             }
@@ -226,10 +215,10 @@ public class ProfileEditActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup arg0, int arg1) {
                 //获取变更后的选中项的ID
                 int radioButtonId = arg0.getCheckedRadioButtonId();
-                for (int i = 0; i < applicationStateButtonIndex.length; i++) {
-                    if (radioButtonId == applicationStateButtonIndex[i]) {
-                        applyState = applicationState[i];
-                        tv_applicationState.setText(applicationStateTextId[applyState]);
+                for (int i = 0; i < Constant.applicationStateButtonIndex.length; i++) {
+                    if (radioButtonId == Constant.applicationStateButtonIndex[i]) {
+                        applyState = Constant.applicationState[i];
+                        tv_applicationState.setText(Constant.applicationStateTextId[applyState]);
                         dialog.dismiss();
                     }
                 }
@@ -401,7 +390,6 @@ public class ProfileEditActivity extends BaseActivity {
                 birthdate = textString;
             }
         }, myear, mmonth, mday, true).show();
-
     }
 
     public void showAboutEditDialog(final View view) {

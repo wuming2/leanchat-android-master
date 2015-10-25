@@ -45,12 +45,11 @@ public class DiscoverFragment extends BaseFragment {
         this.getActivity().startActivity(intent);
     }
 
-    //TODO
     @OnClick(R.id.discover_together)
     public void goTogetherActivity() {
-        Toast.makeText(this.getActivity(), "开发中", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(this.getActivity(), NearbyActivity.class);
-//        this.getActivity().startActivity(intent);
+//        Toast.makeText(this.getActivity(), "开发中", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this.getActivity(), CompanyActivity.class);
+        this.getActivity().startActivity(intent);
     }
 
     //TODO

@@ -48,6 +48,7 @@ public class EntrySplashActivity extends BaseActivity {
                         LogUtils.e("error = " + e.getLocalizedMessage());
                         handler.sendEmptyMessageDelayed(GO_LOGIN_MSG, SPLASH_DURATION);
                     } else {
+                        // TODO
                         CacheService.cacheFriends();
                         handler.sendEmptyMessageDelayed(GO_MAIN_MSG, SPLASH_DURATION);
                     }
@@ -82,9 +83,8 @@ public class EntrySplashActivity extends BaseActivity {
 
                     boolean bootstraped = false;
                     //TODO 编辑中 默认进入
-//                    bootstraped = user.getInt("applyState") >= 0;
+                    bootstraped = theActivity.user.getInt("applyState") >= 0;
                     if (!bootstraped) {
-
 
                         theActivity.goBootstrapActivity();
                         theActivity.finish();

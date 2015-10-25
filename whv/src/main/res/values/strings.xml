@@ -44,8 +44,15 @@
     <string name="discover_metres">米</string>
     <string name="discover_unknown">未知</string>
     <string name="discover_recent_login_time">最近登录时间:</string>
-    <string name="contact_account">账号 </string>
+    <string name="contact_account">账号</string>
+    <string name="contact_gender">性别</string>
+    <string name="contact_age">年龄</string>
+    <string name="contact_state">状态</string>
+    <string name="contact_aboutme">签名</string>
     <string name="contact_search">搜索</string>
+    <string name="contact_wechat">微信</string>
+    <string name="contact_weibo">微博</string>
+    <string name="contact_line">Line</string>
     <string name="profile_vibrate">震动</string>
     <string name="contact_chat">发起会话</string>
     <string name="contact_info_delete">删除好友</string>
@@ -124,5 +131,18 @@
 
     <string name="gender_male">男</string>
     <string name="gender_female">女</string>
+
+    <string name="city_australia">澳大利亚</string>
+    <string name="city_sydney">悉尼</string>
+    <string name="city_melb">墨尔本</string>
+    <string name="city_brisbane">布里斯班</string>
+    <string name="city_perth">珀斯</string>
+    <string name="city_adelaide">阿德莱德</string>
+    <string name="city_canberra">堪培拉</string>
+    <string name="city_hobart">霍巴特</string>
+    <string name="city_newzealand">新西兰</string>
+    <string name="city_other">其他</string>
+
+
 
 </resources>

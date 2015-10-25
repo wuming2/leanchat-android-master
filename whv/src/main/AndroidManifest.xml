@@ -96,6 +96,11 @@
             android:label="" />
 
         <activity
+            android:name=".ui.discover.CompanyActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
+        <activity
             android:name=".ui.bootstrap.BootstrapActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />

@@ -82,6 +82,7 @@ public class ContactAddFriendActivity extends BaseActivity {
         q.orderByDescending(Constants.UPDATED_AT);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         List<LeanchatUser> users = q.find();
+        //TODO 这里正确么？
         CacheService.registerUsers(users);
         return users;
     }

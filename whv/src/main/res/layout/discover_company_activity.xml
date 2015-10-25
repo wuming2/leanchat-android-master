@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="0dp"
+    tools:context="com.lxy.test.whv.ui.discover.CompanyActivity">
+
+    <RelativeLayout
+        android:id="@+id/discover_company_ll_time"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#2C97E8"
+        android:clickable="true"
+        android:onClick="showDatePacker"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/discover_company_iv_time"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_bbs_partner_calendar" />
+
+        <TextView
+            android:id="@+id/discover_company_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/discover_company_iv_time"
+            android:hint="出发时间"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:text=""
+            android:textColor="#ffffff"
+            android:textColorHint="#80ffffff" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:paddingRight="15dp"
+            android:src="@null" />
+        <!--ic_close_trans-->
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/discover_company_ll_destination"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#2C97E8"
+        android:clickable="true"
+        android:onClick="goDestinationSelectRadio"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/discover_company_iv_destination"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_bbs_partner_city" />
+
+        <TextView
+            android:id="@+id/discover_company_tv_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/discover_company_iv_destination"
+            android:hint="目的地"
+            android:paddingLeft="15dp"
+            android:paddingTop="2dp"
+            android:text=""
+            android:textColor="#ffffff"
+            android:textColorHint="#80ffffff" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:paddingRight="15dp"
+            android:src="@null" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/discover_company_ll_fragment_select"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/discover_company_ll_whver"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="WHVer" />
+
+            <View
+                android:id="@+id/discover_company_selectview_whver"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/discover_company_ll_post"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="征集令" />
+
+            <View
+                android:id="@+id/discover_company_selectview_post"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#2C97E8" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/discover_company_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
+
+</LinearLayout>

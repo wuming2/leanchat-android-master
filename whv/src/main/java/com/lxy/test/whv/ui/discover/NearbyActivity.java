@@ -11,7 +11,6 @@ import android.view.View;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVGeoPoint;
 import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.LogUtils;
@@ -23,16 +22,21 @@ import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.lxy.test.whv.ui.view.HeaderLayout;
+import com.lxy.test.whv.util.UserDAOUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class NearbyActivity extends BaseActivity {
+
+    //TODO 当前只显示7天内的活跃用户
+    public static int dayAddNum = 7;
 
     @InjectView(R.id.nearby_headerlayout)
     protected HeaderLayout headerLayout;
@@ -41,7 +45,7 @@ public class NearbyActivity extends BaseActivity {
     private final SortDialogListener updatedAtListener = new SortDialogListener(Constants.ORDER_UPDATED_AT);
     @InjectView(R.id.list_near)
     BaseListView<LeanchatUser> listView;
-    DiscoverFragmentUserAdapter adapter;
+    NearbyUserAdapter adapter;
     List<LeanchatUser> nears = new ArrayList<LeanchatUser>();
     int orderType;
     PreferenceMap preferenceMap;
@@ -95,12 +99,12 @@ public class NearbyActivity extends BaseActivity {
     }
 
     private void initXListView() {
-        adapter = new DiscoverFragmentUserAdapter(ctx, nears);
+        adapter = new NearbyUserAdapter(ctx, nears);
         listView = (BaseListView<LeanchatUser>) findViewById(R.id.list_near);
         listView.init(new BaseListView.DataFactory<LeanchatUser>() {
             @Override
             public List<LeanchatUser> getDatasInBackground(int skip, int limit, List<LeanchatUser> currentDatas) throws Exception {
-                return findNearbyPeople(orderType, skip, limit);
+                return UserDAOUtils.findNearbyPeople(orderType, skip, limit, dayAddNum);
             }
         }, adapter);
 
@@ -114,30 +118,6 @@ public class NearbyActivity extends BaseActivity {
         PauseOnScrollListener listener = new PauseOnScrollListener(ImageLoader.getInstance(),
                 true, true);
         listView.setOnScrollListener(listener);
-    }
-
-
-    public List<LeanchatUser> findNearbyPeople(int orderType, int skip, int limit) throws AVException {
-        PreferenceMap preferenceMap = PreferenceMap.getCurUserPrefDao(App.ctx);
-        AVGeoPoint geoPoint = preferenceMap.getLocation();
-        if (geoPoint == null) {
-            LogUtils.i("geo point is null");
-            return new ArrayList<>();
-        }
-        AVQuery<LeanchatUser> q = LeanchatUser.getQuery(LeanchatUser.class);
-        AVUser user = AVUser.getCurrentUser();
-        q.whereNotEqualTo(Constants.OBJECT_ID, user.getObjectId());
-        if (orderType == Constants.ORDER_DISTANCE) {
-            q.whereNear(LeanchatUser.LOCATION, geoPoint);
-        } else {
-            q.orderByDescending(Constants.UPDATED_AT);
-        }
-        q.skip(skip);
-        q.limit(limit);
-        q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
-        List<LeanchatUser> users = q.find();
-        CacheService.registerUsers(users);
-        return users;
     }
 
     public class SortDialogListener implements DialogInterface.OnClickListener {

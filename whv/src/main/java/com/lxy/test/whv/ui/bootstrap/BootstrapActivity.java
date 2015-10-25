@@ -26,8 +26,10 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.constant.Constant;
 import com.lxy.test.whv.ui.MainActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.view.DatePickerDialog;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.PathUtils;
 import com.lxy.test.whv.util.PhotoUtils;
@@ -65,14 +67,6 @@ public class BootstrapActivity extends BaseActivity {
     private String lineID = "";
     private String aboutMe = "";
     private String birthdate = "";
-
-    private final int[] applicationStateButtonIndex = {R.id.radiobutton_want_to_know, R.id.radiobutton_preparing,
-            R.id.radiobutton_submiting, R.id.radiobutton_granted, R.id.radiobutton_abroad,
-            R.id.radiobutton_returned, R.id.radiobutton_pr};
-    private final int[] applicationState = {0, 1, 2, 3, 4, 5, 6};
-    private final int[] applicationStateTextId = {R.string.bootstrap_state_want_to_know, R.string.bootstrap_state_preparing,
-            R.string.bootstrap_state_submiting, R.string.bootstrap_state_granted, R.string.bootstrap_state_abroad,
-            R.string.bootstrap_state_returned, R.string.bootstrap_state_pr};
 
     ProgressDialog dialog;
     LeanchatUser user;
@@ -139,9 +133,9 @@ public class BootstrapActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup arg0, int arg1) {
                 //获取变更后的选中项的ID
                 int radioButtonId = arg0.getCheckedRadioButtonId();
-                for (int i = 0; i < applicationStateButtonIndex.length; i++) {
-                    if (radioButtonId == applicationStateButtonIndex[i]) {
-                        applyState = applicationState[i];
+                for (int i = 0; i < Constant.applicationStateButtonIndex.length; i++) {
+                    if (radioButtonId == Constant.applicationStateButtonIndex[i]) {
+                        applyState = Constant.applicationState[i];
                     }
                 }
                 //根据ID获取RadioButton的实例
@@ -219,7 +213,7 @@ public class BootstrapActivity extends BaseActivity {
         ((TextView) findViewById(R.id.profile_social_line)).setText(lineID);
     }
 
-    //TODO 头像编辑
+    // 头像编辑
     public void onAvatarClick() {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");

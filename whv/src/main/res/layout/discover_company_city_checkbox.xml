@@ -1,0 +1,106 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/checkbox_city_sydney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_sydney"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_melb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_melb"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_brisbane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_brisbane"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_perth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_perth"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_adelaide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_adelaide"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_canberra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_canberra"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_hobart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_hobart"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_other"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_australia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_australia"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/checkbox_city_newzealand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:padding="10dp"
+            android:text="@string/city_newzealand"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>
