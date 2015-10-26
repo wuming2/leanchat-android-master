@@ -14,15 +14,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVException;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.constant.Constant;
+import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
+import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
+import com.lxy.test.whv.ui.view.BaseListView;
 import com.lxy.test.whv.ui.view.DatePickerDialog;
 import com.lxy.test.whv.util.DateUtils;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.UserDAOUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,8 +50,8 @@ public class CompanyActivity extends BaseActivity {
     String destination = "";
 
     //TODO 先使用单选
-    HashSet<String> cityCodeSelect = new HashSet<String>();
-    HashSet<String> citySelect = new HashSet<String>();
+    HashSet<String> cityCodeSelect = new HashSet<>();
+    HashSet<String> citySelect = new HashSet<>();
     HashMap<String, String> cityMap;
 
     @InjectView(R.id.discover_company_tv_destination)
@@ -58,10 +61,13 @@ public class CompanyActivity extends BaseActivity {
     @InjectView(R.id.discover_company_viewpager)
     ViewPager mPager;//页卡内容
 
-    private List<View> listViews; // Tab页面列表
-
-
+    PreferenceMap preferenceMap;
     LeanchatUser user;
+    List<View> listViews; // Tab页面列表
+
+    BaseListView<LeanchatUser> listViewWhver;
+    List<LeanchatUser> whvers = new ArrayList<>();
+    CompanyAdapter companyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,7 @@ public class CompanyActivity extends BaseActivity {
         // cityMap = Constant.getCityMap(CompanyActivity.this.getApplication());
 
         getInfo();
+        companyAdapter = new CompanyAdapter(ctx, whvers);
         InitViewPager();
 
     }
@@ -91,6 +98,7 @@ public class CompanyActivity extends BaseActivity {
         listViews = new ArrayList<>();
         listViews.add(inflater.inflate(R.layout.discover_company_whver, null));
         listViews.add(inflater.inflate(R.layout.discover_company_post, null));
+        listViewWhver = (BaseListView) listViews.get(0).findViewById(R.id.list_discover_company_post);
         mPager.setAdapter(new MyPagerAdapter(listViews));
         mPager.setCurrentItem(0);
         setViewPagerTitleView(0);
@@ -112,26 +120,48 @@ public class CompanyActivity extends BaseActivity {
 
             }
         });
+
+        showCompanyInfos(0);
     }
 
     //TODO 获取并显示同行者
     private void showCompanyInfos(int position) {
 
-        new Thread() {
+        switch (position) {
+            case 0:
+//                preferenceMap = PreferenceMap.getCurUserPrefDao(this);
+                initXListView(companyAdapter, listViewWhver, whvers);
+                break;
+            case 1:
+                break;
+        }
+
+    }
+
+    private void initXListView(CompanyAdapter adapter, BaseListView<LeanchatUser> listView, List<LeanchatUser> nears) {
+
+        listView.init(new BaseListView.DataFactory<LeanchatUser>() {
             @Override
-            public void run() {
-                super.run();
-                try {
-                    List<LeanchatUser> userList = UserDAOUtils.findCompany(0, 10, datePlanned, destination);
-                    LogUtils.d("list size = " + userList.size());
-                    for (int i = 0; i < userList.size(); i++) {
-                        LogUtils.d("user name =  " + userList.get(i).getUsername());
-                    }
-                } catch (AVException e) {
-                    e.printStackTrace();
+            public List<LeanchatUser> getDatasInBackground(int skip, int limit, List<LeanchatUser> currentDatas) throws Exception {
+                String dest = destination;
+                if (destination.equalsIgnoreCase(getString(R.string.city_australia))) {
+                    dest = "";
                 }
+                return UserDAOUtils.findCompany(skip, limit, datePlanned, dest);
             }
-        }.start();
+        }, adapter);
+
+        listView.setItemListener(new BaseListView.ItemListener<LeanchatUser>() {
+            @Override
+            public void onItemSelected(LeanchatUser item) {
+                ContactPersonInfoActivity.goPersonInfo(ctx, item.getObjectId());
+            }
+        });
+
+        PauseOnScrollListener listener = new PauseOnScrollListener(ImageLoader.getInstance(),
+                true, true);
+        listView.setOnScrollListener(listener);
+        listView.onRefresh();
     }
 
     private void setViewPagerTitleView(int index) {
@@ -173,7 +203,6 @@ public class CompanyActivity extends BaseActivity {
 
     private void updateUserInfo() {
         LeanchatUser user = LeanchatUser.getCurrentUser();
-        //TODO 传date date转换为时间
         try {
             Date date = DateUtils.toDate(datePlanned, "yyyy-MM-dd");
             user.put("datePlanned", date);
@@ -308,7 +337,7 @@ public class CompanyActivity extends BaseActivity {
             mday = c.get(Calendar.DATE);
         }
 
-        new DatePickerDialog(CompanyActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog dialog = new DatePickerDialog(CompanyActivity.this, 0, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month,
                                   int day) {
@@ -317,6 +346,9 @@ public class CompanyActivity extends BaseActivity {
                 tv_time.setText(textString);
                 datePlanned = textString;
             }
-        }, myear, mmonth, mday, true).show();
+        }, myear, mmonth, mday, true);
+        // 出发时间只能设置为今天以后
+        dialog.setMinDate(new Date());
+        dialog.show();
     }
 }

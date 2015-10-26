@@ -126,6 +126,7 @@ public class BaseListView<T> extends XListView implements XListView.IXListViewLi
                 stopLoadMore();
                 adapter.addAll(datas);
                 if (datas.size() == 0) {
+                    //TODO 使用回调方法
                     Utils.toast(getContext(), R.string.chat_base_list_view_noMore);
                 }
             }

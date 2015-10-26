@@ -4,9 +4,8 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVGeoPoint;
 import com.avos.avoscloud.AVQuery;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
-import com.avoscloud.leanchatlib.utils.*;
+import com.avoscloud.leanchatlib.utils.Constants;
 import com.lxy.test.whv.App;
-import com.lxy.test.whv.constant.Constant;
 import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.service.PreferenceMap;
 
@@ -65,22 +64,29 @@ public class UserDAOUtils {
         LeanchatUser user = LeanchatUser.getCurrentUser();
         //TODO test 显示自身
 //        q.whereNotEqualTo(Constants.OBJECT_ID, user.getObjectId());
-        Date startDate;
-        Date endDate;
-        Date nowDate = new Date();
-        try {
-            startDate = DateUtils.getFirstDayOfMonth(dateString, "yyyy-MM-dd");
-            // 必须比今天要早不是么...
-            if (nowDate.getTime() > startDate.getTime()) {
-                startDate = nowDate;
+
+        if (dateString != null && !dateString.isEmpty()) {
+            Date startDate;
+            Date endDate;
+            Date nowDate = new Date();
+            try {
+                startDate = DateUtils.getFirstDayOfMonth(dateString, "yyyy-MM-dd");
+                // 必须比今天要早不是么...
+                if (nowDate.getTime() > startDate.getTime()) {
+                    startDate = nowDate;
+                }
+                endDate = DateUtils.getLastDayOfMonth(dateString, "yyyy-MM-dd");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return new ArrayList<>();
             }
-            endDate = DateUtils.getLastDayOfMonth(dateString, "yyyy-MM-dd");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ArrayList<>();
+            q.whereGreaterThan("datePlanned", startDate);
+            q.whereLessThan("datePlanned", endDate);
         }
-        q.whereGreaterThan("datePlanned", startDate);
-        q.whereLessThan("datePlanned", endDate);
+
+        if (cityName != null && !cityName.isEmpty()) {
+            q.whereEqualTo("destination", cityName);
+        }
         q.skip(skip);
         q.limit(limit);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);

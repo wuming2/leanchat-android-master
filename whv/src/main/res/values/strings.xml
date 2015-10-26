@@ -132,7 +132,7 @@
     <string name="gender_male">男</string>
     <string name="gender_female">女</string>
 
-    <string name="city_australia">澳大利亚</string>
+    <string name="city_australia">全澳大利亚</string>
     <string name="city_sydney">悉尼</string>
     <string name="city_melb">墨尔本</string>
     <string name="city_brisbane">布里斯班</string>
@@ -142,7 +142,6 @@
     <string name="city_hobart">霍巴特</string>
     <string name="city_newzealand">新西兰</string>
     <string name="city_other">其他</string>
-
 
 
 </resources>

@@ -15,6 +15,15 @@
             android:layout_height="wrap_content">
 
             <RadioButton
+                android:id="@+id/radiobutton_city_australia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:padding="10dp"
+                android:text="@string/city_australia"
+                android:textSize="20sp" />
+
+            <RadioButton
                 android:id="@+id/radiobutton_city_sydney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,16 +94,6 @@
                 android:padding="10dp"
                 android:text="@string/city_other"
                 android:textSize="20sp" />
-
-            <RadioButton
-                android:id="@+id/radiobutton_city_australia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:padding="10dp"
-                android:text="@string/city_australia"
-                android:textSize="20sp"
-                android:visibility="gone" />
 
             <RadioButton
                 android:id="@+id/radiobutton_city_newzealand"

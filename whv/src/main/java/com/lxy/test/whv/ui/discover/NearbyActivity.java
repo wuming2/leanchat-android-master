@@ -8,15 +8,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVGeoPoint;
-import com.avos.avoscloud.AVQuery;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
-import com.avoscloud.leanchatlib.utils.LogUtils;
-import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
@@ -27,7 +21,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -46,7 +39,7 @@ public class NearbyActivity extends BaseActivity {
     @InjectView(R.id.list_near)
     BaseListView<LeanchatUser> listView;
     NearbyUserAdapter adapter;
-    List<LeanchatUser> nears = new ArrayList<LeanchatUser>();
+    List<LeanchatUser> nears = new ArrayList<>();
     int orderType;
     PreferenceMap preferenceMap;
 

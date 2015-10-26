@@ -4,16 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.DatePicker;
 
 import com.lxy.test.whv.R;
 
-import java.lang.reflect.Field;
-import java.util.Locale;
+import java.util.Date;
 
 /**
  * Created by wuming on 2015/10/24.
@@ -60,6 +57,10 @@ public class DatePickerDialog extends AlertDialog implements DialogInterface.OnC
         }
     }
 
+    public void setMinDate(Date date) {
+        mDatePicker.setMinDate(date.getTime());
+    }
+
     /**
      * 隐藏DatePicker中的日期显示  TODO 无法支持
      *
@@ -67,24 +68,24 @@ public class DatePickerDialog extends AlertDialog implements DialogInterface.OnC
      */
     private void hidDay(DatePicker mDatePicker) {
 
-
-        Field[] datePickerfFields = mDatePicker.getClass().getDeclaredFields();
-        for (Field datePickerField : datePickerfFields) {
-            com.lxy.test.whv.util.LogUtils.d("datePickerField.getName = " + datePickerField.getName());
-            if ("mDaySpinner".equals(datePickerField.getName())) {
-                datePickerField.setAccessible(true);
-                Object dayPicker = new Object();
-                try {
-                    dayPicker = datePickerField.get(mDatePicker);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                }
-                // datePicker.getCalendarView().setVisibility(View.GONE);
-                ((View) dayPicker).setVisibility(View.GONE);
-            }
-        }
+        //mDatePicker.setCalendarViewShown(false);
+//        Field[] datePickerfFields = mDatePicker.getClass().getDeclaredFields();
+//        for (Field datePickerField : datePickerfFields) {
+//            com.lxy.test.whv.util.LogUtils.d("datePickerField.getName = " + datePickerField.getName());
+//            if ("mDaySpinner".equals(datePickerField.getName())) {
+//                datePickerField.setAccessible(true);
+//                Object dayPicker = new Object();
+//                try {
+//                    dayPicker = datePickerField.get(mDatePicker);
+//                } catch (IllegalAccessException e) {
+//                    e.printStackTrace();
+//                } catch (IllegalArgumentException e) {
+//                    e.printStackTrace();
+//                }
+//                // datePicker.getCalendarView().setVisibility(View.GONE);
+//                ((View) dayPicker).setVisibility(View.GONE);
+//            }
+//        }
     }
 
 
