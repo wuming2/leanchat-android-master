@@ -13,6 +13,8 @@ import butterknife.OnClick;
 
 /**
  * Created by LXY on 2015/10/27.
+ * <p/>
+ * 更多信息 貌似用处也不大哈-。-
  */
 public class MoreInfoActivity extends BaseActivity {
 
