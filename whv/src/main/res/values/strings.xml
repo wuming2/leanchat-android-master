@@ -94,10 +94,18 @@
     <string name="discover_nearby">附近的人</string>
     <string name="discover_together">同行</string>
     <string name="discover_meetup">聚会</string>
+    <string name="discover_more">杂七杂八</string>
     <string name="contact_alreadyCreateAddRequest">请求已发送</string>
     <string name="conversation_alreadyQuitConv">已退出群</string>
     <string name="conversation_detail_kickSucceed">已踢走该成员</string>
     <string name="conversation_detail_title">详情</string>
+
+    <string name="discover_more_imagineaustralia_weibo">大使馆微博</string>
+    <string name="discover_more_douban">豆瓣澳大利亚WHV小组</string>
+    <string name="discover_more_visa_application_quick">签证申请快捷入口</string>
+    <string name="discover_more_visa_application">签证申请地址</string>
+    <string name="discover_more_backpackers_au">背包客栈(TW)澳洲打工渡假</string>
+
 
     <string name="chat_location_activity_send">发送</string>
     <string name="chat_getGeoInfoFailed">获取地理位置信息失败!</string>

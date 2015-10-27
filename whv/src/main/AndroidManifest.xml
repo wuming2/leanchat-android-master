@@ -61,15 +61,16 @@
         <activity
             android:name=".ui.visahelper.VisaTrackingActivity"
             android:label="@string/title_activity_visa_tracking"
-            android:parentActivityName=".ui.base_activity.BaseActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.lxy.test.whv.ui.base_activity.BaseActivity" />
-        </activity>
+            android:theme="@style/ChatMainTheme" />
 
         <activity
-            android:name="com.lxy.test.whv.ui.contact.ContactPersonInfoActivity"
-            android:theme="@style/ChatMainTheme"></activity>
+            android:name=".ui.WebViewActivity"
+            android:label="@string/title_activity_visa_tracking"
+            android:theme="@style/ChatMainTheme" />
+
+        <activity
+            android:name=".ui.contact.ContactPersonInfoActivity"
+            android:theme="@style/ChatMainTheme" />
 
         <activity
             android:name=".ui.contact.ContactNewFriendActivity"
@@ -97,6 +98,11 @@
 
         <activity
             android:name=".ui.discover.CompanyActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
+        <activity
+            android:name=".ui.discover.MoreInfoActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />
 

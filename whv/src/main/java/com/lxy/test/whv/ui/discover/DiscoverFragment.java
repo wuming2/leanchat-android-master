@@ -24,7 +24,6 @@ public class DiscoverFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.discover_fragment, container, false);
         ButterKnife.inject(this, view);
-
         return view;
     }
 
@@ -47,7 +46,6 @@ public class DiscoverFragment extends BaseFragment {
 
     @OnClick(R.id.discover_together)
     public void goTogetherActivity() {
-//        Toast.makeText(this.getActivity(), "开发中", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this.getActivity(), CompanyActivity.class);
         this.getActivity().startActivity(intent);
     }
@@ -58,6 +56,12 @@ public class DiscoverFragment extends BaseFragment {
         Toast.makeText(this.getActivity(), "开发中", Toast.LENGTH_SHORT).show();
 //        Intent intent = new Intent(this.getActivity(), NearbyActivity.class);
 //        this.getActivity().startActivity(intent);
+    }
+
+    @OnClick(R.id.discover_more)
+    public void goMoreInfoActivity() {
+        Intent intent = new Intent(this.getActivity(), MoreInfoActivity.class);
+        this.getActivity().startActivity(intent);
     }
 
     @Override
