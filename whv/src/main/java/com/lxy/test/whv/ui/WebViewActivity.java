@@ -31,6 +31,12 @@ public class WebViewActivity extends BaseActivity {
     String url;
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.reset(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -63,6 +69,7 @@ public class WebViewActivity extends BaseActivity {
                 super.onProgressChanged(view, newProgress);
             }
         });
+
 
         myWebView.setWebViewClient(new WebViewClient() {
             @Override

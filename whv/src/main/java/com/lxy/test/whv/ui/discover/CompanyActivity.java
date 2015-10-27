@@ -2,6 +2,7 @@ package com.lxy.test.whv.ui.discover;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -84,6 +85,18 @@ public class CompanyActivity extends BaseActivity {
         InitViewPager();
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.reset(this);
+    }
+
+    public void goNewPostActivity(View view) {
+        Intent i = new Intent(this, CompanyNewPostActivity.class);
+        startActivity(i);
+    }
+
 
     @Override
     protected void onPause() {
@@ -196,6 +209,9 @@ public class CompanyActivity extends BaseActivity {
             datePlanned = DateUtils.dateToStr(date, "yyyy-MM-dd");
         }
         destination = user.getString("destination");
+        if (destination == null) {
+            destination = "";
+        }
 
         tv_time.setText(datePlanned);
         tv_destination.setText(destination);

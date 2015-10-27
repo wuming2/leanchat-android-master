@@ -102,6 +102,11 @@
             android:theme="@style/ChatMainTheme" />
 
         <activity
+            android:name=".ui.discover.CompanyNewPostActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
+        <activity
             android:name=".ui.discover.MoreInfoActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />
