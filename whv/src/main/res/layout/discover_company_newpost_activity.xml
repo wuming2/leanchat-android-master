@@ -4,7 +4,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/discover_company_ll_time"
+        android:id="@+id/discover_company_newpost_ll_time"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:clickable="true"
@@ -13,17 +13,17 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/discover_company_iv_time"
+            android:id="@+id/discover_company_newpost_iv_time"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/ic_bbs_partner_calendar" />
 
         <TextView
-            android:id="@+id/discover_company_tv_time"
+            android:id="@+id/discover_company_newpost_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/discover_company_iv_time"
+            android:layout_toRightOf="@+id/discover_company_newpost_iv_time"
             android:hint="出发时间"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
@@ -44,7 +44,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/discover_company_ll_destination"
+        android:id="@+id/discover_company_newpost_ll_destination"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:clickable="true"
@@ -53,17 +53,17 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/discover_company_iv_destination"
+            android:id="@+id/discover_company_newpost_iv_destination"
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_marginLeft="20dp"
             android:src="@drawable/ic_bbs_partner_city" />
 
         <TextView
-            android:id="@+id/discover_company_tv_destination"
+            android:id="@+id/discover_company_newpost_tv_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/discover_company_iv_destination"
+            android:layout_toRightOf="@+id/discover_company_newpost_iv_destination"
             android:hint="目的地"
             android:paddingLeft="15dp"
             android:paddingTop="2dp"
@@ -84,39 +84,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:padding="10dp"
             android:text="标题" />
 
         <EditText
             android:id="@+id/editText_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:maxLength="40"
             android:maxLines="1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:padding="10dp"
             android:text="内容" />
 
         <EditText
-            android:id="@+id/editText_info"
+            android:id="@+id/editText_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null" />
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="top|left" />
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <Button
+            android:id="@+id/button_company_newpost_submit"
+            style="@style/My.Button.theme"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="submitPost"
+            android:text="@string/profile_save" />
 
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:ems="10"
-        android:inputType="textPostalAddress" />
 
 </LinearLayout>

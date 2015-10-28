@@ -10,6 +10,7 @@ import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.baidu.mapapi.SDKInitializer;
 import com.lxy.test.whv.entity.avobject.AddRequest;
+import com.lxy.test.whv.entity.avobject.CompanyPost;
 import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.PushManager;
 import com.lxy.test.whv.util.LogUtils;
@@ -40,9 +41,9 @@ public class App extends Application {
         AVOSCloud.initialize(this, appId, appKey);
 
         AVObject.registerSubclass(AddRequest.class);
+        AVObject.registerSubclass(CompanyPost.class);
 
         PushManager.getInstance().init(ctx);
-
         LogUtils.debugEnabled = true;
 
         initImageLoader(ctx);

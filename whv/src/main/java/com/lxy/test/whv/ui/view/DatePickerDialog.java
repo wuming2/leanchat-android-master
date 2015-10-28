@@ -58,7 +58,12 @@ public class DatePickerDialog extends AlertDialog implements DialogInterface.OnC
     }
 
     public void setMinDate(Date date) {
-        mDatePicker.setMinDate(date.getTime());
+        //TODO  bug  突然不能用了...
+        try{
+            mDatePicker.setMinDate(date.getTime());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**

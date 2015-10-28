@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.entity.avobject.CompanyPost;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
@@ -67,23 +68,25 @@ public class CompanyActivity extends BaseActivity {
     List<View> listViews; // Tab页面列表
 
     BaseListView<LeanchatUser> listViewWhver;
+    BaseListView<CompanyPost> listViewPost;
     List<LeanchatUser> whvers = new ArrayList<>();
+    List<CompanyPost> posts = new ArrayList<>();
     CompanyAdapter companyAdapter;
+    CompanyPostAdapter companyPostAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discover_company_activity);
-        ButterKnife.inject(this);
         inflater = this.getLayoutInflater();
 
         initActionBar("同行");
         // cityMap = Constant.getCityMap(CompanyActivity.this.getApplication());
-
+        ButterKnife.inject(this);
         getInfo();
         companyAdapter = new CompanyAdapter(ctx, whvers);
+        companyPostAdapter = new CompanyPostAdapter(ctx, posts);
         InitViewPager();
-
     }
 
     @Override
@@ -97,10 +100,16 @@ public class CompanyActivity extends BaseActivity {
         startActivity(i);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 
     @Override
     protected void onPause() {
         super.onPause();
+//        ButterKnife.reset(this);
         updateUserInfo();
     }
 
@@ -111,7 +120,8 @@ public class CompanyActivity extends BaseActivity {
         listViews = new ArrayList<>();
         listViews.add(inflater.inflate(R.layout.discover_company_whver, null));
         listViews.add(inflater.inflate(R.layout.discover_company_post, null));
-        listViewWhver = (BaseListView) listViews.get(0).findViewById(R.id.list_discover_company_post);
+        listViewWhver = (BaseListView) listViews.get(0).findViewById(R.id.list_discover_company_whv);
+        listViewPost = (BaseListView) listViews.get(1).findViewById(R.id.list_discover_company_post);
         mPager.setAdapter(new MyPagerAdapter(listViews));
         mPager.setCurrentItem(0);
         setViewPagerTitleView(0);
@@ -142,16 +152,16 @@ public class CompanyActivity extends BaseActivity {
 
         switch (position) {
             case 0:
-//                preferenceMap = PreferenceMap.getCurUserPrefDao(this);
-                initXListView(companyAdapter, listViewWhver, whvers);
+                initWHVXListView(companyAdapter, listViewWhver, whvers);
                 break;
             case 1:
+                initPostXListView(companyPostAdapter, listViewPost, posts);
                 break;
         }
 
     }
 
-    private void initXListView(CompanyAdapter adapter, BaseListView<LeanchatUser> listView, List<LeanchatUser> nears) {
+    private void initWHVXListView(CompanyAdapter adapter, BaseListView<LeanchatUser> listView, List<LeanchatUser> nears) {
 
         listView.init(new BaseListView.DataFactory<LeanchatUser>() {
             @Override
@@ -168,6 +178,33 @@ public class CompanyActivity extends BaseActivity {
             @Override
             public void onItemSelected(LeanchatUser item) {
                 ContactPersonInfoActivity.goPersonInfo(ctx, item.getObjectId());
+            }
+        });
+
+        PauseOnScrollListener listener = new PauseOnScrollListener(ImageLoader.getInstance(),
+                true, true);
+        listView.setOnScrollListener(listener);
+        listView.onRefresh();
+    }
+
+    private void initPostXListView(CompanyPostAdapter adapter, BaseListView<CompanyPost> listView, List<CompanyPost> nears) {
+
+        listView.init(new BaseListView.DataFactory<CompanyPost>() {
+            @Override
+            public List<CompanyPost> getDatasInBackground(int skip, int limit, List<CompanyPost> currentDatas) throws Exception {
+                String dest = destination;
+                if (destination.equalsIgnoreCase(getString(R.string.city_australia))) {
+                    dest = "";
+                }
+                return CompanyPost.findCompanyPost(skip, limit, datePlanned, dest);
+            }
+        }, adapter);
+
+        listView.setItemListener(new BaseListView.ItemListener<CompanyPost>() {
+            @Override
+            public void onItemSelected(CompanyPost item) {
+                //TODO 结伴Post Activity
+//                ContactPersonInfoActivity.goPersonInfo(ctx, item.getObjectId());
             }
         });
 
@@ -363,6 +400,7 @@ public class CompanyActivity extends BaseActivity {
                 datePlanned = textString;
             }
         }, myear, mmonth, mday, true);
+
         // 出发时间只能设置为今天以后
         dialog.setMinDate(new Date());
         dialog.show();
