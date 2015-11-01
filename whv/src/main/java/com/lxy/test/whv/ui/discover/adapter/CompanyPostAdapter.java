@@ -1,4 +1,4 @@
-package com.lxy.test.whv.ui.discover;
+package com.lxy.test.whv.ui.discover.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -11,6 +11,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.entity.avobject.CompanyPost;
+import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.adapter.BaseListAdapter;
 import com.lxy.test.whv.util.DateUtils;
@@ -88,15 +89,18 @@ public class CompanyPostAdapter extends BaseListAdapter<CompanyPost> {
         TextView destView = ViewHolder.findViewById(convertView, R.id.dest_text);
         ImageView avatarView = ViewHolder.findViewById(convertView, R.id.avatar_view);
 
-        LeanchatUser user = (LeanchatUser) post.getUser();
+        LeanchatUser user = (LeanchatUser) post.getPublisher();
+//
         if (user != null) {
-            //TODO 取不到?
+            //TODO 取不到?  查询需要include 但是会导致其他用户无法保存
+//            user = CacheService.lookupUser(user.getObjectId());
             ImageLoader.getInstance().displayImage(user.getAvatarUrl(), avatarView,
                     com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
             LogUtils.d("userName = " + user.getUsername() + " avatar = "
                     + user.getAvatarUrl() + " id = " + user.getObjectId());
             nameView.setText(user.getUsername());
         }
+
         titleView.setText(post.getTitle());
         destView.setText(post.getDestination());
 

@@ -23,7 +23,8 @@ public class CompanyPost extends AVObject {
     public static final String CONTENT = "content";
     public static final String DATEPLANNED = "datePlanned";
     public static final String DESTINATION = "destination";
-    public static final String USER = "user";
+    public static final String USER = "publisher";
+    public static final String COMMENT = "comments";
 
     public CompanyPost() {
 
@@ -70,11 +71,11 @@ public class CompanyPost extends AVObject {
         return getString(DESTINATION);
     }
 
-    public AVUser getUser() {
+    public AVUser getPublisher() {
         return getAVUser(USER);
     }
 
-    public void setUser(AVUser user) {
+    public void setPublisher(AVUser user) {
         put(USER, user);
     }
 
@@ -83,7 +84,9 @@ public class CompanyPost extends AVObject {
 
         AVQuery<CompanyPost> q = CompanyPost.getQuery(CompanyPost.class);
         //hehe 还好哟示例
+        //TODO  这里如果include user 其他用户没法发布评论啊....尼玛啊  但是为什么能取到ObjectId呢啊啊啊啊，ffff  这里查到了是不是要保存到cache里边啊？！
         q.include(CompanyPost.USER);
+        q.include(CompanyPost.COMMENT);
         if (dateString != null && !dateString.isEmpty()) {
             Date startDate;
             Date endDate;
@@ -114,4 +117,13 @@ public class CompanyPost extends AVObject {
         List<CompanyPost> posts = q.find();
         return posts;
     }
+
+//    @SuppressWarnings("unchecked")
+//    public List getComments() {
+//        return (List) getList(CompanyPost.COMMENT);
+//    }
+//
+//    public void addComment(PostComment com) {
+//        addUnique("comments", com);
+//    }
 }

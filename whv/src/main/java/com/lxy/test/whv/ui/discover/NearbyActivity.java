@@ -14,6 +14,7 @@ import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
+import com.lxy.test.whv.ui.discover.adapter.NearbyUserAdapter;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.lxy.test.whv.ui.view.HeaderLayout;
 import com.lxy.test.whv.util.UserDAOUtils;

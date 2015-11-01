@@ -72,4 +72,14 @@ public class MoreInfoActivity extends BaseActivity {
         intent.putExtra("title", getString(R.string.discover_more_backpackers_au));
         startActivity(intent);
     }
+
+    @OnClick(R.id.discover_more_map_web)
+    public void goMapWeb(View view) {
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("url", "http://www.whereis.com/");
+        intent.putExtra("title", getString(R.string.discover_more_map_web));
+        startActivity(intent);
+    }
+
+
 }

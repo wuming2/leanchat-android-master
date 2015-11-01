@@ -1,4 +1,4 @@
-package com.lxy.test.whv.ui.discover;
+package com.lxy.test.whv.ui.discover.adapter;
 
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;

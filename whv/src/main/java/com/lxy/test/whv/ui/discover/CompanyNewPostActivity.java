@@ -108,7 +108,6 @@ public class CompanyNewPostActivity extends BaseActivity {
                 }
             }
         });
-
     }
 
     public void goDestinationSelectRadio(View view) {

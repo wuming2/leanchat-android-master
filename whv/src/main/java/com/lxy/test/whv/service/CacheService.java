@@ -25,7 +25,7 @@ public class CacheService {
     private static volatile List<String> friendIds = new ArrayList<String>();
 
     public static LeanchatUser lookupUser(String userId) {
-        //TODO bug
+        //TODO bug  如果没有数据的话会崩溃吧? ！！！ 这里一定要改啊，不然会崩溃吧啊啊啊啊啊......
         return AVUserCacheUtils.getCachedUser(userId);
     }
 
@@ -56,6 +56,7 @@ public class CacheService {
         }
     }
 
+    //TODO 是不是要在线程中做啊...
     public static void cacheUsers(List<String> ids) throws AVException {
         Set<String> uncachedIds = new HashSet<String>();
         for (String id : ids) {

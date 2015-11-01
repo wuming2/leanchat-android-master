@@ -7,14 +7,30 @@
     tools:context="com.lxy.test.whv.ui.discover.CompanyActivity">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2C97E8"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:padding="6dp"
+            android:text="@string/company_filter"
+            android:textColor="#eeffffff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
         android:id="@+id/discover_company_ll_time"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="#2C97E8"
         android:clickable="true"
         android:onClick="showDatePacker"
-        android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/discover_company_iv_time"
@@ -36,12 +52,14 @@
             android:textColorHint="#80ffffff" />
 
         <ImageView
+            android:id="@+id/discover_company_time_clear"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:background="@null"
+            android:clickable="true"
             android:paddingRight="15dp"
-            android:src="@null" />
+            android:src="@drawable/ic_close_trans" />
         <!--ic_close_trans-->
 
 
@@ -50,12 +68,11 @@
     <RelativeLayout
         android:id="@+id/discover_company_ll_destination"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="#2C97E8"
         android:clickable="true"
         android:onClick="goDestinationSelectRadio"
-        android:orientation="horizontal"
-        android:padding="15dp">
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/discover_company_iv_destination"
@@ -77,12 +94,14 @@
             android:textColorHint="#80ffffff" />
 
         <ImageView
+            android:id="@+id/discover_company_destination_clear"
             android:layout_width="wrap_content"
-            android:layout_height="24dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:background="@null"
+            android:clickable="true"
             android:paddingRight="15dp"
-            android:src="@null" />
+            android:src="@drawable/ic_close_trans" />
 
     </RelativeLayout>
 

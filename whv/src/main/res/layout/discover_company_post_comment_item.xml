@@ -4,9 +4,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/common_list_item_height"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:gravity="center_vertical"
+        android:minHeight="@dimen/common_list_item_height"
         android:orientation="horizontal">
 
         <ImageView
@@ -17,16 +18,17 @@
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1.0"
             android:paddingTop="2dp">
 
             <TextView
-                android:id="@+id/name_text"
+                android:id="@+id/content_text"
                 style="@style/My.TextView._Black"
+                android:layout_height="wrap_content"
                 android:paddingTop="2dp"
-                android:text="你好"
+                android:text=""
                 android:textSize="18sp" />
 
             <TextView
@@ -35,15 +37,15 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
                 android:singleLine="true"
-                android:text="distance"
+                android:text=""
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/login_time_text"
+                android:id="@+id/comment_time_text"
                 style="@style/My.TextView._Gray"
-                android:layout_below="@id/name_text"
-                android:singleLine="true"
+                android:layout_below="@id/content_text"
                 android:layout_marginTop="2dp"
+                android:singleLine="true"
                 android:text="你好"
                 android:textSize="13sp" />
         </RelativeLayout>

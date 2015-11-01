@@ -99,6 +99,14 @@
         <activity
             android:name=".ui.discover.CompanyActivity"
             android:label=""
+            android:theme="@style/ChatMainThemeNoShadow" />
+        <activity
+            android:name=".ui.discover.CompanyPostActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+        <activity
+            android:name=".ui.discover.CompanyPostCommentActivity"
+            android:label=""
             android:theme="@style/ChatMainTheme" />
 
         <activity

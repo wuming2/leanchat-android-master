@@ -21,6 +21,9 @@ import com.lxy.test.whv.entity.avobject.CompanyPost;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
+import com.lxy.test.whv.ui.discover.adapter.CompanyAdapter;
+import com.lxy.test.whv.ui.discover.adapter.CompanyPostAdapter;
+import com.lxy.test.whv.ui.discover.adapter.MyPagerAdapter;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.lxy.test.whv.ui.view.DatePickerDialog;
 import com.lxy.test.whv.util.DateUtils;
@@ -62,6 +65,8 @@ public class CompanyActivity extends BaseActivity {
     TextView tv_time;
     @InjectView(R.id.discover_company_viewpager)
     ViewPager mPager;//页卡内容
+
+//    private int pageSelected = 0;
 
     PreferenceMap preferenceMap;
     LeanchatUser user;
@@ -110,6 +115,7 @@ public class CompanyActivity extends BaseActivity {
     protected void onPause() {
         super.onPause();
 //        ButterKnife.reset(this);
+        //TODO 使用侧边按钮
         updateUserInfo();
     }
 
@@ -128,7 +134,6 @@ public class CompanyActivity extends BaseActivity {
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -147,7 +152,7 @@ public class CompanyActivity extends BaseActivity {
         showCompanyInfos(0);
     }
 
-    //TODO 获取并显示同行者
+    // 获取并显示同行者
     private void showCompanyInfos(int position) {
 
         switch (position) {
@@ -203,8 +208,9 @@ public class CompanyActivity extends BaseActivity {
         listView.setItemListener(new BaseListView.ItemListener<CompanyPost>() {
             @Override
             public void onItemSelected(CompanyPost item) {
-                //TODO 结伴Post Activity
-//                ContactPersonInfoActivity.goPersonInfo(ctx, item.getObjectId());
+                Intent i = new Intent(CompanyActivity.this, CompanyPostActivity.class);
+                i.putExtra("post", item);
+                CompanyActivity.this.startActivity(i);
             }
         });
 
@@ -236,6 +242,38 @@ public class CompanyActivity extends BaseActivity {
     @OnClick(R.id.discover_company_ll_whver)
     public void onWhverSelect(View view) {
         mPager.setCurrentItem(0);
+    }
+
+    @OnClick(R.id.discover_company_time_clear)
+    public void clearDestination(View view) {
+        datePlanned = "";
+        tv_time.setText(datePlanned);
+        refreshListView();
+    }
+
+    @OnClick(R.id.discover_company_destination_clear)
+    public void clearTime(View view) {
+        destination = "";
+        tv_destination.setText(destination);
+        refreshListView();
+    }
+
+    private void refreshListView() {
+        int currentPageIndex = mPager.getCurrentItem();
+        switch (currentPageIndex) {
+            case 0:
+                if (listViewWhver != null) {
+                    listViewWhver.onRefresh();
+                }
+
+                break;
+            case 1:
+                if (listViewPost != null) {
+                    listViewPost.onRefresh();
+                }
+
+                break;
+        }
     }
 
 
@@ -291,6 +329,7 @@ public class CompanyActivity extends BaseActivity {
                 toast(cityName);
                 destination = cityName;
                 tv_destination.setText(destination);
+                refreshListView();
                 dialog.dismiss();
             }
         });
@@ -398,6 +437,7 @@ public class CompanyActivity extends BaseActivity {
                         month + 1, day);
                 tv_time.setText(textString);
                 datePlanned = textString;
+                refreshListView();
             }
         }, myear, mmonth, mday, true);
 

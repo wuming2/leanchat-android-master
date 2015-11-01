@@ -70,5 +70,17 @@
             android:text="@string/discover_more_backpackers_au" />
 
         <View style="@style/DividerLine.Horizontal" />
+
+        <TextView
+            android:id="@+id/discover_more_map_web"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_item_height"
+            android:background="@drawable/btn_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:paddingRight="@dimen/common_horizontal_margin"
+            android:text="@string/discover_more_map_web" />
+
+        <View style="@style/DividerLine.Horizontal" />
     </LinearLayout>
 </ScrollView>

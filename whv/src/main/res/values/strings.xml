@@ -44,6 +44,7 @@
     <string name="discover_metres">米</string>
     <string name="discover_unknown">未知</string>
     <string name="discover_recent_login_time">最近登录时间:</string>
+
     <string name="contact_account">账号</string>
     <string name="contact_gender">性别</string>
     <string name="contact_age">年龄</string>
@@ -105,6 +106,7 @@
     <string name="discover_more_visa_application_quick">签证申请快捷入口</string>
     <string name="discover_more_visa_application">签证申请地址</string>
     <string name="discover_more_backpackers_au">背包客栈(TW)澳洲打工渡假</string>
+    <string name="discover_more_map_web">澳洲地图（WEB）</string>
 
 
     <string name="chat_location_activity_send">发送</string>
@@ -136,6 +138,10 @@
     <string name="bootstrap_prefile_tip">个人信息设置</string>
 
     <string name="profile_save">保存</string>
+    <string name="company_filter">过滤器</string>
+    <string name="company_post_comment">回复</string>
+    <string name="company_post_comment_time">回复时间:</string>
+    <string name="company_post_publish_time">发布时间:</string>
 
     <string name="gender_male">男</string>
     <string name="gender_female">女</string>
