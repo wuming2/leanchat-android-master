@@ -6,6 +6,11 @@ import android.content.Context;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.im.v2.AVIMClient;
+import com.avos.avoscloud.im.v2.AVIMConversation;
+import com.avos.avoscloud.im.v2.AVIMException;
+import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
+import com.avos.avoscloud.im.v2.callback.AVIMConversationCreatedCallback;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.baidu.mapapi.SDKInitializer;
@@ -19,6 +24,9 @@ import com.lxy.test.whv.util.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by wuming on 2015/10/11.
@@ -44,7 +52,7 @@ public class App extends Application {
         AVObject.registerSubclass(AddRequest.class);
         AVObject.registerSubclass(CompanyPost.class);
         AVObject.registerSubclass(PostComment.class);
-        
+
         PushManager.getInstance().init(ctx);
         LogUtils.debugEnabled = true;
 
@@ -52,6 +60,29 @@ public class App extends Application {
         initBaiduMap();
 
         initChatManager();
+    }
+
+    private void test() {
+        // 测试创建聊天室
+        AVIMClient tom = AVIMClient.getInstance("Tom");
+        final List<String> members = Collections.emptyList();
+        tom.open(new AVIMClientCallback() {
+
+            @Override
+            public void done(AVIMClient client, AVIMException e) {
+                if (e == null) {
+                    //登录成功
+                    //创建一个 名为 "HelloKitty PK 加菲猫" 的暂态对话
+                    client.createConversation(members, "WHV广场", null, false,
+                            new AVIMConversationCreatedCallback() {
+                                @Override
+                                public void done(AVIMConversation conv, AVIMException e) {
+
+                                }
+                            });
+                }
+            }
+        });
     }
 
     private void initChatManager() {

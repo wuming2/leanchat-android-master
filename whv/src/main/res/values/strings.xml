@@ -74,6 +74,7 @@
     <string name="profile_notifySetting">提醒设置</string>
     <string name="profile_notifyWhenNews">接收新消息通知</string>
     <string name="conversation_group">群组</string>
+    <string name="conversation_group_square">群聊群聊</string>
     <string name="conversation_name">群组名称</string>
     <string name="conversation_create">创建</string>
     <string name="conversation_Members">群组成员</string>

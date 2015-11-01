@@ -90,7 +90,7 @@
             android:layout_weight="1.0"
             android:padding="5dp"
             android:singleLine="true"
-            android:text="@string/conversation_group"
+            android:text="@string/conversation_group_square"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -99,6 +99,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base_line_width_1"
         android:layout_below="@id/layout_group"
-        android:background="@drawable/base_horizontal_line"></View>
+        android:background="@drawable/base_horizontal_line" />
 
 </RelativeLayout>

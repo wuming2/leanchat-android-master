@@ -27,6 +27,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.constant.Constant;
 import com.lxy.test.whv.entity.SortUser;
 import com.lxy.test.whv.service.AddRequestManager;
 import com.lxy.test.whv.service.CacheService;
@@ -243,9 +244,14 @@ public class ContactFragment extends BaseFragment {
 
         @OnClick(R.id.layout_group)
         void goGroupConvList() {
-            //TODO 群组
+            //TODO 先改为群聊 啊啊啊啊
 //            Intent intent = new Intent(ctx, ConversationGroupListActivity.class);
 //            ctx.startActivity(intent);
+
+            Intent intent = new Intent(ctx, ChatRoomActivity.class);
+            // 到群聊广场 TODO
+            intent.putExtra(Constants.SQUARE_ID, Constant.SQUARE_CHAT_ID);
+            startActivity(intent);
         }
 
         public ImageView getMsgTipsView() {

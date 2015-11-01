@@ -84,7 +84,13 @@ public class CompanyInfoEditActivity extends BaseActivity {
             destination = "";
         }
 
-        showMyPlan = user.getBoolean("showMyPlan");
+        boolean planSetted = false;
+        planSetted = user.getBoolean("planSetted");
+        if (planSetted) {
+            showMyPlan = user.getBoolean("showMyPlan");
+        } else {
+            showMyPlan = true;
+        }
         switch_show_my_info.setChecked(showMyPlan);
         tv_time.setText(datePlanned);
         tv_destination.setText(destination);
@@ -92,7 +98,6 @@ public class CompanyInfoEditActivity extends BaseActivity {
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
                         showMyPlan = isChecked;
                         LogUtils.d("switch_show_my_info onCheckedChanged " + isChecked);
                     }

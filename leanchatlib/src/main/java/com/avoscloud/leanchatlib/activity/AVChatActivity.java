@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.avos.avoscloud.im.v2.callback.AVIMConversationCallback;
 import com.avoscloud.leanchatlib.R;
 import com.avos.avoscloud.im.v2.AVIMClient;
 import com.avos.avoscloud.im.v2.AVIMConversation;
@@ -46,7 +47,12 @@ public class AVChatActivity extends AVBaseActivity {
             } else if (extras.containsKey(Constants.CONVERSATION_ID)) {
                 String conversationId = extras.getString(Constants.CONVERSATION_ID);
                 updateConversation(AVIMClient.getInstance(ChatManager.getInstance().getSelfId()).getConversation(conversationId));
-            } else {
+            } else if (extras.containsKey(Constants.SQUARE_ID)) {
+                String conversationId = extras.getString(Constants.SQUARE_ID);
+                AVIMClient client = AVIMClient.getInstance(ChatManager.getInstance().getSelfId());
+                conversation = client.getConversation(conversationId);
+                //TODO 怎么判断有没有已经加入……
+                joinSquare();
             }
         }
     }
@@ -72,6 +78,8 @@ public class AVChatActivity extends AVBaseActivity {
             this.conversation = conversation;
             chatFragment.setConversation(conversation);
             chatFragment.showUserName(ConversationHelper.typeOfConversation(conversation) != ConversationType.Single);
+            LogUtils.d("updateConversation before initActionBar");
+            //TODO conversation 有问题阿啊啊，为什么每次type 为null
             initActionBar(ConversationHelper.titleOfConversation(conversation));
         }
     }
@@ -81,12 +89,28 @@ public class AVChatActivity extends AVBaseActivity {
      * 如果存在，则直接赋值给 ChatFragment，否者创建后再赋值
      */
     private void getConversation(final String memberId) {
+        LogUtils.d("getConversation");
         ChatManager.getInstance().fetchConversationWithUserId(memberId, new AVIMConversationCreatedCallback() {
             @Override
             public void done(AVIMConversation conversation, AVIMException e) {
                 if (filterException(e)) {
                     ChatManager.getInstance().getRoomsTable().insertRoom(conversation.getConversationId());
                     updateConversation(conversation);
+                }
+            }
+        });
+    }
+
+    private void joinSquare() {
+        conversation.join(new AVIMConversationCallback() {
+            @Override
+            public void done(AVIMException e) {
+                if (filterException(e)) {
+                    updateConversation(conversation);
+                } else {
+                    //TODO error
+                    showToast("error");
+                    finish();
                 }
             }
         });

@@ -38,4 +38,6 @@ public class Constant {
         return map;
     }
 
+    public static String SQUARE_CHAT_ID = "5635d3ee60b259742c3a0031";
+
 }
