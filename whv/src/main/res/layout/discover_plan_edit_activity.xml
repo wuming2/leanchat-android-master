@@ -1,0 +1,124 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/discover_company_pan_ll_time"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:clickable="true"
+        android:onClick="showDatePacker"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/discover_company_plan_iv_time"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_bbs_partner_calendar" />
+
+        <TextView
+            android:id="@+id/discover_company_plan_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/discover_company_plan_iv_time"
+            android:hint="出发时间"
+            android:paddingLeft="15dp"
+            android:paddingTop="1dp"
+            android:text=""
+            android:textColor="#000000"
+            android:textColorHint="#70000000" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:paddingRight="15dp"
+            android:src="@null" />
+        <!--ic_close_trans-->
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/discover_company_plan_ll_destination"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:clickable="true"
+        android:onClick="goDestinationSelectRadio"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/discover_company_plan_iv_destination"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_bbs_partner_city" />
+
+        <TextView
+            android:id="@+id/discover_company_plan_tv_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/discover_company_plan_iv_destination"
+            android:hint="目的地"
+            android:paddingLeft="15dp"
+            android:paddingTop="2dp"
+            android:text=""
+            android:textColor="#000000"
+            android:textColorHint="#70000000" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:paddingRight="15dp"
+            android:src="@null" />
+
+    </RelativeLayout>
+
+    <Switch
+        android:id="@+id/switch_company_show_my_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="10dp"
+        android:checked="true"
+        android:text="是否显示我的信息:" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:padding="10dp"
+            android:text="只有在你设置了计划出行时间后其他人才会在同行中找到你，也可以通过关闭 “是否显示我的信息”选项来隐藏自己的出行计划" />
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <Button
+            android:id="@+id/button_plan_edit_submit"
+            style="@style/My.Button.theme"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:onClick="updateUserInfo"
+            android:text="@string/profile_save" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -69,7 +69,8 @@ public class BaseListView<T> extends XListView implements XListView.IXListViewLi
                 if (datas.size() < ONE_PAGE_SIZE) {
                     if (isToastIfEmpty()) {
                         if (datas.size() == 0) {
-                            Utils.toast(getContext(), R.string.chat_base_list_view_listEmptyHint);
+                            //TODO 是不是要界面上显示
+//                            Utils.toast(getContext(), R.string.chat_base_list_view_listEmptyHint);
                         }
                     }
                     //setPullLoadEnable(false);

@@ -4,9 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -116,7 +120,6 @@ public class CompanyActivity extends BaseActivity {
         super.onPause();
 //        ButterKnife.reset(this);
         //TODO 使用侧边按钮
-        updateUserInfo();
     }
 
     /**
@@ -279,29 +282,23 @@ public class CompanyActivity extends BaseActivity {
 
     private void getInfo() {
         user = LeanchatUser.getCurrentUser();
+        boolean planSetted = false;
+        planSetted = user.getBoolean("planSetted");
+        if (!planSetted) {
+            goCompanyInfoEditActivity();
+//            finish();
+        }
         Date date = user.getDate("datePlanned");
         if (date != null) {
             datePlanned = DateUtils.dateToStr(date, "yyyy-MM-dd");
         }
         destination = user.getString("destination");
-        if (destination == null) {
+        if (destination == null || destination.isEmpty()) {
             destination = "";
         }
 
         tv_time.setText(datePlanned);
         tv_destination.setText(destination);
-    }
-
-    private void updateUserInfo() {
-        LeanchatUser user = LeanchatUser.getCurrentUser();
-        try {
-            Date date = DateUtils.toDate(datePlanned, "yyyy-MM-dd");
-            user.put("datePlanned", date);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        user.put("destination", destination);
-        user.updateUserInfo();
     }
 
     public void goDestinationSelectRadio(View view) {
@@ -444,5 +441,29 @@ public class CompanyActivity extends BaseActivity {
         // 出发时间只能设置为今天以后
         dialog.setMinDate(new Date());
         dialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.discover_company_ativity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        int menuId = item.getItemId();
+        LogUtils.d("onMenuItemSelected" + featureId + menuId);
+        if (menuId == R.id.company_userinfo_setting) {
+            //TODO 编辑个人计划信息
+            goCompanyInfoEditActivity();
+
+        }
+        return super.onMenuItemSelected(featureId, item);
+    }
+
+    private void goCompanyInfoEditActivity() {
+        Intent i = new Intent(CompanyActivity.this, CompanyInfoEditActivity.class);
+        CompanyActivity.this.startActivity(i);
     }
 }

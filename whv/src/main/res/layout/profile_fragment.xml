@@ -64,11 +64,11 @@
                 <View style="@style/DividerLine.Horizontal"/>
 
                 <TextView
-                    android:id="@+id/profile_visa_tracking_test"
+                    android:id="@+id/profile_about"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
                     android:layout_height="@dimen/setting_item_height"
-                    android:text="签证处理进度查询"
+                    android:text="关于"
                     android:background="@drawable/btn_selector"
                     android:paddingLeft="@dimen/common_horizontal_margin"
                     android:paddingRight="@dimen/common_horizontal_margin"

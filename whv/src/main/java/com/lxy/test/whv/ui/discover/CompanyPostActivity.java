@@ -64,6 +64,11 @@ public class CompanyPostActivity extends BaseActivity {
         ButterKnife.inject(this);
         initActionBar("结伴详情");
         initDate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         showComment();
     }
 

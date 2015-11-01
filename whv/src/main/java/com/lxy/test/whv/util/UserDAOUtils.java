@@ -87,6 +87,7 @@ public class UserDAOUtils {
         if (cityName != null && !cityName.isEmpty()) {
             q.whereEqualTo("destination", cityName);
         }
+        q.whereEqualTo("showMyPlan", true);
         q.skip(skip);
         q.limit(limit);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);

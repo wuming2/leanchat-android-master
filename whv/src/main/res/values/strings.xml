@@ -107,6 +107,7 @@
     <string name="discover_more_visa_application">签证申请地址</string>
     <string name="discover_more_backpackers_au">背包客栈(TW)澳洲打工渡假</string>
     <string name="discover_more_map_web">澳洲地图（WEB）</string>
+    <string name="discover_more_seek">seek找工作</string>
 
 
     <string name="chat_location_activity_send">发送</string>
@@ -123,7 +124,7 @@
     <string name="title_activity_visa_tracking">VisaTrackingActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
 
     <string name="bootstrap_application_state_tip">WHV申请状态</string>
     <string name="bootstrap_state_want_to_know">我要先了解一下WHV</string>

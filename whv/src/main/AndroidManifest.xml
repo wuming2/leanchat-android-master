@@ -100,6 +100,12 @@
             android:name=".ui.discover.CompanyActivity"
             android:label=""
             android:theme="@style/ChatMainThemeNoShadow" />
+
+        <activity
+            android:name=".ui.discover.CompanyInfoEditActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
         <activity
             android:name=".ui.discover.CompanyPostActivity"
             android:label=""
@@ -124,11 +130,16 @@
             android:label=""
             android:theme="@style/ChatMainTheme" />
 
-        <!-- TODO   -->
         <activity
             android:name=".ui.profile.ProfileEditActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />
+
+        <activity
+            android:name=".ui.profile.AboutActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
 
         <!-- 消息推送推送服务 -->
         <service android:name="com.avos.avoscloud.PushService" />

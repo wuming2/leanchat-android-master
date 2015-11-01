@@ -52,7 +52,14 @@ public class CompanyPostCommentActivity extends BaseActivity {
     public void submit(View view) {
 
         PostComment comt = new PostComment();
-        comt.setContent(edittext.getText().toString());
+
+        String content = edittext.getText().toString();
+        if (content.trim().isEmpty()) {
+
+            toast("好歹写点字吧-。-");
+            return;
+        }
+        comt.setContent(content);
         comt.setCreator(AVUser.getCurrentUser());
         comt.setPostId(post.getObjectId());
         comt.saveInBackground(new SaveCallback() {
@@ -61,6 +68,7 @@ public class CompanyPostCommentActivity extends BaseActivity {
                     toast("保存失败 " + arg0.getLocalizedMessage());
                 } else {
                     finish();
+                    // 不再保存到CompanyPost中
 //                    post.addComment(comt);
 //                    //TODO 哎这里怎么办啊....
 //                    post.saveInBackground(new SaveCallback() {

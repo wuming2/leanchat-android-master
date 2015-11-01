@@ -3,14 +3,12 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/discover_more_ll_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_top_margin"
         android:background="@android:color/white"
         android:orientation="vertical">
-
-
-        <View style="@style/DividerLine.Horizontal" />
 
         <TextView
             android:id="@+id/discover_more_imagineaustralia_weibo"
@@ -80,6 +78,18 @@
             android:paddingLeft="@dimen/common_horizontal_margin"
             android:paddingRight="@dimen/common_horizontal_margin"
             android:text="@string/discover_more_map_web" />
+
+        <View style="@style/DividerLine.Horizontal" />
+
+        <TextView
+            android:id="@+id/discover_more_seek"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_item_height"
+            android:background="@drawable/btn_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/common_horizontal_margin"
+            android:paddingRight="@dimen/common_horizontal_margin"
+            android:text="@string/discover_more_seek" />
 
         <View style="@style/DividerLine.Horizontal" />
     </LinearLayout>

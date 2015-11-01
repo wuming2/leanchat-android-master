@@ -102,14 +102,12 @@ public class CompanyPost extends AVObject {
                 e.printStackTrace();
                 return new ArrayList<>();
             }
-            //TODO 先获取全部
-//            q.whereGreaterThan("datePlanned", startDate);
-//            q.whereLessThan("datePlanned", endDate);
+            q.whereGreaterThan("datePlanned", startDate);
+            q.whereLessThan("datePlanned", endDate);
         }
 
         if (cityName != null && !cityName.isEmpty()) {
-            //TODO 先获取全部
-//            q.whereEqualTo("destination", cityName);
+            q.whereEqualTo("destination", cityName);
         }
         q.skip(skip);
         q.limit(limit);

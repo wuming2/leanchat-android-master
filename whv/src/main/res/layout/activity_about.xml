@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="com.lxy.test.whv.ui.WebViewActivity">
+
+    <ProgressBar
+        android:id="@+id/webviw_progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar_style"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textSize="18sp"
+        android:text="对啊，就是很多很多的bug啊。作为一个开发者我表示让我慢慢改吧。先凑合着用吧，欢迎提意见，但是一般我都无视233333333" />
+
+    <Button
+        android:id="@+id/button_douniwan"
+        style="@style/My.Button.theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:text="不要点我，除非你是程序员" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/webviw_progressBar"
+        android:visibility="gone" />
+
+</RelativeLayout>
