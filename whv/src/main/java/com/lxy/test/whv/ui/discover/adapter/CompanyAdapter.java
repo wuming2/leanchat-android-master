@@ -13,6 +13,7 @@ import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.adapter.BaseListAdapter;
+import com.lxy.test.whv.util.DateUtils;
 import com.lxy.test.whv.util.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -78,12 +79,14 @@ public class CompanyAdapter extends BaseListAdapter<LeanchatUser> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //TODO 同行样式
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.discover_near_people_item, null, false);
+            convertView = inflater.inflate(R.layout.discover_company_whver_item, null, false);
         }
-        final LeanchatUser user = (LeanchatUser) datas.get(position);
+        final LeanchatUser user = datas.get(position);
         TextView nameView = ViewHolder.findViewById(convertView, R.id.name_text);
         TextView distanceView = ViewHolder.findViewById(convertView, R.id.distance_text);
         TextView loginTimeView = ViewHolder.findViewById(convertView, R.id.login_time_text);
+        TextView planTimeView = ViewHolder.findViewById(convertView, R.id.planTime_text);
+        TextView destinationView = ViewHolder.findViewById(convertView, R.id.destination_text);
         ImageView avatarView = ViewHolder.findViewById(convertView, R.id.avatar_view);
 
         ImageLoader.getInstance().displayImage(user.getAvatarUrl(), avatarView, com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
@@ -100,6 +103,17 @@ public class CompanyAdapter extends BaseListAdapter<LeanchatUser> {
             distanceView.setText(App.ctx.getString(R.string.discover_unknown));
         }
         nameView.setText(user.getUsername());
+        Date date = user.getDate("datePlanned");
+        String datePlanned = "";
+        if (date != null) {
+            datePlanned = DateUtils.dateToStr(date, "| yyyy-MM-dd ");
+        }
+        planTimeView.setText(datePlanned);
+        String destination = user.getString("destination");
+        if (destination == null) {
+            destination = "";
+        }
+        destinationView.setText(destination);
         Date updatedAt = user.getUpdatedAt();
         String prettyTimeStr = this.prettyTime.format(updatedAt);
         loginTimeView.setText(App.ctx.getString(R.string.discover_recent_login_time) + prettyTimeStr);
