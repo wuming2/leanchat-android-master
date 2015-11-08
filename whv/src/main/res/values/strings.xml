@@ -93,6 +93,7 @@
     <string name="discover_fragment_sort">排序</string>
     <string name="discover_fragment_loginTime">登录时间</string>
     <string name="discover_fragment_distance">距离</string>
+    <string name="discover_post">打工度假News</string>
     <string name="discover_nearby">附近的人</string>
     <string name="discover_together">同行</string>
     <string name="discover_meetup">聚会</string>

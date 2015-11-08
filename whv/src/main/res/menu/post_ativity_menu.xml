@@ -2,8 +2,8 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/openInBrowser"
-        android:icon="@drawable/ic_web_bar_browser"
+        android:id="@+id/info"
+        android:icon="@drawable/utils_icon_info_2"
         android:showAsAction="always"
         android:title="" />
 </menu>

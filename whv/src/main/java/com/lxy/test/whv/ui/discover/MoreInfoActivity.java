@@ -62,7 +62,7 @@ public class MoreInfoActivity extends BaseActivity {
     @OnClick(R.id.discover_more_douban)
     public void goDouban(View view) {
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra("url", "http://m.douban.com/group/whvers/");
+        intent.putExtra("url", "http://www.douban.com/group/whvers/");
         intent.putExtra("title", "豆瓣澳大利亚WHV小组");
         startActivity(intent);
     }

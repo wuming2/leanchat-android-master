@@ -27,7 +27,6 @@ public class WebViewActivity extends BaseActivity {
 
     @InjectView(R.id.webviw_progressBar)
     ProgressBar bar;
-
     String url;
 
     @Override

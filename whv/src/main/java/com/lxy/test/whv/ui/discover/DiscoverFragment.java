@@ -38,6 +38,13 @@ public class DiscoverFragment extends BaseFragment {
         initHeader();
     }
 
+
+    @OnClick(R.id.discover_post)
+    public void goPostActivity() {
+        Intent intent = new Intent(this.getActivity(), PostActivity.class);
+        this.getActivity().startActivity(intent);
+    }
+
     @OnClick(R.id.discover_nearby)
     public void goNearbyActivity() {
         Intent intent = new Intent(this.getActivity(), NearbyActivity.class);

@@ -107,6 +107,11 @@
             android:theme="@style/ChatMainTheme" />
 
         <activity
+            android:name=".ui.discover.PostActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
+        <activity
             android:name=".ui.discover.CompanyPostActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />

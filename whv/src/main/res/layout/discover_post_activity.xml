@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="com.lxy.test.whv.ui.discover.PostActivity">
+
+    <com.lxy.test.whv.ui.view.BaseListView
+        android:id="@+id/list_near"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/nearby_headerlayout"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="1dp"
+        android:fadingEdgeLength="0dp"
+        android:fastScrollEnabled="true"
+        android:paddingBottom="10dp" />
+
+</RelativeLayout>
