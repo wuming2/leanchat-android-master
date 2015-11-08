@@ -20,17 +20,19 @@
         android:layout_centerVertical="true"
         android:gravity="center"
         android:padding="50dp"
-        android:text="嗯，还没东西，看那个懒B程序员什么时候开发吧"
+        android:text=""
         android:textSize="20sp"
         android:visibility="gone" />
 
     <Button
         android:id="@+id/button_new_post"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:onClick="goNewPostActivity"
-        android:text="发帖" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/ic_public_btn_add"
+        android:onClick="goNewPostActivity" />
 </RelativeLayout>

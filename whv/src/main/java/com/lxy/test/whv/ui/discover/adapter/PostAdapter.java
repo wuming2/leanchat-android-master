@@ -11,18 +11,16 @@ import android.widget.TextView;
 
 import com.avoscloud.leanchatlib.view.ViewHolder;
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.entity.avobject.Post;
+import com.lxy.test.whv.entity.avobject.News;
 import com.lxy.test.whv.ui.adapter.BaseListAdapter;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
-import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.List;
 
 /**
  * Created by LXY on 2015/10/15.
  */
-public class PostAdapter extends BaseListAdapter<Post> {
+public class PostAdapter extends BaseListAdapter<News> {
 
     int screenWidth;
 
@@ -32,7 +30,7 @@ public class PostAdapter extends BaseListAdapter<Post> {
         init(ctx);
     }
 
-    public PostAdapter(Context ctx, List<Post> datas) {
+    public PostAdapter(Context ctx, List<News> datas) {
         super(ctx, datas);
         init(ctx);
     }
@@ -56,7 +54,7 @@ public class PostAdapter extends BaseListAdapter<Post> {
             convertView = inflater.inflate(R.layout.discover_post_item, null, false);
             //screenWidth = convertView.getWidth();
         }
-        Post post = (Post) datas.get(position);
+        News news = (News) datas.get(position);
         TextView nameView = ViewHolder.findViewById(convertView, R.id.post_title_tv);
         ImageView imageView = ViewHolder.findViewById(convertView, R.id.post_iv);
 
@@ -68,8 +66,8 @@ public class PostAdapter extends BaseListAdapter<Post> {
         imageView.setMaxWidth(screenWidth);
         imageView.setMaxHeight(screenWidth * 5 / 9);
 
-        nameView.setText(post.getTitle());
-        String imgUrl = post.getImgurl();
+        nameView.setText(news.getTitle());
+        String imgUrl = news.getImgurl();
         if (imgUrl != null && !imgUrl.isEmpty()) {
             imageView.setVisibility(View.VISIBLE);
             ImageLoader.getInstance().displayImage(imgUrl, imageView, com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);

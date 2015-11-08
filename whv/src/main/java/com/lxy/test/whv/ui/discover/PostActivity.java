@@ -1,20 +1,16 @@
 package com.lxy.test.whv.ui.discover;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
-import com.lxy.test.whv.entity.avobject.Post;
+import com.lxy.test.whv.entity.avobject.News;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.WebViewActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
-import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
 import com.lxy.test.whv.ui.discover.adapter.PostAdapter;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,9 +25,9 @@ import butterknife.InjectView;
 public class PostActivity extends BaseActivity {
 
     @InjectView(R.id.list_near)
-    BaseListView<Post> listView;
+    BaseListView<News> listView;
     PostAdapter adapter;
-    List<Post> posts = new ArrayList<>();
+    List<News> newses = new ArrayList<>();
     PreferenceMap preferenceMap;
 
     @Override
@@ -74,18 +70,18 @@ public class PostActivity extends BaseActivity {
     }
 
     private void initXListView() {
-        adapter = new PostAdapter(ctx, posts);
-        listView = (BaseListView<Post>) findViewById(R.id.list_near);
-        listView.init(new BaseListView.DataFactory<Post>() {
+        adapter = new PostAdapter(ctx, newses);
+        listView = (BaseListView<News>) findViewById(R.id.list_near);
+        listView.init(new BaseListView.DataFactory<News>() {
             @Override
-            public List<Post> getDatasInBackground(int skip, int limit, List<Post> currentDatas) throws Exception {
-                return Post.getPost(skip, limit);
+            public List<News> getDatasInBackground(int skip, int limit, List<News> currentDatas) throws Exception {
+                return News.getPost(skip, limit);
             }
         }, adapter);
 
-        listView.setItemListener(new BaseListView.ItemListener<Post>() {
+        listView.setItemListener(new BaseListView.ItemListener<News>() {
             @Override
-            public void onItemSelected(Post item) {
+            public void onItemSelected(News item) {
                 //TODO 点击跳转
                 Intent intent = new Intent(PostActivity.this, WebViewActivity.class);
                 intent.putExtra("url", item.getUrl());

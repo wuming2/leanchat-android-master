@@ -35,6 +35,8 @@
 
     <string name="password_can_not_null">密码不能为空</string>
     <string name="username_cannot_null">用户名不能为空</string>
+    <string name="password_too_short">密码长度不能小于6个字符</string>
+    <string name="username_too_short">用户名不能少于6个字符</string>
     <string name="password_not_consistent">输入的两次密码不一致</string>
     <string name="registerSucceed">注册成功</string>
     <string name="registerFailed">注册失败。</string>
@@ -130,7 +132,7 @@
 
     <string name="bootstrap_application_state_tip">WHV申请状态</string>
     <string name="bootstrap_state_want_to_know">我要先了解一下WHV</string>
-    <string name="bootstrap_state_preparing">准备签字资料中</string>
+    <string name="bootstrap_state_preparing">准备签证资料中</string>
     <string name="bootstrap_state_submiting">申请进行中</string>
     <string name="bootstrap_state_granted">已下签，准备中</string>
     <string name="bootstrap_state_abroad">人在澳洲</string>

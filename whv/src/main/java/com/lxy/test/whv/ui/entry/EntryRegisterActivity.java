@@ -49,10 +49,16 @@ public class EntryRegisterActivity extends EntryBaseActivity {
         if (TextUtils.isEmpty(name)) {
             Utils.toast(R.string.username_cannot_null);
             return;
+        } else if (name.length() <= 5) {
+            Utils.toast(R.string.username_too_short);
+            return;
         }
 
         if (TextUtils.isEmpty(password)) {
             Utils.toast(R.string.password_can_not_null);
+            return;
+        } else if (password.length() <= 5) {
+            Utils.toast(R.string.password_too_short);
             return;
         }
         if (!againPassword.equals(password)) {

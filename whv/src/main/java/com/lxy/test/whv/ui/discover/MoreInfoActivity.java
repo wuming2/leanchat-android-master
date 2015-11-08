@@ -23,7 +23,7 @@ public class MoreInfoActivity extends BaseActivity {
     private String urls[] = {"http://m.weibo.cn/u/1918101143", "http://m.douban.com/group/whvers/",
             "https://www.visaservices.org.in/DIAC-China-Appointment/AppScheduling/AppWelcome.aspx?p=Gta39GFZnstZVCxNVy83zTlkvzrXE95fkjmft28XjNg%3d",
             "http://www.vfsglobal.com/Australia/China/", "http://www.backpackers.com.tw/forum/forumdisplay.php?f=121", "http://www.whereis.com/",
-            "http://www.seek.com.au/"};
+            "http://m.seek.com.au/"};
     private int titleId[] = {R.string.discover_more_imagineaustralia_weibo, R.string.discover_more_douban, R.string.discover_more_visa_application_quick,
             R.string.discover_more_visa_application, R.string.discover_more_backpackers_au, R.string.discover_more_map_web, R.string.discover_more_seek};
 
@@ -102,7 +102,7 @@ public class MoreInfoActivity extends BaseActivity {
     @OnClick(R.id.discover_more_seek)
     public void goSeek(View view) {
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra("url", "http://www.seek.com.au/");
+        intent.putExtra("url", "http://m.seek.com.au/");
         intent.putExtra("title", getString(R.string.discover_more_seek));
         startActivity(intent);
     }
