@@ -5,6 +5,8 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avoscloud.leanchatlib.model.LeanchatUser;
+import com.lxy.test.whv.service.CacheService;
 
 import java.util.List;
 
@@ -51,6 +53,9 @@ public class PostComment extends AVObject {
         q.limit(limit);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         List<PostComment> comments = q.find();
+        for (int i = 0; i < comments.size(); i++) {
+            CacheService.registerUser((LeanchatUser) comments.get(i).getCreator());
+        }
         return comments;
     }
 }

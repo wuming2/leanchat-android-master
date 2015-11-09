@@ -5,6 +5,8 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avoscloud.leanchatlib.model.LeanchatUser;
+import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.util.DateUtils;
 
 import java.util.ArrayList;
@@ -113,6 +115,9 @@ public class CompanyPost extends AVObject {
         q.limit(limit);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         List<CompanyPost> posts = q.find();
+        for (int i = 0; i < posts.size(); i++) {
+            CacheService.registerUser((LeanchatUser) posts.get(i).getPublisher());
+        }
         return posts;
     }
 
