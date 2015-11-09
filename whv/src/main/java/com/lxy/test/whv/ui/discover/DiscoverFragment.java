@@ -41,7 +41,7 @@ public class DiscoverFragment extends BaseFragment {
 
     @OnClick(R.id.discover_post)
     public void goPostActivity() {
-        Intent intent = new Intent(this.getActivity(), PostActivity.class);
+        Intent intent = new Intent(this.getActivity(), NewsActivity.class);
         this.getActivity().startActivity(intent);
     }
 

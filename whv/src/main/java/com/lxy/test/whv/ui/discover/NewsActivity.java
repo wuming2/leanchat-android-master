@@ -22,7 +22,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class PostActivity extends BaseActivity {
+public class NewsActivity extends BaseActivity {
 
     @InjectView(R.id.list_near)
     BaseListView<News> listView;
@@ -82,8 +82,7 @@ public class PostActivity extends BaseActivity {
         listView.setItemListener(new BaseListView.ItemListener<News>() {
             @Override
             public void onItemSelected(News item) {
-                //TODO 点击跳转
-                Intent intent = new Intent(PostActivity.this, WebViewActivity.class);
+                Intent intent = new Intent(NewsActivity.this, WebViewActivity.class);
                 intent.putExtra("url", item.getUrl());
                 intent.putExtra("title", item.getTitle());
                 startActivity(intent);
