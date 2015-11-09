@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="0dp"
-    tools:context="com.lxy.test.whv.ui.discover.CompanyPostActivity">
+    tools:context="com.lxy.test.whv.ui.discover.PostInfoActivity">
 
     <RelativeLayout
         android:id="@+id/discover_company_ll_time"
@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/company_post_title"
             android:layout_toLeftOf="@+id/ll_poster_info"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/company_post_time"
@@ -37,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="time"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/company_post_destination"

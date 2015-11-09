@@ -38,8 +38,13 @@ public class DiscoverFragment extends BaseFragment {
         initHeader();
     }
 
-
     @OnClick(R.id.discover_post)
+    public void goNewsActivity() {
+        Intent intent = new Intent(this.getActivity(), PostActivity.class);
+        this.getActivity().startActivity(intent);
+    }
+
+    @OnClick(R.id.discover_news)
     public void goPostActivity() {
         Intent intent = new Intent(this.getActivity(), NewsActivity.class);
         this.getActivity().startActivity(intent);

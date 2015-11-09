@@ -30,7 +30,7 @@ import butterknife.OnClick;
 /**
  * Created by wuming on 2015/10/31.
  */
-public class CompanyPostActivity extends BaseActivity {
+public class CompanyPostInfoActivity extends BaseActivity {
 
     private CompanyPost post;
     private LeanchatUser user;
@@ -60,7 +60,7 @@ public class CompanyPostActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.discover_company_post_activity);
+        setContentView(R.layout.discover_company_postinfo_activity);
         ButterKnife.inject(this);
         initActionBar("结伴详情");
         initDate();
@@ -119,12 +119,12 @@ public class CompanyPostActivity extends BaseActivity {
 
     @OnClick(R.id.ll_poster_info)
     public void gotUserActivity(View view) {
-        ContactPersonInfoActivity.goPersonInfo(CompanyPostActivity.this, user.getObjectId());
+        ContactPersonInfoActivity.goPersonInfo(CompanyPostInfoActivity.this, user.getObjectId());
     }
 
     @OnClick(R.id.button_post_comment)
     public void gotPostCommentActivity(View view) {
-        Intent i = new Intent(CompanyPostActivity.this, CompanyPostCommentActivity.class);
+        Intent i = new Intent(CompanyPostInfoActivity.this, CompanyPostCommentActivity.class);
         i.putExtra("post", post);
         startActivity(i);
     }

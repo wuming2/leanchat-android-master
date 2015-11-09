@@ -1,20 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="0dp"
-    tools:context="com.lxy.test.whv.ui.discover.NewsActivity">
+    tools:context="com.lxy.test.whv.ui.discover.PostActivity">
 
-    <com.lxy.test.whv.ui.view.BaseListView
-        android:id="@+id/list_near"
+
+    <LinearLayout
+        android:id="@+id/discover_company_ll_fragment_select"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/discover_company_ll_post"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="全部" />
+
+            <View
+                android:id="@+id/discover_post_selectview"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@null" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/discover_post_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/nearby_headerlayout"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:dividerHeight="1dp"
-        android:fadingEdgeLength="0dp"
-        android:fastScrollEnabled="true"
-        android:paddingBottom="10dp" />
+        android:layout_gravity="center"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation" />
 
-</RelativeLayout>
+</LinearLayout>

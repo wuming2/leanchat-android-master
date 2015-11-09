@@ -17,6 +17,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.lxy.test.whv.entity.avobject.AddRequest;
 import com.lxy.test.whv.entity.avobject.CompanyPost;
 import com.lxy.test.whv.entity.avobject.News;
+import com.lxy.test.whv.entity.avobject.Post;
 import com.lxy.test.whv.entity.avobject.PostComment;
 import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.PushManager;
@@ -54,6 +55,7 @@ public class App extends Application {
         AVObject.registerSubclass(CompanyPost.class);
         AVObject.registerSubclass(PostComment.class);
         AVObject.registerSubclass(News.class);
+        AVObject.registerSubclass(Post.class);
 
         PushManager.getInstance().init(ctx);
         LogUtils.debugEnabled = true;

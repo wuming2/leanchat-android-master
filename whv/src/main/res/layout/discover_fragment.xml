@@ -23,14 +23,14 @@
             <View style="@style/DividerLine.Horizontal" />
 
             <TextView
-                android:id="@+id/discover_post"
+                android:id="@+id/discover_news"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/setting_item_height"
                 android:background="@drawable/btn_selector"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/common_horizontal_margin"
                 android:paddingRight="@dimen/common_horizontal_margin"
-                android:text="@string/discover_post" />
+                android:text="@string/discover_news" />
 
             <View style="@style/DividerLine.Horizontal" />
 
@@ -55,6 +55,18 @@
                 android:paddingLeft="@dimen/common_horizontal_margin"
                 android:paddingRight="@dimen/common_horizontal_margin"
                 android:text="@string/discover_together" />
+
+            <View style="@style/DividerLine.Horizontal" />
+
+            <TextView
+                android:id="@+id/discover_post"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/setting_item_height"
+                android:background="@drawable/btn_selector"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/common_horizontal_margin"
+                android:paddingRight="@dimen/common_horizontal_margin"
+                android:text="@string/discover_post" />
 
             <View style="@style/DividerLine.Horizontal" />
 

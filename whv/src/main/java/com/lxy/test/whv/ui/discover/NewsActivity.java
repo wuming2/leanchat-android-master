@@ -11,7 +11,7 @@ import com.lxy.test.whv.entity.avobject.News;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.ui.WebViewActivity;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
-import com.lxy.test.whv.ui.discover.adapter.PostAdapter;
+import com.lxy.test.whv.ui.discover.adapter.NewsAdapter;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
@@ -26,16 +26,16 @@ public class NewsActivity extends BaseActivity {
 
     @InjectView(R.id.list_near)
     BaseListView<News> listView;
-    PostAdapter adapter;
+    NewsAdapter adapter;
     List<News> newses = new ArrayList<>();
     PreferenceMap preferenceMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.discover_post_activity);
+        setContentView(R.layout.discover_news_activity);
         ButterKnife.inject(this);
-        initActionBar(R.string.discover_post);
+        initActionBar(R.string.discover_news);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class NewsActivity extends BaseActivity {
     }
 
     private void initXListView() {
-        adapter = new PostAdapter(ctx, newses);
+        adapter = new NewsAdapter(ctx, newses);
         listView = (BaseListView<News>) findViewById(R.id.list_near);
         listView.init(new BaseListView.DataFactory<News>() {
             @Override
