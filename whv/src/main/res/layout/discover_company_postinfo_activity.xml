@@ -18,8 +18,8 @@
             style="@style/My.TextView._Black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_toLeftOf="@+id/ll_poster_info"
-            android:maxLines="1"
             android:text="title"
             android:textSize="18sp" />
 
@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/company_post_title"
             android:layout_toLeftOf="@+id/ll_poster_info"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/company_post_time"
@@ -55,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/company_time_destination_ll"
             android:layout_toLeftOf="@+id/ll_poster_info"
-            android:text="content"
-            android:textSize="17sp" />
+            android:text=""
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/company_post_posttime"

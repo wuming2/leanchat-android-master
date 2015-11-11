@@ -83,6 +83,9 @@ public class BaseActivity extends FragmentActivity {
                 actionBar.setTitle(title);
             }
             actionBar.setDisplayUseLogoEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
+//            actionBar.setLogo(null);
+            // 不显示logo
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -94,6 +97,8 @@ public class BaseActivity extends FragmentActivity {
                 actionBar.setTitle(title);
             }
             actionBar.setDisplayUseLogoEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
+//            actionBar.setLogo(null);
             actionBar.setDisplayHomeAsUpEnabled(canGoBack);
         }
     }

@@ -81,7 +81,7 @@ public class PostAdapter extends BaseListAdapter<Post> {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.discover_post_item, null, false);
         }
-        final Post post = (Post) datas.get(position);
+        final Post post = datas.get(position);
         TextView nameView = ViewHolder.findViewById(convertView, R.id.user_name_text);
         TextView contentView = ViewHolder.findViewById(convertView, R.id.content_text);
         TextView planedTimeView = ViewHolder.findViewById(convertView, R.id.time_text);
@@ -96,24 +96,14 @@ public class PostAdapter extends BaseListAdapter<Post> {
 //            user = CacheService.lookupUser(user.getObjectId());
             ImageLoader.getInstance().displayImage(user.getAvatarUrl(), avatarView,
                     com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
-            LogUtils.d("userName = " + user.getUsername() + " avatar = "
-                    + user.getAvatarUrl() + " id = " + user.getObjectId());
+//            LogUtils.d("userName = " + user.getUsername() + " avatar = "
+//                    + user.getAvatarUrl() + " id = " + user.getObjectId());
             nameView.setText(user.getUsername());
         }
 
         titleView.setText(post.getTitle());
         destView.setText(post.getDestination());
         contentView.setText(post.getContent());
-
-        Date date = post.getDateplanned();
-        if (date != null) {
-            LogUtils.d("date != null  true");
-            String datePlanned = DateUtils.dateToStr(date, "yyyy-MM-dd");
-            planedTimeView.setText(datePlanned);
-        }
-        LogUtils.e("!!!!!!date == null  true");
-//        Date updatedAt = post.getUpdatedAt();
-//        String prettyTimeStr = this.prettyTime.format(updatedAt);
         return convertView;
     }
 }

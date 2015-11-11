@@ -14,6 +14,7 @@ import com.lxy.test.whv.service.CacheService;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
 import com.lxy.test.whv.ui.discover.adapter.CompanyPostCommentAdapter;
+import com.lxy.test.whv.ui.discover.adapter.PostCommentAdapter;
 import com.lxy.test.whv.ui.view.BaseListView;
 import com.lxy.test.whv.util.DateUtils;
 import com.lxy.test.whv.util.LogUtils;
@@ -52,7 +53,7 @@ public class PostInfoActivity extends BaseActivity {
     BaseListView<PostComment> listViecomwComment;
 
     List<PostComment> comments = new ArrayList<>();
-    CompanyPostCommentAdapter adapter;
+    PostCommentAdapter adapter;
 
 
     @Override
@@ -72,11 +73,11 @@ public class PostInfoActivity extends BaseActivity {
 
     private void showComment() {
         //显示评论 TODO
-        //adapter = new CompanyPostCommentAdapter(ctx, comments);
-        //initXListView(adapter, listViecomwComment, comments);
+        adapter = new PostCommentAdapter(ctx, comments);
+        initXListView(adapter, listViecomwComment, comments);
     }
 
-    private void initXListView(CompanyPostCommentAdapter adapter, BaseListView<PostComment> listView, List<PostComment> comments) {
+    private void initXListView(PostCommentAdapter adapter, BaseListView<PostComment> listView, List<PostComment> comments) {
 
         listView.init(new BaseListView.DataFactory<PostComment>() {
             @Override
@@ -89,6 +90,7 @@ public class PostInfoActivity extends BaseActivity {
         listView.setItemListener(new BaseListView.ItemListener<PostComment>() {
             @Override
             public void onItemSelected(PostComment item) {
+                //TODO
 //                ContactPersonInfoActivity.goPersonInfo(ctx, item.getObjectId());
             }
         });
@@ -109,7 +111,7 @@ public class PostInfoActivity extends BaseActivity {
         tv_post_content.setText(post.getContent());
         tv_username.setText(user.getUsername());
         tv_posttime.setText(getString(R.string.company_post_publish_time) + " " + DateUtils.dateToStr(post.getUpdatedAt(), "yyyy-MM-dd HH:mm"));
-        LogUtils.d("user avatar = " + user.getAvatarUrl());
+//        LogUtils.d("user avatar = " + user.getAvatarUrl());
         ImageLoader.getInstance().displayImage(user.getAvatarUrl(), imageView_avatar, com.avoscloud.leanchatlib.utils.PhotoUtils.avatarImageOptions);
 
     }

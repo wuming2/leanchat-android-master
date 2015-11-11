@@ -13,13 +13,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1.0">
 
             <TextView
                 android:id="@+id/title_text"
                 style="@style/My.TextView._Black"
                 android:layout_marginTop="6dp"
-                android:text="title"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text=""
                 android:textSize="18sp" />
 
             <TextView
@@ -53,21 +56,25 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="65dp"
-            android:layout_height="wrap_content">
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp">
 
             <ImageView
                 android:id="@+id/avatar_view"
                 style="@style/My.ImageView.Photo_Avatar"
+                android:layout_marginLeft="9dp"
                 android:src="@drawable/chat_default_user_avatar" />
 
             <TextView
                 android:id="@+id/user_name_text"
                 style="@style/My.TextView._Black"
+                android:layout_width="match_parent"
                 android:layout_below="@id/avatar_view"
                 android:layout_marginTop="2dp"
+                android:gravity="center"
                 android:singleLine="true"
-                android:text="你好"
+                android:text="a"
                 android:textSize="14sp" />
 
         </RelativeLayout>
