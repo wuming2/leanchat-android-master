@@ -30,7 +30,7 @@ public class CacheService {
 
     public static void registerUser(LeanchatUser user) {
         //TODO 这里cached you 问题，需要更新吧?
-        LogUtils.d("whv registerUser" + user.getString("aboutMe"));
+//        LogUtils.d("whv registerUser" + user.getString("aboutMe"));
         AVUserCacheUtils.cacheUser(user.getObjectId(), user);
     }
 

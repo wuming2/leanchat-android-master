@@ -51,6 +51,7 @@ public class PostComment extends AVObject {
         q.whereEqualTo("postId", postId);
         q.skip(skip);
         q.limit(limit);
+        q.orderByDescending(AVObject.CREATED_AT);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         List<PostComment> comments = q.find();
         for (int i = 0; i < comments.size(); i++) {

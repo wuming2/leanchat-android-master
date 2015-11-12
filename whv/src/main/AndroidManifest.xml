@@ -109,7 +109,8 @@
         <activity
             android:name=".ui.discover.PostCommentActivity"
             android:label=""
-            android:theme="@style/ChatMainTheme" />
+            android:theme="@style/ChatMainTheme"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".ui.discover.NewPostActivity"
@@ -138,7 +139,8 @@
         <activity
             android:name=".ui.discover.CompanyPostCommentActivity"
             android:label=""
-            android:theme="@style/ChatMainTheme" />
+            android:theme="@style/ChatMainTheme"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".ui.discover.CompanyNewPostActivity"
