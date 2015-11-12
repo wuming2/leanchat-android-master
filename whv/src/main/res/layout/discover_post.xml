@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.lxy.test.whv.ui.view.BaseListView
+    <com.lxy.whv.ui.view.BaseListView
         android:id="@+id/list_discover_post"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

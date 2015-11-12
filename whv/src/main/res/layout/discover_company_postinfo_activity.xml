@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="0dp"
-    tools:context="com.lxy.test.whv.ui.discover.CompanyPostInfoActivity">
+    tools:context="com.lxy.whv.ui.discover.CompanyPostInfoActivity">
 
     <RelativeLayout
         android:id="@+id/discover_company_ll_time"
@@ -96,7 +96,7 @@
 
     </RelativeLayout>
 
-    <com.lxy.test.whv.ui.view.BaseListView
+    <com.lxy.whv.ui.view.BaseListView
         android:id="@+id/company_post_comment_listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -5,7 +5,7 @@
     android:background="@color/contact_base_bg"
     android:orientation="vertical">
 
-    <com.lxy.test.whv.ui.view.BaseListView
+    <com.lxy.whv.ui.view.BaseListView
         android:id="@+id/newfriendList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

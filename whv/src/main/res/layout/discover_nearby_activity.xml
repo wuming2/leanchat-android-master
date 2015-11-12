@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="0dp"
-    tools:context="com.lxy.test.whv.ui.discover.NearbyActivity">
+    tools:context="com.lxy.whv.ui.discover.NearbyActivity">
 
     <include
         android:id="@+id/nearby_headerlayout"
         layout="@layout/common_header_layout" />
 
-    <com.lxy.test.whv.ui.view.BaseListView
+    <com.lxy.whv.ui.view.BaseListView
         android:id="@+id/list_near"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

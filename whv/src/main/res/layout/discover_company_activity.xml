@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="0dp"
-    tools:context="com.lxy.test.whv.ui.discover.CompanyActivity">
+    tools:context="com.lxy.whv.ui.discover.CompanyActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

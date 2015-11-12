@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lxy.test.whv.ui.bootstrap.BootstrapActivity">
+    tools:context="com.lxy.whv.ui.bootstrap.BootstrapActivity">
 
     <TextView
         android:id="@+id/application_state_title"

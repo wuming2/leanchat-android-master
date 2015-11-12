@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.lxy.test.whv.ui.profile.ProfileNotifySettingFragment"
+        android:name="com.lxy.whv.ui.profile.ProfileNotifySettingFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

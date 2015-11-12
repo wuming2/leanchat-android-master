@@ -139,7 +139,7 @@
             android:value="PUT3u7lIPY49Ck0bqceFA3ue" />
         -->
         <activity
-            android:name="com.lxy.test.whv.ui.discover.NearbyActivity"
+            android:name="com.lxy.whv.ui.discover.NearbyActivity"
             android:label="@string/title_activity_main" >
         </activity>
     </application>
