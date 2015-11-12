@@ -28,9 +28,7 @@ import java.util.List;
 public class CompanyPostAdapter extends BaseListAdapter<CompanyPost> {
 
     // 计算距离使用
-    private static final double EARTH_RADIUS = 6378137;
     PrettyTime prettyTime;
-    AVGeoPoint location;
 
     public CompanyPostAdapter(Context ctx) {
         super(ctx);
@@ -45,34 +43,10 @@ public class CompanyPostAdapter extends BaseListAdapter<CompanyPost> {
     private void init() {
         prettyTime = new PrettyTime();
         PreferenceMap preferenceMap = PreferenceMap.getCurUserPrefDao(ctx);
-        location = preferenceMap.getLocation();
     }
 
     private static double rad(double d) {
         return d * Math.PI / 180.0;
-    }
-
-    /**
-     * 根据两点间经纬度坐标（double值），计算两点间距离，
-     *
-     * @param lat1
-     * @param lng1
-     * @param lat2
-     * @param lng2
-     * @return 距离：单位为米
-     */
-    public static double DistanceOfTwoPoints(double lat1, double lng1,
-                                             double lat2, double lng2) {
-        double radLat1 = rad(lat1);
-        double radLat2 = rad(lat2);
-        double a = radLat1 - radLat2;
-        double b = rad(lng1) - rad(lng2);
-        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
-                + Math.cos(radLat1) * Math.cos(radLat2)
-                * Math.pow(Math.sin(b / 2), 2)));
-        s = s * EARTH_RADIUS;
-        s = Math.round(s * 10000) / 10000;
-        return s;
     }
 
     @Override
@@ -84,6 +58,7 @@ public class CompanyPostAdapter extends BaseListAdapter<CompanyPost> {
         final CompanyPost post = (CompanyPost) datas.get(position);
         TextView nameView = ViewHolder.findViewById(convertView, R.id.user_name_text);
         TextView planedTimeView = ViewHolder.findViewById(convertView, R.id.time_text);
+        TextView postTimeView = ViewHolder.findViewById(convertView, R.id.posttime_text);
         TextView titleView = ViewHolder.findViewById(convertView, R.id.title_text);
         TextView destView = ViewHolder.findViewById(convertView, R.id.dest_text);
         ImageView avatarView = ViewHolder.findViewById(convertView, R.id.avatar_view);
@@ -110,8 +85,9 @@ public class CompanyPostAdapter extends BaseListAdapter<CompanyPost> {
             planedTimeView.setText(datePlanned);
         }
         LogUtils.e("!!!!!!date == null  true");
-//        Date updatedAt = post.getUpdatedAt();
-//        String prettyTimeStr = this.prettyTime.format(updatedAt);
+        Date updatedAt = post.getUpdatedAt();
+        String prettyTimeStr = this.prettyTime.format(updatedAt);
+        postTimeView.setText(" " + prettyTimeStr);
         return convertView;
     }
 }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.avos.avoscloud.AVGeoPoint;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.avoscloud.leanchatlib.view.ViewHolder;
+import com.lxy.whv.App;
 import com.lxy.whv.R;
 import com.lxy.whv.entity.avobject.Post;
 import com.lxy.whv.service.PreferenceMap;
@@ -17,6 +18,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,16 +76,15 @@ public class PostAdapter extends BaseListAdapter<Post> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //TODO 同行样式
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.discover_post_item, null, false);
         }
         final Post post = datas.get(position);
         TextView nameView = ViewHolder.findViewById(convertView, R.id.user_name_text);
         TextView contentView = ViewHolder.findViewById(convertView, R.id.content_text);
-        TextView planedTimeView = ViewHolder.findViewById(convertView, R.id.time_text);
+        TextView postTimeView = ViewHolder.findViewById(convertView, R.id.time_text);
         TextView titleView = ViewHolder.findViewById(convertView, R.id.title_text);
-        TextView destView = ViewHolder.findViewById(convertView, R.id.dest_text);
+//        TextView destView = ViewHolder.findViewById(convertView, R.id.dest_text);
         ImageView avatarView = ViewHolder.findViewById(convertView, R.id.avatar_view);
 
         LeanchatUser user = (LeanchatUser) post.getPublisher();
@@ -99,7 +100,12 @@ public class PostAdapter extends BaseListAdapter<Post> {
         }
 
         titleView.setText(post.getTitle());
-        destView.setText(post.getDestination());
+//        .setText(post.getCreatedAt());
+//        destView.setText(post.getDestination());
+
+        Date updatedAt = post.getUpdatedAt();
+        String prettyTimeStr = this.prettyTime.format(updatedAt);
+        postTimeView.setText(App.ctx.getString(R.string.company_post_publish_time) + " " + prettyTimeStr);
         contentView.setText(post.getContent());
         return convertView;
     }

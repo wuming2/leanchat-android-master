@@ -36,7 +36,6 @@ public class MoreInfoActivity extends BaseActivity {
         setContentView(R.layout.discover_moreinfo_activity);
         ButterKnife.inject(this);
         initActionBar(R.string.discover_more);
-
         loadView();
     }
 
@@ -99,7 +98,7 @@ public class MoreInfoActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.discover_more_seek)
+    //TODO 打不开
     public void goSeek(View view) {
         Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra("url", "http://m.seek.com.au/");

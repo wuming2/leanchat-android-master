@@ -114,6 +114,7 @@ public class CompanyPost extends AVObject {
         q.skip(skip);
         q.limit(limit);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        q.orderByDescending(AVObject.CREATED_AT);
         List<CompanyPost> posts = q.find();
         for (int i = 0; i < posts.size(); i++) {
             CacheService.registerUser((LeanchatUser) posts.get(i).getPublisher());

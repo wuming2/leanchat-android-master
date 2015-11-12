@@ -149,6 +149,20 @@
 
     <string name="profile_save">保存</string>
     <string name="company_filter">过滤器</string>
+    <string name="company_info_edit_title">编辑入澳计划</string>
+    <string name="company_info_edit_tip_time">请输入计划出发时间</string>
+    <string name="company_info_edit_tip_time_error">时间错误，请反馈问题谢谢</string>
+    <string name="company_info_edit_tip_destination">请输入目标地</string>
+    <string name="company_info_edit_destination_dialog_title">城市选择</string>
+    <string name="company_info_plan_tv_time_hint">出发时间</string>
+    <string name="company_info_plan_tv_destination_hint">目的地</string>
+    <string name="company_info_switch_company_show_my_info">是否显示我的信息:</string>
+    <string name="company_info_help_text1">只有在你设置了计划出行时间后其他人才会在同行中找到你，也可以通过关闭 “是否显示我的信息”选项来隐藏自己的出行计划</string>
+    <string name="company_info_help_text2">你可以在同行界面设置过滤器来寻找小伙伴/帖子，点击×清空你的过滤设置</string>
+
+
+
+
     <string name="company_post_comment">回复</string>
     <string name="company_post_comment_time">回复时间:</string>
     <string name="company_post_publish_time">发布时间:</string>

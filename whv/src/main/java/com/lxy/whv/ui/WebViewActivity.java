@@ -57,13 +57,15 @@ public class WebViewActivity extends BaseActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 LogUtils.d("onProgressChanged " + newProgress);
-                if (newProgress == 100) {
-                    bar.setVisibility(View.GONE);
-                } else {
-                    if (View.GONE == bar.getVisibility()) {
-                        bar.setVisibility(View.VISIBLE);
+                if (bar != null) {
+                    if (newProgress == 100) {
+                        bar.setVisibility(View.GONE);
+                    } else {
+                        if (View.GONE == bar.getVisibility()) {
+                            bar.setVisibility(View.VISIBLE);
+                        }
+                        bar.setProgress(newProgress);
                     }
-                    bar.setProgress(newProgress);
                 }
                 super.onProgressChanged(view, newProgress);
             }

@@ -17,6 +17,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:layout_marginLeft="20dp"
+            android:contentDescription="@null"
             android:src="@drawable/ic_bbs_partner_calendar" />
 
         <TextView
@@ -24,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/discover_company_plan_iv_time"
-            android:hint="出发时间"
+            android:hint="@string/company_info_plan_tv_time_hint"
             android:paddingLeft="15dp"
             android:paddingTop="1dp"
             android:text=""
@@ -64,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/discover_company_plan_iv_destination"
-            android:hint="目的地"
+            android:hint="@string/company_info_plan_tv_destination_hint"
             android:paddingLeft="15dp"
             android:paddingTop="2dp"
             android:text=""
@@ -89,7 +90,7 @@
         android:layout_marginLeft="34dp"
         android:layout_marginTop="10dp"
         android:checked="true"
-        android:text="是否显示我的信息:" />
+        android:text="@string/company_info_switch_company_show_my_info" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -103,7 +104,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:padding="10dp"
-            android:text="只有在你设置了计划出行时间后其他人才会在同行中找到你，也可以通过关闭 “是否显示我的信息”选项来隐藏自己的出行计划" />
+            android:text="@string/company_info_help_text1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="2dp"
+            android:padding="10dp"
+            android:text="@string/company_info_help_text2" />
 
         <View style="@style/DividerLine.Horizontal" />
 

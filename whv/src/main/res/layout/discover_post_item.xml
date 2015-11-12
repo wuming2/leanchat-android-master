@@ -11,7 +11,7 @@
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1.0">
@@ -26,23 +26,14 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/time_text"
-                style="@style/My.TextView._Black"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_toRightOf="@+id/title_text"
-                android:singleLine="true"
-                android:text=""
-                android:textSize="16sp" />
-
-            <TextView
                 android:id="@+id/dest_text"
                 style="@style/My.TextView._Black"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:singleLine="true"
-                android:text="distance"
-                android:textSize="16sp" />
+                android:text=""
+                android:textSize="16sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/content_text"
@@ -51,8 +42,17 @@
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text=""
+                android:text="content"
                 android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/time_text"
+                style="@style/My.TextView._Gray"
+                android:layout_below="@+id/content_text"
+                android:layout_marginTop="3dp"
+                android:singleLine="true"
+                android:text="time"
+                android:textSize="13sp" />
         </RelativeLayout>
 
         <RelativeLayout

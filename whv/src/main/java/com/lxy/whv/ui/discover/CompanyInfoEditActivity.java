@@ -53,7 +53,7 @@ public class CompanyInfoEditActivity extends BaseActivity {
         setContentView(R.layout.discover_plan_edit_activity);
         ButterKnife.inject(this);
         inflater = this.getLayoutInflater();
-        initActionBar("编辑入澳计划");
+        initActionBar(R.string.company_info_edit_title);
         initView();
 
     }
@@ -94,11 +94,11 @@ public class CompanyInfoEditActivity extends BaseActivity {
 
         if (showMyPlan) {
             if (datePlanned == null || datePlanned.isEmpty()) {
-                toast("请输入计划出发时间");
+                toast(R.string.company_info_edit_tip_time);
                 return;
             }
             if (destination == null || destination.isEmpty()) {
-                toast("请输入目标地");
+                toast(R.string.company_info_edit_tip_destination);
                 return;
             }
             Date date = null;
@@ -110,7 +110,7 @@ public class CompanyInfoEditActivity extends BaseActivity {
                 e.printStackTrace();
             }
             if (!dateParseSuccess) {
-                toast("时间错误，请反馈问题谢谢");
+                toast(R.string.company_info_edit_tip_time_error);
                 return;
             }
             user.put("datePlanned", date);
@@ -128,8 +128,7 @@ public class CompanyInfoEditActivity extends BaseActivity {
         final View destinationSelectView = inflater.inflate(R.layout.discover_company_city_radio, null);
 
         RadioGroup group = (RadioGroup) destinationSelectView.findViewById(R.id.radioGroup);
-
-        String title = "城市选择";
+        String title = getString(R.string.company_info_edit_destination_dialog_title);
         // final int viewId = view.getId();
         dialog = new AlertDialog.Builder(this).setTitle(title)
                 .setIcon(android.R.drawable.ic_dialog_info)

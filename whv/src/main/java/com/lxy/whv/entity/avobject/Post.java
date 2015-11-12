@@ -98,6 +98,7 @@ public class Post extends AVObject {
         q.include(Post.COMMENT);
         q.skip(skip);
         q.limit(limit);
+        q.orderByDescending(AVObject.CREATED_AT);
         q.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         List<Post> posts = q.find();
         //TODO 是不是可以优化……
