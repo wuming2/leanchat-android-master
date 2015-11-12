@@ -24,6 +24,7 @@ public class AVChatActivity extends AVBaseActivity {
 
     protected ChatFragment chatFragment;
     protected AVIMConversation conversation;
+    protected String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,8 @@ public class AVChatActivity extends AVBaseActivity {
         Bundle extras = intent.getExtras();
         if (null != extras) {
             if (extras.containsKey(Constants.MEMBER_ID)) {
-                getConversation(extras.getString(Constants.MEMBER_ID));
+                userId = extras.getString(Constants.MEMBER_ID);
+                getConversation(userId);
             } else if (extras.containsKey(Constants.CONVERSATION_ID)) {
                 String conversationId = extras.getString(Constants.CONVERSATION_ID);
                 updateConversation(AVIMClient.getInstance(ChatManager.getInstance().getSelfId()).getConversation(conversationId));

@@ -29,7 +29,6 @@ public class ConversationHelper {
         }
 
         int typeInt = (Integer) type;
-        LogUtils.d("typeInt = " + typeInt);
         if (typeInt == ConversationType.Single.getValue()) {
             if (conversation.getMembers().size() != 2 ||
                     conversation.getMembers().contains(ChatManager.getInstance().getSelfId()) == false) {

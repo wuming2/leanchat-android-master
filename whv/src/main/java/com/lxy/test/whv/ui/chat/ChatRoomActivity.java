@@ -17,6 +17,8 @@ import com.avoscloud.leanchatlib.event.InputBottomBarLocationClickEvent;
 import com.avoscloud.leanchatlib.event.LocationItemClickEvent;
 import com.avoscloud.leanchatlib.utils.NotificationUtils;
 import com.lxy.test.whv.R;
+import com.lxy.test.whv.ui.contact.ContactPersonInfoActivity;
+import com.lxy.test.whv.util.LogUtils;
 
 /**
  * Created by lzw on 15/4/24.
@@ -49,10 +51,13 @@ public class ChatRoomActivity extends AVChatActivity {
         int menuId = item.getItemId();
         if (menuId == R.id.people) {
             if (null != conversation) {
-                //TODO
+                LogUtils.d("null != conversation");
 //                Intent intent = new Intent(ChatRoomActivity.this, ConversationDetailActivity.class);
 //                intent.putExtra(Constants.CONVERSATION_ID, conversation.getConversationId());
 //                startActivityForResult(intent, QUIT_GROUP_REQUEST);
+            }
+            if (userId != null && !userId.isEmpty()) {
+                ContactPersonInfoActivity.goPersonInfo(ChatRoomActivity.this, userId);
             }
         }
         return super.onMenuItemSelected(featureId, item);
