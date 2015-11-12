@@ -22,6 +22,7 @@ import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PushManager;
+import com.lxy.test.whv.service.event.UpdateService;
 import com.lxy.test.whv.ui.base_activity.BaseFragment;
 import com.lxy.test.whv.ui.entry.EntryLoginActivity;
 import com.lxy.test.whv.ui.visahelper.VisaTrackingActivity;
@@ -109,6 +110,12 @@ public class ProfileFragment extends BaseFragment {
         getActivity().finish();
         Intent intent = new Intent(ctx, EntryLoginActivity.class);
         ctx.startActivity(intent);
+    }
+
+    @OnClick(R.id.profile_checkupdate_view)
+    public void onCheckUpdateClick(View view) {
+        UpdateService updateService = UpdateService.getInstance(getActivity());
+        updateService.showSureUpdateDialog();
     }
 
     @Override

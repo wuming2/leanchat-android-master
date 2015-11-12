@@ -19,6 +19,7 @@ import com.lxy.test.whv.entity.avobject.CompanyPost;
 import com.lxy.test.whv.entity.avobject.News;
 import com.lxy.test.whv.entity.avobject.Post;
 import com.lxy.test.whv.entity.avobject.PostComment;
+import com.lxy.test.whv.entity.avobject.UpdateInfo;
 import com.lxy.test.whv.service.ConversationManager;
 import com.lxy.test.whv.service.PushManager;
 import com.lxy.test.whv.util.LogUtils;
@@ -56,6 +57,7 @@ public class App extends Application {
         AVObject.registerSubclass(PostComment.class);
         AVObject.registerSubclass(News.class);
         AVObject.registerSubclass(Post.class);
+        AVObject.registerSubclass(UpdateInfo.class);
 
         PushManager.getInstance().init(ctx);
         LogUtils.debugEnabled = true;

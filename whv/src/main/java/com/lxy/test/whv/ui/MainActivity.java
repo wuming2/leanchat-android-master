@@ -23,6 +23,7 @@ import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
+import com.lxy.test.whv.service.event.UpdateService;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactFragment;
 import com.lxy.test.whv.ui.discover.DiscoverFragment;
@@ -71,6 +72,13 @@ public class MainActivity extends BaseActivity {
         initBaiduLocClient();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        UpdateService updateService = UpdateService.getInstance(this);
+        updateService.checkUpdate();
+    }
 
     private void init() {
         tabs = new Button[]{conversationBtn, contactBtn, discoverBtn, mySpaceBtn};
