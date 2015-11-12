@@ -22,10 +22,9 @@ import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PushManager;
-import com.lxy.test.whv.service.event.UpdateService;
+import com.lxy.test.whv.service.UpdateService;
 import com.lxy.test.whv.ui.base_activity.BaseFragment;
 import com.lxy.test.whv.ui.entry.EntryLoginActivity;
-import com.lxy.test.whv.ui.visahelper.VisaTrackingActivity;
 import com.lxy.test.whv.util.LogUtils;
 import com.lxy.test.whv.util.PathUtils;
 import com.lxy.test.whv.util.PhotoUtils;
@@ -95,6 +94,12 @@ public class ProfileFragment extends BaseFragment {
     public void onTrackingClick() {
         Intent i = new Intent(this.getActivity(), AboutActivity.class);
         this.startActivity(i);
+    }
+
+    @OnClick(R.id.profile_notifysetting_view)
+    public void onNotifySettingClick() {
+        Intent intent = new Intent(ctx, ProfileNotifySettingActivity.class);
+        ctx.startActivity(intent);
     }
 
 

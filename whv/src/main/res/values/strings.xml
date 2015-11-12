@@ -92,6 +92,10 @@
     <string name="refreshable_view_release_to_refresh">释放立即刷新</string>
     <string name="refreshable_view_refreshing">正在刷新…</string>
     <string name="profile_fragment_checkUpdate">检查更新</string>
+    <string name="profile_fragment_about">关于</string>
+    <string name="profile_fragment_for_fun">啊哈哈哈哈哈哈哈哈</string>
+    ""
+
     <string name="discover_fragment_sort">排序</string>
     <string name="discover_fragment_loginTime">登录时间</string>
     <string name="discover_fragment_distance">距离</string>

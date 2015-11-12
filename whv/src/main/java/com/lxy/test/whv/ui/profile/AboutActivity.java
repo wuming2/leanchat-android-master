@@ -28,7 +28,7 @@ public class AboutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        initActionBar("关于");
+        initActionBar(R.string.profile_fragment_about);
 
         button = (Button) findViewById(R.id.button_douniwan);
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,11 +49,10 @@ public class AboutActivity extends BaseActivity {
                 button.setText(text[currentChecked]);
             } else {
                 button.setVisibility(View.GONE);
-                toast("啊哈哈哈哈哈哈哈哈");
+                toast(R.string.profile_fragment_for_fun);
             }
             currentChecked++;
         }
-        count++;
     }
 
 }

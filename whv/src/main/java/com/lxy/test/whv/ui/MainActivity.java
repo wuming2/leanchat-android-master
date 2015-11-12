@@ -23,7 +23,7 @@ import com.lxy.test.whv.App;
 import com.lxy.test.whv.R;
 import com.lxy.test.whv.service.PreferenceMap;
 import com.lxy.test.whv.service.event.LoginFinishEvent;
-import com.lxy.test.whv.service.event.UpdateService;
+import com.lxy.test.whv.service.UpdateService;
 import com.lxy.test.whv.ui.base_activity.BaseActivity;
 import com.lxy.test.whv.ui.contact.ContactFragment;
 import com.lxy.test.whv.ui.discover.DiscoverFragment;

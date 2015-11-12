@@ -159,6 +159,10 @@
             android:name=".ui.profile.ProfileEditActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />
+        <activity
+            android:name=".ui.profile.ProfileNotifySettingActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
 
         <activity
             android:name=".ui.profile.AboutActivity"
