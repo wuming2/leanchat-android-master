@@ -35,20 +35,7 @@ public class CompanyPostInfoActivity extends BaseActivity {
     private CompanyPost post;
     private LeanchatUser user;
 
-    @InjectView(R.id.company_post_title)
-    TextView tv_post_title;
-    @InjectView(R.id.company_post_time)
-    TextView tv_post_time;
-    @InjectView(R.id.company_post_destination)
-    TextView tv_post_destination;
-    @InjectView(R.id.company_post_content)
-    TextView tv_post_content;
-    @InjectView(R.id.company_post_posttime)
-    TextView tv_posttime;
-    @InjectView(R.id.company_post_username)
-    TextView tv_username;
-    @InjectView(R.id.avatar_view)
-    ImageView imageView_avatar;
+    View headerView;
 
     @InjectView(R.id.company_post_comment_listview)
     BaseListView<PostComment> listViecomwComment;
@@ -64,17 +51,19 @@ public class CompanyPostInfoActivity extends BaseActivity {
         ButterKnife.inject(this);
         initActionBar("结伴详情");
         initDate();
+        showComment();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        showComment();
+        listViecomwComment.onRefresh();
     }
 
     private void showComment() {
         //显示评论
         adapter = new CompanyPostCommentAdapter(ctx, comments);
+        listViecomwComment.addHeaderView(headerView);
         initXListView(adapter, listViecomwComment, comments);
     }
 
@@ -83,7 +72,6 @@ public class CompanyPostInfoActivity extends BaseActivity {
         listView.init(new BaseListView.DataFactory<PostComment>() {
             @Override
             public List<PostComment> getDatasInBackground(int skip, int limit, List<PostComment> currentDatas) throws Exception {
-
                 return PostComment.findCompanyPostComment(skip, limit, post.getObjectId());
             }
         }, adapter);
@@ -106,6 +94,17 @@ public class CompanyPostInfoActivity extends BaseActivity {
         user = (LeanchatUser) post.getPublisher();
         user = CacheService.lookupUser(user.getObjectId());
 
+        headerView = getLayoutInflater().inflate(
+                R.layout.discover_postinfo_header, null);
+
+        TextView tv_post_title = (TextView) headerView.findViewById(R.id.company_post_title);
+        TextView tv_post_time = (TextView) headerView.findViewById(R.id.company_post_time);
+        TextView tv_post_destination = (TextView) headerView.findViewById(R.id.company_post_destination);
+        TextView tv_post_content = (TextView) headerView.findViewById(R.id.company_post_content);
+        TextView tv_posttime = (TextView) headerView.findViewById(R.id.company_post_posttime);
+        TextView tv_username = (TextView) headerView.findViewById(R.id.company_post_username);
+        ImageView imageView_avatar = (ImageView) headerView.findViewById(R.id.avatar_view);
+
         tv_post_title.setText(post.getTitle());
         tv_post_time.setText(DateUtils.dateToStr(post.getDateplanned(), "yyyy-MM-dd"));
         tv_post_destination.setText(post.getDestination());
@@ -117,7 +116,6 @@ public class CompanyPostInfoActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.ll_poster_info)
     public void gotUserActivity(View view) {
         ContactPersonInfoActivity.goPersonInfo(CompanyPostInfoActivity.this, user.getObjectId());
     }

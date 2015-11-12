@@ -36,17 +36,7 @@ public class PostInfoActivity extends BaseActivity {
     private Post post;
     private LeanchatUser user;
 
-    @InjectView(R.id.company_post_title)
-    TextView tv_post_title;
-    @InjectView(R.id.company_post_content)
-    TextView tv_post_content;
-    @InjectView(R.id.company_post_posttime)
-    TextView tv_posttime;
-    @InjectView(R.id.company_post_username)
-    TextView tv_username;
-    @InjectView(R.id.avatar_view)
-    ImageView imageView_avatar;
-
+    View headerView;
     @InjectView(R.id.company_post_comment_listview)
     BaseListView<PostComment> listViecomwComment;
 
@@ -57,21 +47,24 @@ public class PostInfoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.discover_company_postinfo_activity);
+        setContentView(R.layout.discover_postinfo_activity);
         ButterKnife.inject(this);
         initActionBar("帖子详情");
         initDate();
+        showComment();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        showComment();
+        listViecomwComment.onRefresh();
     }
 
     private void showComment() {
-        //显示评论 TODO
+        //显示评论
         adapter = new PostCommentAdapter(ctx, comments);
+        //TODO
+        listViecomwComment.addHeaderView(headerView);
         initXListView(adapter, listViecomwComment, comments);
     }
 
@@ -105,6 +98,15 @@ public class PostInfoActivity extends BaseActivity {
         //TODO 就是这里  会获取到空的user  看看在适当的时候去更新一下缓存吧！
         user = CacheService.lookupUser(user.getObjectId());
 
+        headerView = getLayoutInflater().inflate(
+                R.layout.discover_postinfo_header, null);
+
+        TextView tv_post_title = (TextView) headerView.findViewById(R.id.company_post_title);
+        TextView tv_post_content = (TextView) headerView.findViewById(R.id.company_post_content);
+        TextView tv_posttime = (TextView) headerView.findViewById(R.id.company_post_posttime);
+        TextView tv_username = (TextView) headerView.findViewById(R.id.company_post_username);
+        ImageView imageView_avatar = (ImageView) headerView.findViewById(R.id.avatar_view);
+
         tv_post_title.setText(post.getTitle());
         tv_post_content.setText(post.getContent());
         tv_username.setText(user.getUsername());
@@ -114,7 +116,6 @@ public class PostInfoActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.ll_poster_info)
     public void gotUserActivity(View view) {
         ContactPersonInfoActivity.goPersonInfo(PostInfoActivity.this, user.getObjectId());
     }
