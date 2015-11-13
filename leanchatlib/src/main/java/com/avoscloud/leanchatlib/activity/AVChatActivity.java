@@ -66,6 +66,7 @@ public class AVChatActivity extends AVBaseActivity {
                 actionBar.setTitle(title);
             }
             actionBar.setDisplayUseLogoEnabled(false);
+            actionBar.setDisplayShowHomeEnabled(false);
             actionBar.setDisplayHomeAsUpEnabled(true);
         } else {
             LogUtils.i("action bar is null, so no title, please set an ActionBar style for activity");
