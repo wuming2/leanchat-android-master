@@ -13,6 +13,23 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
+            android:text="@string/chat_common_email" />
+
+        <EditText
+            android:id="@+id/emailEdit"
+            style="@style/Register_Edit"
+            android:hint="@string/login_email_hint"
+            android:inputType="textEmailAddress" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Register_Input">
+
+        <TextView
+            style="@style/My.TextView._Black"
+            android:layout_width="@dimen/registerLeftWidth"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
             android:text="@string/chat_common_username" />
 
         <EditText

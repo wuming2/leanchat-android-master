@@ -16,6 +16,7 @@ import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.baidu.mapapi.SDKInitializer;
 import com.lxy.whv.entity.avobject.AddRequest;
 import com.lxy.whv.entity.avobject.CompanyPost;
+import com.lxy.whv.entity.avobject.Feedback;
 import com.lxy.whv.entity.avobject.News;
 import com.lxy.whv.entity.avobject.Post;
 import com.lxy.whv.entity.avobject.PostComment;
@@ -58,6 +59,7 @@ public class App extends Application {
         AVObject.registerSubclass(News.class);
         AVObject.registerSubclass(Post.class);
         AVObject.registerSubclass(UpdateInfo.class);
+        AVObject.registerSubclass(Feedback.class);
 
         PushManager.getInstance().init(ctx);
         LogUtils.debugEnabled = true;

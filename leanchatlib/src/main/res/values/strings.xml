@@ -15,6 +15,7 @@
     <string name="chat_common_avatar">头像</string>
     <string name="chat_common_username">用户名</string>
     <string name="chat_common_nickname">昵称</string>
+    <string name="chat_common_email">邮箱</string>
     <string name="chat_common_please_input_hint">请输入{0}</string>
     <string name="chat_common_change_title">{0}</string>
     <string name="chat_sent">已发送</string>

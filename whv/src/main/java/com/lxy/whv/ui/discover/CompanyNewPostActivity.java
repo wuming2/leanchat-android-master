@@ -10,7 +10,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVACL;
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.whv.R;
@@ -94,6 +96,10 @@ public class CompanyNewPostActivity extends BaseActivity {
         }
 
         CompanyPost companyPost = new CompanyPost(title, content, date, destination, LeanchatUser.getCurrentUser());
+        AVACL acl = new AVACL();
+        acl.setPublicReadAccess(true);   //此处设置的是所有人的可读权限
+        acl.setWriteAccess(AVUser.getCurrentUser(), true);   //而这里设置了文件创建者的写权限
+        companyPost.setACL(acl);
         companyPost.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {

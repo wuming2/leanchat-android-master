@@ -117,6 +117,12 @@ public class ProfileFragment extends BaseFragment {
         ctx.startActivity(intent);
     }
 
+    @OnClick(R.id.profile_feedback_view)
+    public void onFeedbackClick(View view) {
+        Intent intent = new Intent(ctx, FeedbackActivity.class);
+        ctx.startActivity(intent);
+    }
+
     @OnClick(R.id.profile_checkupdate_view)
     public void onCheckUpdateClick(View view) {
         UpdateService updateService = UpdateService.getInstance(getActivity());

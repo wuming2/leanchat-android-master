@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVACL;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.lxy.whv.R;
@@ -48,6 +49,11 @@ public class CompanyPostCommentActivity extends BaseActivity {
         comt.setContent(content);
         comt.setCreator(AVUser.getCurrentUser());
         comt.setPostId(post.getObjectId());
+
+        AVACL acl = new AVACL();
+        acl.setPublicReadAccess(true);   //此处设置的是所有人的可读权限
+        acl.setWriteAccess(AVUser.getCurrentUser(), true);   //而这里设置了文件创建者的写权限
+        comt.setACL(acl);
         comt.saveInBackground(new SaveCallback() {
             public void done(com.avos.avoscloud.AVException arg0) {
                 if (null != arg0) {

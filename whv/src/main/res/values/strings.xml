@@ -27,6 +27,7 @@
 
     <string name="bootstrap_title">完善资料</string>
 
+    <string name="login_email_hint">请输入邮箱</string>
     <string name="login_username_hint">请输入用户名</string>
     <string name="ensurePasswordHint">请在此输入密码</string>
     <string name="login_password_hint">请输入密码</string>
@@ -35,6 +36,7 @@
 
     <string name="password_can_not_null">密码不能为空</string>
     <string name="username_cannot_null">用户名不能为空</string>
+    <string name="email_cannot_null">用户名不能为空</string>
     <string name="password_too_short">密码长度不能小于6个字符</string>
     <string name="username_too_short">用户名不能少于6个字符</string>
     <string name="password_not_consistent">输入的两次密码不一致</string>
@@ -92,6 +94,7 @@
     <string name="refreshable_view_release_to_refresh">释放立即刷新</string>
     <string name="refreshable_view_refreshing">正在刷新…</string>
     <string name="profile_fragment_checkUpdate">检查更新</string>
+    <string name="profile_fragment_feedback">反馈</string>
     <string name="profile_fragment_about">关于</string>
     <string name="profile_fragment_for_fun">啊哈哈哈哈哈哈哈哈</string>
     ""
@@ -147,6 +150,7 @@
     <string name="bootstrap_state_tip_select">先选择申请状态唉~</string>
     <string name="bootstrap_prefile_tip">个人信息设置</string>
 
+    <string name="profile_feedback_hint">期待你的反馈意见/建议</string>
     <string name="profile_save">保存</string>
     <string name="company_filter">过滤器</string>
     <string name="company_info_edit_title">编辑入澳计划</string>

@@ -1,4 +1,4 @@
-package com.lxy.whv.ui.discover;
+package com.lxy.whv.ui.profile;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -6,12 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVACL;
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.whv.R;
+import com.lxy.whv.entity.avobject.Feedback;
 import com.lxy.whv.entity.avobject.Post;
 import com.lxy.whv.ui.base_activity.BaseActivity;
 
@@ -21,44 +20,32 @@ import butterknife.InjectView;
 /**
  * Created by LXY on 2015/10/27.
  */
-public class NewPostActivity extends BaseActivity {
+public class FeedbackActivity extends BaseActivity {
 
     LayoutInflater inflater = null;
     ProgressDialog dialog;
 
-    @InjectView(R.id.editText_title)
-    TextView et_title;
     @InjectView(R.id.editText_content)
     TextView et_content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.discover_newpost_activity);
+        setContentView(R.layout.profile_feedback_activity);
         ButterKnife.inject(this);
         inflater = this.getLayoutInflater();
-        initActionBar("新帖子");
+        initActionBar("意见反馈");
     }
 
     public void submitPost(View view) {
         // 发布文章
-        String title = et_title.getText().toString();
-        if (title == null || title.isEmpty()) {
-            toast("请输入标题");
-            return;
-        }
         String content = et_content.getText().toString();
         if (content == null || content.isEmpty()) {
             toast("请输入内容");
             return;
         }
 
-        Post post = new Post(title, content, LeanchatUser.getCurrentUser());
-
-        AVACL acl = new AVACL();
-        acl.setPublicReadAccess(true);   //此处设置的是所有人的可读权限
-        acl.setWriteAccess(AVUser.getCurrentUser(), true);   //而这里设置了文件创建者的写权限
-        post.setACL(acl);
+        Feedback post = new Feedback(content, LeanchatUser.getCurrentUser());
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {
@@ -67,7 +54,7 @@ public class NewPostActivity extends BaseActivity {
                         dialog.hide();
                     }
                     toast("发布成功");
-                    NewPostActivity.this.finish();
+                    FeedbackActivity.this.finish();
                 } else {
                     toast("发布失败 error:" + e.getMessage());
                 }

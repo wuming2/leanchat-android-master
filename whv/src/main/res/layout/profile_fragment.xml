@@ -78,6 +78,19 @@
                 <View style="@style/DividerLine.Horizontal" />
 
                 <TextView
+                    android:id="@+id/profile_feedback_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/setting_item_height"
+                    android:background="@drawable/btn_selector"
+                    android:drawableRight="@drawable/common_view_right_arrow_pic"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/common_horizontal_margin"
+                    android:paddingRight="@dimen/common_horizontal_margin"
+                    android:text="@string/profile_fragment_feedback" />
+
+                <View style="@style/DividerLine.Horizontal" />
+
+                <TextView
                     android:id="@+id/profile_about"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/setting_item_height"

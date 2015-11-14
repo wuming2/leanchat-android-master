@@ -110,7 +110,7 @@
             android:name=".ui.discover.PostCommentActivity"
             android:label=""
             android:theme="@style/ChatMainTheme"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.discover.NewPostActivity"
@@ -140,7 +140,7 @@
             android:name=".ui.discover.CompanyPostCommentActivity"
             android:label=""
             android:theme="@style/ChatMainTheme"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.discover.CompanyNewPostActivity"
@@ -161,6 +161,12 @@
             android:name=".ui.profile.ProfileEditActivity"
             android:label=""
             android:theme="@style/ChatMainTheme" />
+
+        <activity
+            android:name=".ui.profile.FeedbackActivity"
+            android:label=""
+            android:theme="@style/ChatMainTheme" />
+
         <activity
             android:name=".ui.profile.ProfileNotifySettingActivity"
             android:label=""
