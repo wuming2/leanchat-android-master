@@ -36,17 +36,17 @@ public class PostComment extends AVObject {
     }
 
     public void setCreator(AVUser user) {
-        put("creator", user);
+        put("publisher", user);
     }
 
     public AVUser getCreator() {
-        return getAVUser("creator");
+        return getAVUser("publisher");
     }
 
     public static List<PostComment> findCompanyPostComment(int skip, int limit, String postId) throws AVException {
 
         AVQuery<PostComment> q = CompanyPost.getQuery(PostComment.class);
-        q.include("creator");
+        q.include("publisher");
 //        q.whereContains("postId", postId);
         q.whereEqualTo("postId", postId);
         q.skip(skip);

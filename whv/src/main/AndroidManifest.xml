@@ -49,6 +49,9 @@
             android:name=".ui.entry.EntryRegisterActivity"
             android:theme="@style/ChatMainTheme" />
         <activity
+            android:name=".ui.entry.ForgetPasswordActivity"
+            android:theme="@style/ChatMainTheme" />
+        <activity
             android:name=".ui.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>

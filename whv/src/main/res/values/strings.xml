@@ -33,18 +33,25 @@
     <string name="login_password_hint">请输入密码</string>
     <string name="ensurePassword">确认密码 </string>
     <string name="register">注册</string>
+    <string name="forget_password">找回密码</string>
 
     <string name="password_can_not_null">密码不能为空</string>
     <string name="username_cannot_null">用户名不能为空</string>
-    <string name="email_cannot_null">用户名不能为空</string>
+    <string name="email_cannot_null">邮箱不能为空</string>
     <string name="password_too_short">密码长度不能小于6个字符</string>
     <string name="username_too_short">用户名不能少于6个字符</string>
     <string name="password_not_consistent">输入的两次密码不一致</string>
     <string name="registerSucceed">注册成功</string>
     <string name="registerFailed">注册失败。</string>
+    <string name="forgetpassword_error_no_email">您没有输入邮箱地址</string>
+    <string name="forgetpassword_email_send_success">已发送一份重置密码的指令到用户的邮箱</string>
+    <string name="forgetpassword_email_send_error">找回密码失败：</string>
+
 
     <string name="not_have_account">还没有账号？</string>
+    <string name="forget_password_tip">忘记密码？</string>
     <string name="register_rightnow">立即注册 &gt;</string>
+    <string name="register_forget_password">忘记密码 &gt;</string>
     <string name="discover_metres">米</string>
     <string name="discover_unknown">未知</string>
     <string name="discover_recent_login_time">最近登录时间:</string>
@@ -163,8 +170,6 @@
     <string name="company_info_switch_company_show_my_info">是否显示我的信息:</string>
     <string name="company_info_help_text1">只有在你设置了计划出行时间后其他人才会在同行中找到你，也可以通过关闭 “是否显示我的信息”选项来隐藏自己的出行计划</string>
     <string name="company_info_help_text2">你可以在同行界面设置过滤器来寻找小伙伴/帖子，点击×清空你的过滤设置</string>
-
-
 
 
     <string name="company_post_comment">回复</string>

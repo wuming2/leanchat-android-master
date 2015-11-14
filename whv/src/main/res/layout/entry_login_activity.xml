@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/login_bg">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingRight="@dimen/common_horizontal_margin"
-        android:paddingLeft="@dimen/common_horizontal_margin">
+        android:paddingLeft="@dimen/common_horizontal_margin"
+        android:paddingRight="@dimen/common_horizontal_margin">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:src="@drawable/icon"/>
+            android:src="@drawable/icon" />
 
         <EditText
             android:id="@+id/activity_login_et_username"
@@ -31,7 +31,7 @@
             android:shadowDx="0.0"
             android:shadowDy="1.0"
             android:shadowRadius="1.0"
-            android:textColorHint="#ffdddddd"/>
+            android:textColorHint="#ffdddddd" />
 
         <EditText
             android:id="@+id/activity_login_et_password"
@@ -43,7 +43,7 @@
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
             android:paddingLeft="15dip"
-            android:textColorHint="#ffdddddd"/>
+            android:textColorHint="#ffdddddd" />
 
         <Button
             android:id="@+id/activity_login_btn_login"
@@ -54,13 +54,13 @@
             android:gravity="center"
             android:text="@string/login"
             android:textColor="@color/chat_base_color_text_white"
-            android:textSize="@dimen/text_size_large"/>
+            android:textSize="@dimen/text_size_large" />
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:gravity="center"
+            android:layout_height="30dp"
             android:layout_marginTop="40dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -69,7 +69,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/not_have_account"
                 android:textColor="@color/base_color_text_gray"
-                android:textSize="20sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/activity_login_btn_register"
@@ -79,7 +79,34 @@
                 android:gravity="center_vertical"
                 android:text="@string/register_rightnow"
                 android:textColor="@color/entry_blue"
-                android:textSize="20sp"/>
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:text="@string/forget_password_tip"
+                android:textColor="@color/base_color_text_gray"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/activity_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:onClick="forgetPassword"
+                android:text="@string/register_forget_password"
+                android:textColor="@color/entry_blue"
+                android:textSize="16sp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

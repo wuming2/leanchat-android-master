@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.avos.avoscloud.RequestPasswordResetCallback;
 import com.avoscloud.leanchatlib.model.LeanchatUser;
 import com.lxy.whv.R;
 import com.lxy.whv.service.CacheService;
@@ -87,6 +89,12 @@ public class EntryLoginActivity extends EntryBaseActivity {
 
     private void goBootstrapActivity() {
         Intent intent = new Intent(ctx, BootstrapActivity.class);
+        ctx.startActivity(intent);
+        finish();
+    }
+
+    public void forgetPassword(View view) {
+        Intent intent = new Intent(ctx, ForgetPasswordActivity.class);
         ctx.startActivity(intent);
         finish();
     }
