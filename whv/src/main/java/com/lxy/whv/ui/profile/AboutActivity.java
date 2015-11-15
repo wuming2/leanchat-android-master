@@ -3,8 +3,10 @@ package com.lxy.whv.ui.profile;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.lxy.whv.R;
+import com.lxy.whv.service.UpdateService;
 import com.lxy.whv.ui.base_activity.BaseActivity;
 import com.lxy.whv.util.LogUtils;
 
@@ -21,12 +23,16 @@ public class AboutActivity extends BaseActivity {
     private int currentChecked = 0;
 
     Button button;
+    TextView versionTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         initActionBar(R.string.profile_fragment_about);
+
+        versionTv = (TextView) findViewById(R.id.about_versionName);
+        versionTv.setText(getString(R.string.about_version_text) + UpdateService.getVersionName(AboutActivity.this));
 
         button = (Button) findViewById(R.id.button_douniwan);
         button.setOnClickListener(new View.OnClickListener() {
